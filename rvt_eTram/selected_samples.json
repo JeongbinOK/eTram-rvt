@@ -1,0 +1,440 @@
+{
+  "train": [
+    {
+      "sequence_name": "train_day_0020",
+      "stats": {
+        "total_objects": 2788,
+        "class_distribution": [
+          739,
+          1615,
+          147,
+          120,
+          0,
+          167,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.11525762041979917,
+          "std": 0.1160518708552491,
+          "min": 0.011826505661010742,
+          "max": 0.6482956949869791,
+          "median": 0.05799843470255534
+        },
+        "size_distribution": {
+          "small": 0,
+          "medium": 1143,
+          "large": 1645
+        },
+        "small_ratio": 0.0,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0020",
+        "is_night": false,
+        "day_type": "day"
+      }
+    },
+    {
+      "sequence_name": "train_day_0028",
+      "stats": {
+        "total_objects": 1789,
+        "class_distribution": [
+          110,
+          1573,
+          106,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.07527028184197393,
+          "std": 0.05208601209937179,
+          "min": 0.009161102771759033,
+          "max": 0.33355422973632814,
+          "median": 0.06484817504882813
+        },
+        "size_distribution": {
+          "small": 1,
+          "medium": 499,
+          "large": 1289
+        },
+        "small_ratio": 0.0005589714924538849,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0028",
+        "is_night": false,
+        "day_type": "day"
+      }
+    },
+    {
+      "sequence_name": "train_day_0033",
+      "stats": {
+        "total_objects": 2864,
+        "class_distribution": [
+          1086,
+          1547,
+          24,
+          0,
+          0,
+          207,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.07826664203413705,
+          "std": 0.08292586995751842,
+          "min": 0.004166833162307739,
+          "max": 0.6835540262858073,
+          "median": 0.051290179888407395
+        },
+        "size_distribution": {
+          "small": 198,
+          "medium": 1194,
+          "large": 1472
+        },
+        "small_ratio": 0.0691340782122905,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0033",
+        "is_night": false,
+        "day_type": "day"
+      }
+    },
+    {
+      "sequence_name": "train_day_0049",
+      "stats": {
+        "total_objects": 6723,
+        "class_distribution": [
+          1187,
+          4821,
+          133,
+          230,
+          163,
+          189,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.0324478060214924,
+          "std": 0.05517577119140551,
+          "min": 0.0006531306107838948,
+          "max": 0.8419783020019531,
+          "median": 0.015128841400146484
+        },
+        "size_distribution": {
+          "small": 2203,
+          "medium": 3368,
+          "large": 1152
+        },
+        "small_ratio": 0.32768109474936785,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0049",
+        "is_night": false,
+        "day_type": "day"
+      }
+    },
+    {
+      "sequence_name": "train_night_0016",
+      "stats": {
+        "total_objects": 1634,
+        "class_distribution": [
+          146,
+          917,
+          457,
+          35,
+          0,
+          79,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.12196686113868038,
+          "std": 0.1182426792183899,
+          "min": 0.01364164670308431,
+          "max": 0.6385584004720052,
+          "median": 0.08109581311543781
+        },
+        "size_distribution": {
+          "small": 0,
+          "medium": 602,
+          "large": 1032
+        },
+        "small_ratio": 0.0,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0016",
+        "is_night": true,
+        "day_type": "night"
+      }
+    },
+    {
+      "sequence_name": "train_night_0006",
+      "stats": {
+        "total_objects": 3849,
+        "class_distribution": [
+          678,
+          3004,
+          67,
+          100,
+          0,
+          0,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.03846652489033903,
+          "std": 0.036372747356664174,
+          "min": 0.003063103755315145,
+          "max": 0.3896422576904297,
+          "median": 0.025451045036315918
+        },
+        "size_distribution": {
+          "small": 331,
+          "medium": 2522,
+          "large": 996
+        },
+        "small_ratio": 0.08599636269160821,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0006",
+        "is_night": true,
+        "day_type": "night"
+      }
+    },
+    {
+      "sequence_name": "train_night_0027",
+      "stats": {
+        "total_objects": 4539,
+        "class_distribution": [
+          2321,
+          1762,
+          266,
+          78,
+          0,
+          112,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.047951823027156525,
+          "std": 0.05974631829801777,
+          "min": 0.001864204208056132,
+          "max": 0.48197509765625,
+          "median": 0.027998453776041668
+        },
+        "size_distribution": {
+          "small": 1066,
+          "medium": 1908,
+          "large": 1565
+        },
+        "small_ratio": 0.23485349195858118,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0027",
+        "is_night": true,
+        "day_type": "night"
+      }
+    },
+    {
+      "sequence_name": "train_night_0038",
+      "stats": {
+        "total_objects": 8267,
+        "class_distribution": [
+          6756,
+          1361,
+          0,
+          78,
+          0,
+          72,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.04998960173556384,
+          "std": 0.11996827471543758,
+          "min": 0.002773703932762146,
+          "max": 2.0202178955078125,
+          "median": 0.012403543790181477
+        },
+        "size_distribution": {
+          "small": 3079,
+          "medium": 3831,
+          "large": 1357
+        },
+        "small_ratio": 0.3724446594895367,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0038",
+        "is_night": true,
+        "day_type": "night"
+      }
+    }
+  ],
+  "val": [
+    {
+      "sequence_name": "val_night_011",
+      "stats": {
+        "total_objects": 170,
+        "class_distribution": [
+          31,
+          139,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.06528629403955796,
+          "std": 0.03361110033201359,
+          "min": 0.01301076332728068,
+          "max": 0.11549093882242839,
+          "median": 0.05928997039794922
+        },
+        "size_distribution": {
+          "small": 0,
+          "medium": 66,
+          "large": 104
+        },
+        "small_ratio": 0.0,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "val_night_011",
+        "is_night": true,
+        "day_type": "night"
+      }
+    },
+    {
+      "sequence_name": "val_night_002",
+      "stats": {
+        "total_objects": 3768,
+        "class_distribution": [
+          1439,
+          1988,
+          213,
+          37,
+          54,
+          37,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.0802300628761366,
+          "std": 0.08752149004984233,
+          "min": 0.005158592462539673,
+          "max": 0.6869403584798177,
+          "median": 0.06059666315714518
+        },
+        "size_distribution": {
+          "small": 344,
+          "medium": 1411,
+          "large": 2013
+        },
+        "small_ratio": 0.09129511677282377,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "val_night_002",
+        "is_night": true,
+        "day_type": "night"
+      }
+    }
+  ],
+  "test": [
+    {
+      "sequence_name": "test_day_004",
+      "stats": {
+        "total_objects": 173,
+        "class_distribution": [
+          173,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.0216908994299828,
+          "std": 0.004771678495531505,
+          "min": 0.014146246910095216,
+          "max": 0.033171892166137695,
+          "median": 0.0214564847946167
+        },
+        "size_distribution": {
+          "small": 0,
+          "medium": 173,
+          "large": 0
+        },
+        "small_ratio": 0.0,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "test_day_004",
+        "is_night": false,
+        "day_type": "day"
+      }
+    },
+    {
+      "sequence_name": "test_day_011",
+      "stats": {
+        "total_objects": 1855,
+        "class_distribution": [
+          1083,
+          685,
+          0,
+          0,
+          0,
+          87,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.06544062247451961,
+          "std": 0.07714781615799254,
+          "min": 0.009674394925435384,
+          "max": 0.3771695709228516,
+          "median": 0.022134310404459637
+        },
+        "size_distribution": {
+          "small": 256,
+          "medium": 1000,
+          "large": 599
+        },
+        "small_ratio": 0.13800539083557953,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "test_day_011",
+        "is_night": false,
+        "day_type": "day"
+      }
+    }
+  ]
+}

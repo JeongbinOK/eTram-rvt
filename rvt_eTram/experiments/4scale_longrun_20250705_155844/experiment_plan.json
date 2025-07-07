@@ -1,0 +1,61 @@
+{
+  "experiment_id": "4scale_longrun_20250705_155844",
+  "created_at": "2025-07-05T15:58:44.507969",
+  "objective": "4-scale FPN small object detection performance validation",
+  "hypothesis": "P1 features (stride 4) will improve small object AP by 15-25%",
+  "dataset": {
+    "name": "gen4_extended_sample",
+    "sequences": 45,
+    "target_objects": 350000,
+    "class_balance": "enforced",
+    "small_object_ratio": 0.28
+  },
+  "model": {
+    "architecture": "RVT + 4-scale FPN",
+    "scales": [
+      4,
+      8,
+      16,
+      32
+    ],
+    "backbone": "MaxViT-RNN",
+    "modifications": "Added P1 feature processing"
+  },
+  "training": {
+    "total_steps": 100000,
+    "phases": [
+      {
+        "phase": "A",
+        "steps": 20000,
+        "focus": "basic_convergence"
+      },
+      {
+        "phase": "B",
+        "steps": 50000,
+        "focus": "optimization"
+      },
+      {
+        "phase": "C",
+        "steps": 100000,
+        "focus": "final_tuning"
+      }
+    ],
+    "validation_interval": 2000,
+    "checkpoint_interval": 5000,
+    "batch_size": {
+      "train": 6,
+      "eval": 2
+    },
+    "learning_rate": 3.5e-05
+  },
+  "success_criteria": {
+    "convergence": "validation loss < 10",
+    "class_coverage": "all 8 classes detected",
+    "small_object_improvement": "AP_small > baseline + 10%"
+  },
+  "monitoring": {
+    "validation_interval": 2000,
+    "checkpoint_interval": 5000,
+    "confusion_matrix_interval": 2000
+  }
+}

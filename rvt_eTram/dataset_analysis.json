@@ -1,0 +1,5453 @@
+{
+  "train": {
+    "train_day_0001": {
+      "total_objects": 1286,
+      "class_distribution": [
+        583,
+        571,
+        0,
+        53,
+        0,
+        79,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.11269500083475918,
+        "std": 0.16523442991191306,
+        "min": 0.0084676194190979,
+        "max": 1.266494140625,
+        "median": 0.05099559942881266
+      },
+      "size_distribution": {
+        "small": 29,
+        "medium": 606,
+        "large": 651
+      },
+      "small_ratio": 0.02255054432348367,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0001",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0002": {
+      "total_objects": 1188,
+      "class_distribution": [
+        245,
+        678,
+        0,
+        0,
+        0,
+        265,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.08501752883630702,
+        "std": 0.07118713144694731,
+        "min": 0.01638951778411865,
+        "max": 0.43586639404296873,
+        "median": 0.059026819864908854
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 493,
+        "large": 695
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0002",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0003": {
+      "total_objects": 2583,
+      "class_distribution": [
+        1044,
+        1219,
+        21,
+        30,
+        34,
+        235,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07344522418091569,
+        "std": 0.08521797171214414,
+        "min": 0.005078349510828654,
+        "max": 0.6413467407226563,
+        "median": 0.04252910614013672
+      },
+      "size_distribution": {
+        "small": 562,
+        "medium": 828,
+        "large": 1193
+      },
+      "small_ratio": 0.2175764614789005,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0003",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0004": {
+      "total_objects": 1852,
+      "class_distribution": [
+        826,
+        633,
+        0,
+        43,
+        0,
+        350,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.08888733973642146,
+        "std": 0.11844105365445204,
+        "min": 0.010583252906799316,
+        "max": 0.9222501627604167,
+        "median": 0.034114435513814295
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 1059,
+        "large": 793
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0004",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0005": {
+      "total_objects": 1638,
+      "class_distribution": [
+        351,
+        1109,
+        130,
+        18,
+        0,
+        30,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.056894796682558854,
+        "std": 0.07419485019233955,
+        "min": 0.00791271448135376,
+        "max": 0.589404805501302,
+        "median": 0.026851723988850912
+      },
+      "size_distribution": {
+        "small": 193,
+        "medium": 975,
+        "large": 470
+      },
+      "small_ratio": 0.11782661782661782,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0005",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0006": {
+      "total_objects": 2179,
+      "class_distribution": [
+        1124,
+        838,
+        84,
+        0,
+        0,
+        133,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.08692113047147974,
+        "std": 0.09759561660669767,
+        "min": 0.009647199312845866,
+        "max": 0.3968048095703125,
+        "median": 0.03208918253580729
+      },
+      "size_distribution": {
+        "small": 1,
+        "medium": 1356,
+        "large": 822
+      },
+      "small_ratio": 0.0004589261128958238,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0006",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0007": {
+      "total_objects": 2185,
+      "class_distribution": [
+        150,
+        1808,
+        0,
+        0,
+        0,
+        227,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.11824764030167022,
+        "std": 0.10268416059488247,
+        "min": 0.004659452438354492,
+        "max": 0.7933445739746093,
+        "median": 0.08591609954833984
+      },
+      "size_distribution": {
+        "small": 33,
+        "medium": 419,
+        "large": 1733
+      },
+      "small_ratio": 0.015102974828375287,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0007",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0008": {
+      "total_objects": 9457,
+      "class_distribution": [
+        1832,
+        6581,
+        0,
+        0,
+        0,
+        1044,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.03306911911812647,
+        "std": 0.06173695463313061,
+        "min": 0.0031493566433588665,
+        "max": 0.7312939961751302,
+        "median": 0.016933472951253255
+      },
+      "size_distribution": {
+        "small": 1899,
+        "medium": 6294,
+        "large": 1264
+      },
+      "small_ratio": 0.20080363751718303,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0008",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0009": {
+      "total_objects": 2470,
+      "class_distribution": [
+        497,
+        831,
+        678,
+        63,
+        0,
+        165,
+        0,
+        236
+      ],
+      "area_stats": {
+        "mean": 0.08676807945910414,
+        "std": 0.11563609131069708,
+        "min": 0.004791528383890788,
+        "max": 0.8805239868164062,
+        "median": 0.0242854102452596
+      },
+      "size_distribution": {
+        "small": 91,
+        "medium": 1354,
+        "large": 1025
+      },
+      "small_ratio": 0.03684210526315789,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0009",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0010": {
+      "total_objects": 2278,
+      "class_distribution": [
+        543,
+        1555,
+        0,
+        31,
+        43,
+        106,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07979199647205701,
+        "std": 0.08186435403129498,
+        "min": 0.006417574882507324,
+        "max": 0.5301420084635416,
+        "median": 0.05364045778910319
+      },
+      "size_distribution": {
+        "small": 50,
+        "medium": 1031,
+        "large": 1197
+      },
+      "small_ratio": 0.021949078138718173,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0010",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0011": {
+      "total_objects": 3839,
+      "class_distribution": [
+        1550,
+        1813,
+        368,
+        108,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.026943965439240825,
+        "std": 0.03288173681568546,
+        "min": 0.0025474496682484945,
+        "max": 0.25555997212727866,
+        "median": 0.013890449206034343
+      },
+      "size_distribution": {
+        "small": 1078,
+        "medium": 2226,
+        "large": 535
+      },
+      "small_ratio": 0.2808022922636103,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0011",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0012": {
+      "total_objects": 6170,
+      "class_distribution": [
+        1297,
+        4769,
+        70,
+        0,
+        0,
+        34,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.03989896490614457,
+        "std": 0.047706802206125574,
+        "min": 0.001913226842880249,
+        "max": 0.31462750752766927,
+        "median": 0.022292697429656984
+      },
+      "size_distribution": {
+        "small": 904,
+        "medium": 3999,
+        "large": 1267
+      },
+      "small_ratio": 0.146515397082658,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0012",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0013": {
+      "total_objects": 593,
+      "class_distribution": [
+        290,
+        143,
+        0,
+        18,
+        142,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.06706226346330606,
+        "std": 0.09740153709556777,
+        "min": 0.009236563046773274,
+        "max": 0.5514023335774739,
+        "median": 0.027845741907755534
+      },
+      "size_distribution": {
+        "small": 53,
+        "medium": 369,
+        "large": 171
+      },
+      "small_ratio": 0.0893760539629005,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0013",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0014": {
+      "total_objects": 1404,
+      "class_distribution": [
+        595,
+        677,
+        0,
+        32,
+        0,
+        100,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.10951123565293899,
+        "std": 0.18388601649295944,
+        "min": 0.010559800465901693,
+        "max": 1.4946720377604166,
+        "median": 0.037432047526041665
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 808,
+        "large": 596
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0014",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0015": {
+      "total_objects": 1812,
+      "class_distribution": [
+        609,
+        1038,
+        0,
+        0,
+        0,
+        165,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.10835964147486697,
+        "std": 0.19159732408710636,
+        "min": 0.010554184913635254,
+        "max": 1.7811236572265625,
+        "median": 0.06812097867329917
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 668,
+        "large": 1144
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0015",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0016": {
+      "total_objects": 599,
+      "class_distribution": [
+        443,
+        156,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.052868316123136624,
+        "std": 0.08520436842968221,
+        "min": 0.010032124519348144,
+        "max": 0.4151715596516927,
+        "median": 0.015330847104390461
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 466,
+        "large": 133
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0016",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0017": {
+      "total_objects": 2511,
+      "class_distribution": [
+        1718,
+        602,
+        28,
+        0,
+        0,
+        163,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07081889288969506,
+        "std": 0.12052865050138682,
+        "min": 0.007526707649230957,
+        "max": 0.8769385782877605,
+        "median": 0.015281310081481933
+      },
+      "size_distribution": {
+        "small": 131,
+        "medium": 1654,
+        "large": 726
+      },
+      "small_ratio": 0.052170450019912384,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0017",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0018": {
+      "total_objects": 3944,
+      "class_distribution": [
+        725,
+        2194,
+        217,
+        520,
+        0,
+        288,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.028610143875848044,
+        "std": 0.07009729236599686,
+        "min": 0.0013609454035758972,
+        "max": 0.8111117553710937,
+        "median": 0.009241154193878175
+      },
+      "size_distribution": {
+        "small": 2070,
+        "medium": 1353,
+        "large": 521
+      },
+      "small_ratio": 0.5248478701825557,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0018",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0019": {
+      "total_objects": 3665,
+      "class_distribution": [
+        1539,
+        1788,
+        88,
+        27,
+        0,
+        223,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0654805184128394,
+        "std": 0.07061376444347277,
+        "min": 0.006911975542704264,
+        "max": 0.44978607177734375,
+        "median": 0.04131198565165202
+      },
+      "size_distribution": {
+        "small": 478,
+        "medium": 1607,
+        "large": 1580
+      },
+      "small_ratio": 0.13042291950886767,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0019",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0020": {
+      "total_objects": 2788,
+      "class_distribution": [
+        739,
+        1615,
+        147,
+        120,
+        0,
+        167,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.11525762041979917,
+        "std": 0.1160518708552491,
+        "min": 0.011826505661010742,
+        "max": 0.6482956949869791,
+        "median": 0.05799843470255534
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 1143,
+        "large": 1645
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0020",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0021": {
+      "total_objects": 3426,
+      "class_distribution": [
+        2339,
+        649,
+        350,
+        43,
+        45,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0380387394145018,
+        "std": 0.05897506673525298,
+        "min": 0.004615685939788818,
+        "max": 0.5734671529134114,
+        "median": 0.017353029251098634
+      },
+      "size_distribution": {
+        "small": 649,
+        "medium": 2069,
+        "large": 708
+      },
+      "small_ratio": 0.18943374197314652,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0021",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0022": {
+      "total_objects": 8828,
+      "class_distribution": [
+        1993,
+        6629,
+        206,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.024577501169046483,
+        "std": 0.03593884892453105,
+        "min": 0.001295867164929708,
+        "max": 0.3299847157796224,
+        "median": 0.009616381327311197
+      },
+      "size_distribution": {
+        "small": 4493,
+        "medium": 3132,
+        "large": 1203
+      },
+      "small_ratio": 0.508948799275034,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0022",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0023": {
+      "total_objects": 1903,
+      "class_distribution": [
+        281,
+        749,
+        644,
+        38,
+        33,
+        158,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.09685062114193053,
+        "std": 0.13600761926366284,
+        "min": 0.011489508152008056,
+        "max": 1.303635762532552,
+        "median": 0.044035456975301104
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 999,
+        "large": 904
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0023",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0025": {
+      "total_objects": 2164,
+      "class_distribution": [
+        1713,
+        451,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.030729085688266357,
+        "std": 0.0310082990164094,
+        "min": 0.005723669131596883,
+        "max": 0.18659898122151694,
+        "median": 0.018231293360392253
+      },
+      "size_distribution": {
+        "small": 25,
+        "medium": 1769,
+        "large": 370
+      },
+      "small_ratio": 0.01155268022181146,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0025",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0026": {
+      "total_objects": 3185,
+      "class_distribution": [
+        1311,
+        1367,
+        32,
+        234,
+        241,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0746003014585973,
+        "std": 0.09043786623025205,
+        "min": 0.008039817015329997,
+        "max": 0.603682861328125,
+        "median": 0.03994345982869466
+      },
+      "size_distribution": {
+        "small": 30,
+        "medium": 1836,
+        "large": 1319
+      },
+      "small_ratio": 0.009419152276295133,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0026",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0027": {
+      "total_objects": 1038,
+      "class_distribution": [
+        255,
+        600,
+        94,
+        30,
+        0,
+        59,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.14547441456397528,
+        "std": 0.18945409953026254,
+        "min": 0.006113961140314738,
+        "max": 1.1906894938151042,
+        "median": 0.08326914151509603
+      },
+      "size_distribution": {
+        "small": 31,
+        "medium": 344,
+        "large": 663
+      },
+      "small_ratio": 0.029865125240847785,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0027",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0028": {
+      "total_objects": 1789,
+      "class_distribution": [
+        110,
+        1573,
+        106,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07527028184197393,
+        "std": 0.05208601209937179,
+        "min": 0.009161102771759033,
+        "max": 0.33355422973632814,
+        "median": 0.06484817504882813
+      },
+      "size_distribution": {
+        "small": 1,
+        "medium": 499,
+        "large": 1289
+      },
+      "small_ratio": 0.0005589714924538849,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0028",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0029": {
+      "total_objects": 1641,
+      "class_distribution": [
+        1051,
+        190,
+        0,
+        0,
+        0,
+        400,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05822317307663235,
+        "std": 0.07644853405859424,
+        "min": 0.003780385653177897,
+        "max": 0.47128448486328123,
+        "median": 0.008500410715738932
+      },
+      "size_distribution": {
+        "small": 1051,
+        "medium": 17,
+        "large": 573
+      },
+      "small_ratio": 0.6404631322364412,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0029",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0030": {
+      "total_objects": 1164,
+      "class_distribution": [
+        358,
+        470,
+        13,
+        24,
+        0,
+        299,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.12742033463914504,
+        "std": 0.10879347189954584,
+        "min": 0.010330349604288736,
+        "max": 0.6316666666666667,
+        "median": 0.12051998774210612
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 399,
+        "large": 765
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0030",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0031": {
+      "total_objects": 5838,
+      "class_distribution": [
+        2096,
+        2611,
+        384,
+        0,
+        38,
+        709,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.021098469585023732,
+        "std": 0.04007217327581918,
+        "min": 0.0008295005559921264,
+        "max": 0.40267796834309894,
+        "median": 0.006333954334259033
+      },
+      "size_distribution": {
+        "small": 3642,
+        "medium": 1604,
+        "large": 592
+      },
+      "small_ratio": 0.6238437821171634,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0031",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0032": {
+      "total_objects": 5330,
+      "class_distribution": [
+        4200,
+        783,
+        33,
+        42,
+        0,
+        272,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.048009739210711486,
+        "std": 0.1261199118985844,
+        "min": 0.0025039108594258628,
+        "max": 1.2654243977864583,
+        "median": 0.004950594902038574
+      },
+      "size_distribution": {
+        "small": 3981,
+        "medium": 297,
+        "large": 1052
+      },
+      "small_ratio": 0.7469043151969981,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0032",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0033": {
+      "total_objects": 2864,
+      "class_distribution": [
+        1086,
+        1547,
+        24,
+        0,
+        0,
+        207,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07826664203413705,
+        "std": 0.08292586995751842,
+        "min": 0.004166833162307739,
+        "max": 0.6835540262858073,
+        "median": 0.051290179888407395
+      },
+      "size_distribution": {
+        "small": 198,
+        "medium": 1194,
+        "large": 1472
+      },
+      "small_ratio": 0.0691340782122905,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0033",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0034": {
+      "total_objects": 1064,
+      "class_distribution": [
+        0,
+        468,
+        196,
+        0,
+        33,
+        344,
+        23,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.14002493146666908,
+        "std": 0.20166221318504016,
+        "min": 0.015998028119405112,
+        "max": 1.96716796875,
+        "median": 0.10446604410807292
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 194,
+        "large": 870
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0034",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0035": {
+      "total_objects": 875,
+      "class_distribution": [
+        164,
+        711,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.053598295959291005,
+        "std": 0.03600152294886258,
+        "min": 0.009136943817138672,
+        "max": 0.22852406819661458,
+        "median": 0.040920317967732746
+      },
+      "size_distribution": {
+        "small": 3,
+        "medium": 527,
+        "large": 345
+      },
+      "small_ratio": 0.0034285714285714284,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0035",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0036": {
+      "total_objects": 617,
+      "class_distribution": [
+        166,
+        376,
+        0,
+        42,
+        15,
+        18,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.11951988903784479,
+        "std": 0.1189924278005463,
+        "min": 0.00898103634516398,
+        "max": 0.6907570393880208,
+        "median": 0.08625202814737956
+      },
+      "size_distribution": {
+        "small": 5,
+        "medium": 177,
+        "large": 435
+      },
+      "small_ratio": 0.008103727714748784,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0036",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0037": {
+      "total_objects": 3246,
+      "class_distribution": [
+        2490,
+        549,
+        0,
+        0,
+        0,
+        207,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.03732969754406695,
+        "std": 0.06451735376029344,
+        "min": 0.0033563486735026043,
+        "max": 0.5269715372721354,
+        "median": 0.008502303759256999
+      },
+      "size_distribution": {
+        "small": 2490,
+        "medium": 47,
+        "large": 709
+      },
+      "small_ratio": 0.767097966728281,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0037",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0038": {
+      "total_objects": 5838,
+      "class_distribution": [
+        1987,
+        3371,
+        277,
+        0,
+        83,
+        120,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.027572116126402393,
+        "std": 0.03630974604242258,
+        "min": 0.0014117142558097838,
+        "max": 0.37252029418945315,
+        "median": 0.014024891058603921
+      },
+      "size_distribution": {
+        "small": 2001,
+        "medium": 2926,
+        "large": 911
+      },
+      "small_ratio": 0.34275436793422404,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0038",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0039": {
+      "total_objects": 2799,
+      "class_distribution": [
+        1707,
+        601,
+        0,
+        0,
+        0,
+        491,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.06355635197993559,
+        "std": 0.09150595590168463,
+        "min": 0.001610760986804962,
+        "max": 0.5115665181477864,
+        "median": 0.005959322452545166
+      },
+      "size_distribution": {
+        "small": 1529,
+        "medium": 231,
+        "large": 1039
+      },
+      "small_ratio": 0.5462665237584852,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0039",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0040": {
+      "total_objects": 1009,
+      "class_distribution": [
+        111,
+        827,
+        0,
+        32,
+        0,
+        39,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.1411240728436266,
+        "std": 0.1174166969538973,
+        "min": 0.015906931559244792,
+        "max": 0.767833964029948,
+        "median": 0.09000308354695638
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 121,
+        "large": 888
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0040",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0041": {
+      "total_objects": 2789,
+      "class_distribution": [
+        1675,
+        749,
+        236,
+        47,
+        0,
+        82,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05350195388220054,
+        "std": 0.06451780119904874,
+        "min": 0.005720737377802531,
+        "max": 0.5114331563313802,
+        "median": 0.02727937380472819
+      },
+      "size_distribution": {
+        "small": 193,
+        "medium": 1736,
+        "large": 860
+      },
+      "small_ratio": 0.06920043026174257,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0041",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0042": {
+      "total_objects": 698,
+      "class_distribution": [
+        0,
+        372,
+        127,
+        0,
+        0,
+        199,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.021434078442418472,
+        "std": 0.032981479527427734,
+        "min": 0.00135343203941981,
+        "max": 0.1691777547200521,
+        "median": 0.006880292892456055
+      },
+      "size_distribution": {
+        "small": 422,
+        "medium": 185,
+        "large": 91
+      },
+      "small_ratio": 0.6045845272206304,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0042",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0043": {
+      "total_objects": 2252,
+      "class_distribution": [
+        1209,
+        898,
+        79,
+        0,
+        0,
+        66,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.059228181182244176,
+        "std": 0.05299580869050056,
+        "min": 0.0059270123640696205,
+        "max": 0.25249987284342446,
+        "median": 0.03364195505777995
+      },
+      "size_distribution": {
+        "small": 180,
+        "medium": 1142,
+        "large": 930
+      },
+      "small_ratio": 0.07992895204262877,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0043",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0044": {
+      "total_objects": 1371,
+      "class_distribution": [
+        341,
+        659,
+        152,
+        0,
+        0,
+        219,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.12141280227816947,
+        "std": 0.1125536760429088,
+        "min": 0.013130486011505127,
+        "max": 0.37992515563964846,
+        "median": 0.04821686744689942
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 708,
+        "large": 663
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0044",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0045": {
+      "total_objects": 2276,
+      "class_distribution": [
+        1509,
+        529,
+        74,
+        41,
+        40,
+        83,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.045587771115208064,
+        "std": 0.057234711881717165,
+        "min": 0.007162919044494629,
+        "max": 0.4851994832356771,
+        "median": 0.02438753684361776
+      },
+      "size_distribution": {
+        "small": 203,
+        "medium": 1437,
+        "large": 636
+      },
+      "small_ratio": 0.08919156414762741,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0045",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0046": {
+      "total_objects": 27,
+      "class_distribution": [
+        23,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0432113469677207,
+        "std": 0.0902229115598999,
+        "min": 0.005203640063603719,
+        "max": 0.30276458740234374,
+        "median": 0.0065625
+      },
+      "size_distribution": {
+        "small": 23,
+        "medium": 0,
+        "large": 4
+      },
+      "small_ratio": 0.8518518518518519,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0046",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0047": {
+      "total_objects": 2221,
+      "class_distribution": [
+        1230,
+        907,
+        84,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.04780785889377219,
+        "std": 0.05194592018812395,
+        "min": 0.01036637306213379,
+        "max": 0.3595121765136719,
+        "median": 0.02866111437479655
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 1558,
+        "large": 663
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0047",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0048": {
+      "total_objects": 1157,
+      "class_distribution": [
+        556,
+        362,
+        17,
+        83,
+        0,
+        139,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.11048198438865311,
+        "std": 0.13892144223711397,
+        "min": 0.011489508152008056,
+        "max": 1.1718550618489583,
+        "median": 0.047008180618286134
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 583,
+        "large": 574
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0048",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0049": {
+      "total_objects": 6723,
+      "class_distribution": [
+        1187,
+        4821,
+        133,
+        230,
+        163,
+        189,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0324478060214924,
+        "std": 0.05517577119140551,
+        "min": 0.0006531306107838948,
+        "max": 0.8419783020019531,
+        "median": 0.015128841400146484
+      },
+      "size_distribution": {
+        "small": 2203,
+        "medium": 3368,
+        "large": 1152
+      },
+      "small_ratio": 0.32768109474936785,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0049",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0050": {
+      "total_objects": 5771,
+      "class_distribution": [
+        1080,
+        3984,
+        111,
+        265,
+        0,
+        331,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.02790102519678063,
+        "std": 0.04926705338947974,
+        "min": 0.0011466939250628153,
+        "max": 0.6419831339518229,
+        "median": 0.013236374060312906
+      },
+      "size_distribution": {
+        "small": 2389,
+        "medium": 2403,
+        "large": 979
+      },
+      "small_ratio": 0.41396638364234967,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0050",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0051": {
+      "total_objects": 1891,
+      "class_distribution": [
+        1075,
+        670,
+        66,
+        0,
+        0,
+        80,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05673472728171131,
+        "std": 0.055863048747077336,
+        "min": 0.0059905032316843665,
+        "max": 0.252904052734375,
+        "median": 0.03104845682779948
+      },
+      "size_distribution": {
+        "small": 164,
+        "medium": 998,
+        "large": 729
+      },
+      "small_ratio": 0.08672659968270756,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0051",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0052": {
+      "total_objects": 5582,
+      "class_distribution": [
+        826,
+        3018,
+        580,
+        436,
+        0,
+        722,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0301640849051959,
+        "std": 0.0610590780309575,
+        "min": 0.00110831747452418,
+        "max": 0.6563201904296875,
+        "median": 0.010130804777145386
+      },
+      "size_distribution": {
+        "small": 2766,
+        "medium": 1983,
+        "large": 833
+      },
+      "small_ratio": 0.4955213185238266,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0052",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0053": {
+      "total_objects": 2790,
+      "class_distribution": [
+        769,
+        1458,
+        0,
+        24,
+        0,
+        539,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.1112086341398164,
+        "std": 0.09082818008068351,
+        "min": 0.007433753808339437,
+        "max": 0.5395796203613281,
+        "median": 0.0907587464650472
+      },
+      "size_distribution": {
+        "small": 61,
+        "medium": 667,
+        "large": 2062
+      },
+      "small_ratio": 0.02186379928315412,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0053",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0054": {
+      "total_objects": 2250,
+      "class_distribution": [
+        1471,
+        606,
+        14,
+        48,
+        0,
+        111,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07151713573208561,
+        "std": 0.12800074666008826,
+        "min": 0.005364540815353393,
+        "max": 1.293852030436198,
+        "median": 0.016811222235361738
+      },
+      "size_distribution": {
+        "small": 658,
+        "medium": 843,
+        "large": 749
+      },
+      "small_ratio": 0.29244444444444445,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0054",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0055": {
+      "total_objects": 8461,
+      "class_distribution": [
+        1850,
+        6174,
+        210,
+        133,
+        37,
+        57,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.026690451524603132,
+        "std": 0.03604004434143321,
+        "min": 0.001315733293692271,
+        "max": 0.33004051208496094,
+        "median": 0.013003882567087809
+      },
+      "size_distribution": {
+        "small": 3305,
+        "medium": 3919,
+        "large": 1237
+      },
+      "small_ratio": 0.3906157664578655,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0055",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0056": {
+      "total_objects": 3769,
+      "class_distribution": [
+        2256,
+        1265,
+        150,
+        0,
+        0,
+        98,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.04708025953334681,
+        "std": 0.04971566841852334,
+        "min": 0.007023471196492513,
+        "max": 0.29043479919433596,
+        "median": 0.02338549296061198
+      },
+      "size_distribution": {
+        "small": 135,
+        "medium": 2469,
+        "large": 1165
+      },
+      "small_ratio": 0.03581851950119395,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0056",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0057": {
+      "total_objects": 484,
+      "class_distribution": [
+        366,
+        118,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.029696072456593687,
+        "std": 0.023092620210241496,
+        "min": 0.008574031988779703,
+        "max": 0.10238906860351563,
+        "median": 0.023817836443583172
+      },
+      "size_distribution": {
+        "small": 101,
+        "medium": 291,
+        "large": 92
+      },
+      "small_ratio": 0.20867768595041322,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0057",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0058": {
+      "total_objects": 1867,
+      "class_distribution": [
+        996,
+        770,
+        0,
+        0,
+        0,
+        101,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.08563369583091743,
+        "std": 0.09897132508671495,
+        "min": 0.015631572405497233,
+        "max": 0.9960489908854167,
+        "median": 0.03608697891235352
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 1139,
+        "large": 728
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0058",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0059": {
+      "total_objects": 1187,
+      "class_distribution": [
+        156,
+        663,
+        0,
+        0,
+        0,
+        368,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.1240929081599989,
+        "std": 0.09993807642417372,
+        "min": 0.009418003559112549,
+        "max": 0.642742919921875,
+        "median": 0.09814845403035481
+      },
+      "size_distribution": {
+        "small": 25,
+        "medium": 206,
+        "large": 956
+      },
+      "small_ratio": 0.02106149957877001,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0059",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0060": {
+      "total_objects": 4389,
+      "class_distribution": [
+        1010,
+        3184,
+        121,
+        0,
+        0,
+        74,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.02334953779211672,
+        "std": 0.03297546662276264,
+        "min": 0.0010400540630022684,
+        "max": 0.21436106363932292,
+        "median": 0.008529214064280193
+      },
+      "size_distribution": {
+        "small": 2339,
+        "medium": 1397,
+        "large": 653
+      },
+      "small_ratio": 0.5329232171337435,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0060",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_day_0061": {
+      "total_objects": 1512,
+      "class_distribution": [
+        845,
+        620,
+        0,
+        30,
+        0,
+        17,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.06974472805463447,
+        "std": 0.1267232960476711,
+        "min": 0.008811922073364257,
+        "max": 1.1564449055989583,
+        "median": 0.030150678952534996
+      },
+      "size_distribution": {
+        "small": 72,
+        "medium": 1061,
+        "large": 379
+      },
+      "small_ratio": 0.047619047619047616,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_day_0061",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "train_night_0001": {
+      "total_objects": 4499,
+      "class_distribution": [
+        2560,
+        1588,
+        178,
+        0,
+        0,
+        173,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.056108925116453434,
+        "std": 0.07791219021962591,
+        "min": 0.004071593284606934,
+        "max": 0.5309330240885417,
+        "median": 0.03708476066589356
+      },
+      "size_distribution": {
+        "small": 583,
+        "medium": 2369,
+        "large": 1547
+      },
+      "small_ratio": 0.1295843520782396,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0001",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0002": {
+      "total_objects": 6495,
+      "class_distribution": [
+        5228,
+        1267,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.034929125689713805,
+        "std": 0.06830740874073876,
+        "min": 0.0028659693400065103,
+        "max": 0.49321975708007815,
+        "median": 0.00917137622833252
+      },
+      "size_distribution": {
+        "small": 3423,
+        "medium": 1972,
+        "large": 1100
+      },
+      "small_ratio": 0.5270207852193995,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0002",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0003": {
+      "total_objects": 4368,
+      "class_distribution": [
+        1174,
+        2799,
+        0,
+        46,
+        20,
+        329,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.09099093006425724,
+        "std": 0.0895032396117934,
+        "min": 0.004065652290980021,
+        "max": 0.6224732971191407,
+        "median": 0.05723398208618164
+      },
+      "size_distribution": {
+        "small": 531,
+        "medium": 1465,
+        "large": 2372
+      },
+      "small_ratio": 0.12156593406593406,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0003",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0004": {
+      "total_objects": 6545,
+      "class_distribution": [
+        0,
+        6180,
+        0,
+        365,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.02104484208084895,
+        "std": 0.031151515389658886,
+        "min": 0.0016927188634872437,
+        "max": 0.45258443196614584,
+        "median": 0.008085020383199056
+      },
+      "size_distribution": {
+        "small": 3707,
+        "medium": 2032,
+        "large": 806
+      },
+      "small_ratio": 0.5663865546218487,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0004",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0005": {
+      "total_objects": 4774,
+      "class_distribution": [
+        2210,
+        2294,
+        0,
+        158,
+        0,
+        112,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.050101871224355145,
+        "std": 0.07125322424973443,
+        "min": 0.0008452492952346802,
+        "max": 0.6383657328287761,
+        "median": 0.029249958992004395
+      },
+      "size_distribution": {
+        "small": 1220,
+        "medium": 1880,
+        "large": 1674
+      },
+      "small_ratio": 0.25555090071219105,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0005",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0006": {
+      "total_objects": 3849,
+      "class_distribution": [
+        678,
+        3004,
+        67,
+        100,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.03846652489033903,
+        "std": 0.036372747356664174,
+        "min": 0.003063103755315145,
+        "max": 0.3896422576904297,
+        "median": 0.025451045036315918
+      },
+      "size_distribution": {
+        "small": 331,
+        "medium": 2522,
+        "large": 996
+      },
+      "small_ratio": 0.08599636269160821,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0006",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0007": {
+      "total_objects": 6568,
+      "class_distribution": [
+        1838,
+        4662,
+        0,
+        68,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.02406969293767463,
+        "std": 0.029589787706406443,
+        "min": 0.0024037599563598634,
+        "max": 0.4403494262695313,
+        "median": 0.012536791960398357
+      },
+      "size_distribution": {
+        "small": 2739,
+        "medium": 2947,
+        "large": 882
+      },
+      "small_ratio": 0.4170219244823386,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0007",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0008": {
+      "total_objects": 490,
+      "class_distribution": [
+        33,
+        457,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.017096603030250186,
+        "std": 0.021880561533504202,
+        "min": 0.002523349324862162,
+        "max": 0.1518191401163737,
+        "median": 0.007861867745717366
+      },
+      "size_distribution": {
+        "small": 287,
+        "medium": 163,
+        "large": 40
+      },
+      "small_ratio": 0.5857142857142857,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0008",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0009": {
+      "total_objects": 2966,
+      "class_distribution": [
+        1208,
+        1605,
+        0,
+        0,
+        0,
+        153,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.09713964529414208,
+        "std": 0.10725491075379566,
+        "min": 0.0053297599156697595,
+        "max": 0.6272388203938802,
+        "median": 0.06832176526387532
+      },
+      "size_distribution": {
+        "small": 616,
+        "medium": 632,
+        "large": 1718
+      },
+      "small_ratio": 0.20768712070128117,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0009",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0010": {
+      "total_objects": 942,
+      "class_distribution": [
+        132,
+        810,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.02215546440124849,
+        "std": 0.01803939942231824,
+        "min": 0.003708483378092448,
+        "max": 0.09952247619628907,
+        "median": 0.013556658426920573
+      },
+      "size_distribution": {
+        "small": 212,
+        "medium": 634,
+        "large": 96
+      },
+      "small_ratio": 0.22505307855626328,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0010",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0011": {
+      "total_objects": 6764,
+      "class_distribution": [
+        2088,
+        4447,
+        103,
+        0,
+        0,
+        126,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.019508744054204986,
+        "std": 0.024718910226488627,
+        "min": 0.0014648649096488952,
+        "max": 0.18641727447509765,
+        "median": 0.010895065466562907
+      },
+      "size_distribution": {
+        "small": 3197,
+        "medium": 2963,
+        "large": 604
+      },
+      "small_ratio": 0.4726493199290361,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0011",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0012": {
+      "total_objects": 2441,
+      "class_distribution": [
+        636,
+        1567,
+        198,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.060830622000819956,
+        "std": 0.053133074367606364,
+        "min": 0.004795754353205363,
+        "max": 0.423103764851888,
+        "median": 0.05174703598022461
+      },
+      "size_distribution": {
+        "small": 108,
+        "medium": 1044,
+        "large": 1289
+      },
+      "small_ratio": 0.04424416222859484,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0012",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0013": {
+      "total_objects": 3902,
+      "class_distribution": [
+        1281,
+        2442,
+        0,
+        179,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.027148928708148147,
+        "std": 0.03827480346294843,
+        "min": 0.00044320886333783466,
+        "max": 0.42603492736816406,
+        "median": 0.014081146717071533
+      },
+      "size_distribution": {
+        "small": 1347,
+        "medium": 1958,
+        "large": 597
+      },
+      "small_ratio": 0.3452075858534085,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0013",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0014": {
+      "total_objects": 3209,
+      "class_distribution": [
+        1888,
+        1194,
+        54,
+        42,
+        0,
+        31,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07764383716791036,
+        "std": 0.10793217030135446,
+        "min": 0.0025071086486180626,
+        "max": 0.7792754618326823,
+        "median": 0.02307944933573405
+      },
+      "size_distribution": {
+        "small": 200,
+        "medium": 1641,
+        "large": 1368
+      },
+      "small_ratio": 0.06232471174820817,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0014",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0015": {
+      "total_objects": 3716,
+      "class_distribution": [
+        1910,
+        1749,
+        0,
+        57,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07179420628570553,
+        "std": 0.11974691226514979,
+        "min": 0.0027001655101776124,
+        "max": 1.471417236328125,
+        "median": 0.018430554072062174
+      },
+      "size_distribution": {
+        "small": 1357,
+        "medium": 919,
+        "large": 1440
+      },
+      "small_ratio": 0.3651776103336921,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0015",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0016": {
+      "total_objects": 1634,
+      "class_distribution": [
+        146,
+        917,
+        457,
+        35,
+        0,
+        79,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.12196686113868038,
+        "std": 0.1182426792183899,
+        "min": 0.01364164670308431,
+        "max": 0.6385584004720052,
+        "median": 0.08109581311543781
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 602,
+        "large": 1032
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0016",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0017": {
+      "total_objects": 5347,
+      "class_distribution": [
+        633,
+        4640,
+        0,
+        74,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.023695269334933815,
+        "std": 0.03103728101314958,
+        "min": 0.0020710243781407673,
+        "max": 0.38335838317871096,
+        "median": 0.012047537962595622
+      },
+      "size_distribution": {
+        "small": 2370,
+        "medium": 2278,
+        "large": 699
+      },
+      "small_ratio": 0.44323919955115015,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0017",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0018": {
+      "total_objects": 1922,
+      "class_distribution": [
+        946,
+        795,
+        69,
+        0,
+        0,
+        112,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05704226565048837,
+        "std": 0.08375656609850637,
+        "min": 0.00320585032304128,
+        "max": 0.5662680053710938,
+        "median": 0.037841997146606444
+      },
+      "size_distribution": {
+        "small": 521,
+        "medium": 704,
+        "large": 697
+      },
+      "small_ratio": 0.27107180020811655,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0018",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0019": {
+      "total_objects": 4446,
+      "class_distribution": [
+        2687,
+        1662,
+        97,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05713863639598093,
+        "std": 0.08629730044574976,
+        "min": 0.005038561423619589,
+        "max": 0.6194898986816406,
+        "median": 0.02798844814300537
+      },
+      "size_distribution": {
+        "small": 981,
+        "medium": 1827,
+        "large": 1638
+      },
+      "small_ratio": 0.22064777327935223,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0019",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0020": {
+      "total_objects": 766,
+      "class_distribution": [
+        390,
+        294,
+        0,
+        0,
+        82,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05582791238374768,
+        "std": 0.06522387956870206,
+        "min": 0.00952845017115275,
+        "max": 0.42281572977701826,
+        "median": 0.020513305664062502
+      },
+      "size_distribution": {
+        "small": 18,
+        "medium": 479,
+        "large": 269
+      },
+      "small_ratio": 0.02349869451697128,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0020",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0022": {
+      "total_objects": 4738,
+      "class_distribution": [
+        451,
+        4287,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.02652741458125971,
+        "std": 0.028132214413642723,
+        "min": 0.003084536592165629,
+        "max": 0.18903462727864584,
+        "median": 0.0149962051709493
+      },
+      "size_distribution": {
+        "small": 1717,
+        "medium": 2257,
+        "large": 764
+      },
+      "small_ratio": 0.36238919375263823,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0022",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0023": {
+      "total_objects": 3512,
+      "class_distribution": [
+        1447,
+        1982,
+        0,
+        37,
+        0,
+        46,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.11879575189816835,
+        "std": 0.12509308619512302,
+        "min": 0.006470385789871216,
+        "max": 0.9507448323567709,
+        "median": 0.07396036783854167
+      },
+      "size_distribution": {
+        "small": 6,
+        "medium": 1464,
+        "large": 2042
+      },
+      "small_ratio": 0.0017084282460136675,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0023",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0024": {
+      "total_objects": 2007,
+      "class_distribution": [
+        1197,
+        487,
+        298,
+        0,
+        25,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.037713335805746276,
+        "std": 0.032326541481668254,
+        "min": 0.004998808304468791,
+        "max": 0.14931531270345053,
+        "median": 0.02584878126780192
+      },
+      "size_distribution": {
+        "small": 554,
+        "medium": 774,
+        "large": 679
+      },
+      "small_ratio": 0.2760338814150473,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0024",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0025": {
+      "total_objects": 5764,
+      "class_distribution": [
+        2631,
+        2885,
+        0,
+        0,
+        205,
+        43,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05048753285481095,
+        "std": 0.05963904968876054,
+        "min": 0.004781334002812703,
+        "max": 0.5490708923339844,
+        "median": 0.03759177684783936
+      },
+      "size_distribution": {
+        "small": 1246,
+        "medium": 2792,
+        "large": 1726
+      },
+      "small_ratio": 0.21616932685634976,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0025",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0026": {
+      "total_objects": 4211,
+      "class_distribution": [
+        509,
+        3526,
+        0,
+        134,
+        0,
+        42,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.027630034763692423,
+        "std": 0.034941236857968586,
+        "min": 0.002336088418960571,
+        "max": 0.4720483907063802,
+        "median": 0.012961804866790771
+      },
+      "size_distribution": {
+        "small": 1793,
+        "medium": 1658,
+        "large": 760
+      },
+      "small_ratio": 0.4257895986701496,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0026",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0027": {
+      "total_objects": 4539,
+      "class_distribution": [
+        2321,
+        1762,
+        266,
+        78,
+        0,
+        112,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.047951823027156525,
+        "std": 0.05974631829801777,
+        "min": 0.001864204208056132,
+        "max": 0.48197509765625,
+        "median": 0.027998453776041668
+      },
+      "size_distribution": {
+        "small": 1066,
+        "medium": 1908,
+        "large": 1565
+      },
+      "small_ratio": 0.23485349195858118,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0027",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0028": {
+      "total_objects": 5128,
+      "class_distribution": [
+        2789,
+        2205,
+        0,
+        94,
+        0,
+        40,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07112214184204893,
+        "std": 0.10810564317213767,
+        "min": 0.0030908252795537315,
+        "max": 0.9141042073567708,
+        "median": 0.016867014567057293
+      },
+      "size_distribution": {
+        "small": 1425,
+        "medium": 1808,
+        "large": 1895
+      },
+      "small_ratio": 0.2778861154446178,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0028",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0029": {
+      "total_objects": 4897,
+      "class_distribution": [
+        2779,
+        1905,
+        155,
+        58,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0539501266269815,
+        "std": 0.06828458896799385,
+        "min": 0.006911047299702962,
+        "max": 0.42770909627278647,
+        "median": 0.03244861920674642
+      },
+      "size_distribution": {
+        "small": 684,
+        "medium": 2304,
+        "large": 1909
+      },
+      "small_ratio": 0.1396773534817235,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0029",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0030": {
+      "total_objects": 9176,
+      "class_distribution": [
+        6713,
+        1792,
+        475,
+        0,
+        0,
+        174,
+        22,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.04690555067797346,
+        "std": 0.10124441295579013,
+        "min": 0.002426510453224182,
+        "max": 2.061708780924479,
+        "median": 0.013570507367451985
+      },
+      "size_distribution": {
+        "small": 3012,
+        "medium": 4540,
+        "large": 1624
+      },
+      "small_ratio": 0.3282476024411508,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0030",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0031": {
+      "total_objects": 3247,
+      "class_distribution": [
+        1046,
+        2107,
+        5,
+        0,
+        31,
+        58,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.11365938841348164,
+        "std": 0.11189466467417461,
+        "min": 0.006207194328308106,
+        "max": 0.5428247578938802,
+        "median": 0.06096019744873047
+      },
+      "size_distribution": {
+        "small": 12,
+        "medium": 1108,
+        "large": 2127
+      },
+      "small_ratio": 0.0036957191253464737,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0031",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0032": {
+      "total_objects": 1875,
+      "class_distribution": [
+        1522,
+        353,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.026863000067392985,
+        "std": 0.044476508476137815,
+        "min": 0.008227738539377848,
+        "max": 0.4062057240804036,
+        "median": 0.01397112210591634
+      },
+      "size_distribution": {
+        "small": 202,
+        "medium": 1406,
+        "large": 267
+      },
+      "small_ratio": 0.10773333333333333,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0032",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0033": {
+      "total_objects": 84,
+      "class_distribution": [
+        84,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.005138487853701152,
+        "std": 0.0008185736996457408,
+        "min": 0.004152516126632691,
+        "max": 0.0061393245061238605,
+        "median": 0.004648557702700297
+      },
+      "size_distribution": {
+        "small": 84,
+        "medium": 0,
+        "large": 0
+      },
+      "small_ratio": 1.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0033",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0034": {
+      "total_objects": 3763,
+      "class_distribution": [
+        813,
+        2666,
+        0,
+        0,
+        0,
+        284,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.11076782139571081,
+        "std": 0.13469570405467343,
+        "min": 0.00962712287902832,
+        "max": 0.6198607381184896,
+        "median": 0.05520739873250326
+      },
+      "size_distribution": {
+        "small": 1,
+        "medium": 1462,
+        "large": 2300
+      },
+      "small_ratio": 0.00026574541589157585,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0034",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0035": {
+      "total_objects": 9044,
+      "class_distribution": [
+        3000,
+        5061,
+        367,
+        546,
+        0,
+        70,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.02082789238227621,
+        "std": 0.036888252052994244,
+        "min": 0.0018789986769358316,
+        "max": 0.6007161458333333,
+        "median": 0.008935455083847046
+      },
+      "size_distribution": {
+        "small": 4958,
+        "medium": 3210,
+        "large": 876
+      },
+      "small_ratio": 0.5482087571870854,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0035",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0036": {
+      "total_objects": 6413,
+      "class_distribution": [
+        802,
+        4916,
+        82,
+        515,
+        0,
+        98,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.023578535447875866,
+        "std": 0.04312468360509132,
+        "min": 0.001925381620724996,
+        "max": 0.5951743570963541,
+        "median": 0.00987365961074829
+      },
+      "size_distribution": {
+        "small": 3232,
+        "medium": 2457,
+        "large": 724
+      },
+      "small_ratio": 0.5039762981443942,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0036",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0037": {
+      "total_objects": 11498,
+      "class_distribution": [
+        4458,
+        6899,
+        0,
+        0,
+        0,
+        141,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.017121157917341107,
+        "std": 0.023483972335547835,
+        "min": 0.001381862759590149,
+        "max": 0.18968978881835938,
+        "median": 0.008268679777781169
+      },
+      "size_distribution": {
+        "small": 6523,
+        "medium": 4118,
+        "large": 857
+      },
+      "small_ratio": 0.5673160549660811,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0037",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0038": {
+      "total_objects": 8267,
+      "class_distribution": [
+        6756,
+        1361,
+        0,
+        78,
+        0,
+        72,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.04998960173556384,
+        "std": 0.11996827471543758,
+        "min": 0.002773703932762146,
+        "max": 2.0202178955078125,
+        "median": 0.012403543790181477
+      },
+      "size_distribution": {
+        "small": 3079,
+        "medium": 3831,
+        "large": 1357
+      },
+      "small_ratio": 0.3724446594895367,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0038",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0039": {
+      "total_objects": 5165,
+      "class_distribution": [
+        2622,
+        2294,
+        138,
+        0,
+        0,
+        111,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.09931769706076597,
+        "std": 0.15964395208869578,
+        "min": 0.001145712633927663,
+        "max": 0.6532224527994792,
+        "median": 0.025774240493774414
+      },
+      "size_distribution": {
+        "small": 1250,
+        "medium": 1881,
+        "large": 2034
+      },
+      "small_ratio": 0.2420135527589545,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0039",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0040": {
+      "total_objects": 71,
+      "class_distribution": [
+        0,
+        45,
+        26,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.17349989514955333,
+        "std": 0.10869256355562248,
+        "min": 0.030275519688924155,
+        "max": 0.3449047342936198,
+        "median": 0.22025367736816406
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 25,
+        "large": 46
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0040",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0041": {
+      "total_objects": 1516,
+      "class_distribution": [
+        989,
+        527,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05673610520970958,
+        "std": 0.08368869405309183,
+        "min": 0.004430935382843017,
+        "max": 0.5356405639648437,
+        "median": 0.015946752230326336
+      },
+      "size_distribution": {
+        "small": 129,
+        "medium": 952,
+        "large": 435
+      },
+      "small_ratio": 0.08509234828496043,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0041",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0042": {
+      "total_objects": 5905,
+      "class_distribution": [
+        3144,
+        2665,
+        76,
+        20,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.022161250642521585,
+        "std": 0.020211921106796586,
+        "min": 0.0024528863032658894,
+        "max": 0.16658034006754557,
+        "median": 0.013890040715535483
+      },
+      "size_distribution": {
+        "small": 1941,
+        "medium": 3356,
+        "large": 608
+      },
+      "small_ratio": 0.3287044877222693,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0042",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0043": {
+      "total_objects": 5120,
+      "class_distribution": [
+        763,
+        3752,
+        164,
+        74,
+        139,
+        228,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.024492429858927307,
+        "std": 0.040076126209266295,
+        "min": 0.0010162990291913351,
+        "max": 0.6134405517578125,
+        "median": 0.01067393143971761
+      },
+      "size_distribution": {
+        "small": 2432,
+        "medium": 2011,
+        "large": 677
+      },
+      "small_ratio": 0.475,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0043",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0044": {
+      "total_objects": 4768,
+      "class_distribution": [
+        2604,
+        1958,
+        134,
+        47,
+        25,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05598969008498543,
+        "std": 0.08348974339195174,
+        "min": 0.004998808304468791,
+        "max": 0.6855891927083333,
+        "median": 0.023768122990926108
+      },
+      "size_distribution": {
+        "small": 430,
+        "medium": 2593,
+        "large": 1745
+      },
+      "small_ratio": 0.09018456375838926,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0044",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0045": {
+      "total_objects": 3367,
+      "class_distribution": [
+        1594,
+        1347,
+        0,
+        19,
+        0,
+        407,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.1078824918800717,
+        "std": 0.18808559500659514,
+        "min": 0.004355650345484415,
+        "max": 2.0027593994140624,
+        "median": 0.058293787638346355
+      },
+      "size_distribution": {
+        "small": 320,
+        "medium": 1323,
+        "large": 1724
+      },
+      "small_ratio": 0.09504009504009504,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0045",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0046": {
+      "total_objects": 3747,
+      "class_distribution": [
+        1405,
+        2223,
+        0,
+        20,
+        39,
+        60,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.09043264678402438,
+        "std": 0.09174616938576388,
+        "min": 0.012544076442718505,
+        "max": 0.8202238464355469,
+        "median": 0.06114722569783529
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 1673,
+        "large": 2074
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0046",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0047": {
+      "total_objects": 4430,
+      "class_distribution": [
+        1178,
+        3129,
+        0,
+        40,
+        83,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.028329825267655408,
+        "std": 0.02765820929922973,
+        "min": 0.001462802787621816,
+        "max": 0.17186209360758464,
+        "median": 0.016652698516845706
+      },
+      "size_distribution": {
+        "small": 1163,
+        "medium": 2456,
+        "large": 811
+      },
+      "small_ratio": 0.26252821670428894,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0047",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0048": {
+      "total_objects": 135,
+      "class_distribution": [
+        0,
+        135,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.12372371824288074,
+        "std": 0.10069665518037685,
+        "min": 0.03273736635843913,
+        "max": 0.4814203898111979,
+        "median": 0.09850273768107097
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 48,
+        "large": 87
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0048",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0049": {
+      "total_objects": 865,
+      "class_distribution": [
+        310,
+        519,
+        36,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.053325584949900424,
+        "std": 0.03961322371511485,
+        "min": 0.0011282427112261455,
+        "max": 0.2369885508219401,
+        "median": 0.047438252766927085
+      },
+      "size_distribution": {
+        "small": 64,
+        "medium": 407,
+        "large": 394
+      },
+      "small_ratio": 0.07398843930635839,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0049",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0050": {
+      "total_objects": 3554,
+      "class_distribution": [
+        1013,
+        2327,
+        0,
+        214,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.026722935791048945,
+        "std": 0.031044224976757646,
+        "min": 0.0014215539892514547,
+        "max": 0.31657890319824217,
+        "median": 0.01565466562906901
+      },
+      "size_distribution": {
+        "small": 1324,
+        "medium": 1709,
+        "large": 521
+      },
+      "small_ratio": 0.3725379853685988,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0050",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "train_night_0051": {
+      "total_objects": 4223,
+      "class_distribution": [
+        2385,
+        1770,
+        0,
+        0,
+        0,
+        6,
+        62,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.09076843045817168,
+        "std": 0.1966902358395648,
+        "min": 0.00343279759089152,
+        "max": 2.595899454752604,
+        "median": 0.023028135299682617
+      },
+      "size_distribution": {
+        "small": 526,
+        "medium": 2057,
+        "large": 1640
+      },
+      "small_ratio": 0.12455600284158182,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "train_night_0051",
+      "is_night": true,
+      "day_type": "night"
+    }
+  },
+  "val": {
+    "val_day_001": {
+      "total_objects": 1598,
+      "class_distribution": [
+        354,
+        1104,
+        20,
+        27,
+        0,
+        93,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.11736562227426992,
+        "std": 0.09808684328128542,
+        "min": 0.00494022250175476,
+        "max": 0.4877407836914063,
+        "median": 0.09128409067789714
+      },
+      "size_distribution": {
+        "small": 144,
+        "medium": 284,
+        "large": 1170
+      },
+      "small_ratio": 0.09011264080100125,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_001",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_002": {
+      "total_objects": 2664,
+      "class_distribution": [
+        384,
+        2161,
+        0,
+        0,
+        43,
+        76,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.02688752926416225,
+        "std": 0.03158433405501964,
+        "min": 0.004446940819422404,
+        "max": 0.22676912943522134,
+        "median": 0.014784368673960368
+      },
+      "size_distribution": {
+        "small": 827,
+        "medium": 1475,
+        "large": 362
+      },
+      "small_ratio": 0.31043543543543545,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_002",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_003": {
+      "total_objects": 2273,
+      "class_distribution": [
+        1035,
+        1083,
+        0,
+        27,
+        49,
+        79,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.08568967745335226,
+        "std": 0.1272277069049124,
+        "min": 0.00624961256980896,
+        "max": 1.4728338623046875,
+        "median": 0.054089444478352865
+      },
+      "size_distribution": {
+        "small": 152,
+        "medium": 952,
+        "large": 1169
+      },
+      "small_ratio": 0.06687197536295644,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_003",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_004": {
+      "total_objects": 2637,
+      "class_distribution": [
+        1206,
+        1087,
+        193,
+        0,
+        0,
+        151,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05520658778377286,
+        "std": 0.06637396203876521,
+        "min": 0.003252480626106262,
+        "max": 0.5486652119954427,
+        "median": 0.03192090352376302
+      },
+      "size_distribution": {
+        "small": 147,
+        "medium": 1532,
+        "large": 958
+      },
+      "small_ratio": 0.055745164960182024,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_004",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_005": {
+      "total_objects": 1906,
+      "class_distribution": [
+        278,
+        1330,
+        0,
+        47,
+        0,
+        251,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.1373214184918909,
+        "std": 0.12735890635414443,
+        "min": 0.006001514991124471,
+        "max": 1.1243067423502604,
+        "median": 0.10273560206095378
+      },
+      "size_distribution": {
+        "small": 9,
+        "medium": 230,
+        "large": 1667
+      },
+      "small_ratio": 0.00472193074501574,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_005",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_006": {
+      "total_objects": 4448,
+      "class_distribution": [
+        2482,
+        1609,
+        205,
+        0,
+        0,
+        152,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05130824144063093,
+        "std": 0.06284031253003894,
+        "min": 0.0009134410818417867,
+        "max": 0.38102933247884113,
+        "median": 0.03149672190348307
+      },
+      "size_distribution": {
+        "small": 668,
+        "medium": 2280,
+        "large": 1500
+      },
+      "small_ratio": 0.15017985611510792,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_006",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_007": {
+      "total_objects": 1269,
+      "class_distribution": [
+        435,
+        659,
+        0,
+        0,
+        19,
+        114,
+        42,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.15157042642512722,
+        "std": 0.2502943227609837,
+        "min": 0.00941191593805949,
+        "max": 1.8876780192057292,
+        "median": 0.08895545959472656
+      },
+      "size_distribution": {
+        "small": 12,
+        "medium": 432,
+        "large": 825
+      },
+      "small_ratio": 0.009456264775413711,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_007",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_008": {
+      "total_objects": 10686,
+      "class_distribution": [
+        3399,
+        6728,
+        0,
+        77,
+        0,
+        482,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.08347414950618978,
+        "std": 0.08412883940253828,
+        "min": 0.002812361717224121,
+        "max": 1.0591370646158855,
+        "median": 0.06449008305867512
+      },
+      "size_distribution": {
+        "small": 778,
+        "medium": 3838,
+        "large": 6070
+      },
+      "small_ratio": 0.07280553995882463,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_008",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_009": {
+      "total_objects": 3791,
+      "class_distribution": [
+        915,
+        2636,
+        78,
+        79,
+        0,
+        83,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.03212533251314524,
+        "std": 0.05869700981025631,
+        "min": 0.0036278518040974935,
+        "max": 0.8354532368977865,
+        "median": 0.015881471633911133
+      },
+      "size_distribution": {
+        "small": 962,
+        "medium": 2255,
+        "large": 574
+      },
+      "small_ratio": 0.2537589026642047,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_009",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_010": {
+      "total_objects": 4431,
+      "class_distribution": [
+        1157,
+        2848,
+        0,
+        75,
+        62,
+        289,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.03936759308517485,
+        "std": 0.07578880411832438,
+        "min": 0.003789926767349243,
+        "max": 0.8926496378580729,
+        "median": 0.016498719851175944
+      },
+      "size_distribution": {
+        "small": 1205,
+        "medium": 2398,
+        "large": 828
+      },
+      "small_ratio": 0.2719476416158881,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_010",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_011": {
+      "total_objects": 9790,
+      "class_distribution": [
+        5030,
+        3624,
+        198,
+        553,
+        26,
+        359,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07671917224608191,
+        "std": 0.11998351652651898,
+        "min": 0.00403213103612264,
+        "max": 1.269823710123698,
+        "median": 0.02611533006032308
+      },
+      "size_distribution": {
+        "small": 237,
+        "medium": 5811,
+        "large": 3742
+      },
+      "small_ratio": 0.024208375893769153,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_011",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_012": {
+      "total_objects": 3434,
+      "class_distribution": [
+        1074,
+        2251,
+        70,
+        0,
+        0,
+        39,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07335599921995217,
+        "std": 0.06733146088576417,
+        "min": 0.004807469447453817,
+        "max": 0.423452631632487,
+        "median": 0.06062836964925131
+      },
+      "size_distribution": {
+        "small": 75,
+        "medium": 1398,
+        "large": 1961
+      },
+      "small_ratio": 0.021840419336051253,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_012",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_013": {
+      "total_objects": 2922,
+      "class_distribution": [
+        1041,
+        1374,
+        349,
+        0,
+        38,
+        120,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.06424177518037529,
+        "std": 0.07244726069886666,
+        "min": 0.0020732696851094566,
+        "max": 0.35016805013020835,
+        "median": 0.03896834055582682
+      },
+      "size_distribution": {
+        "small": 331,
+        "medium": 1326,
+        "large": 1265
+      },
+      "small_ratio": 0.1132785763175907,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_013",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_day_014": {
+      "total_objects": 365,
+      "class_distribution": [
+        24,
+        341,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.03299088097380721,
+        "std": 0.03408710574540831,
+        "min": 0.004636133909225464,
+        "max": 0.17534409840901694,
+        "median": 0.01990277926127116
+      },
+      "size_distribution": {
+        "small": 81,
+        "medium": 218,
+        "large": 66
+      },
+      "small_ratio": 0.2219178082191781,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_day_014",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "val_night_001": {
+      "total_objects": 3401,
+      "class_distribution": [
+        358,
+        3043,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.031062618946194893,
+        "std": 0.03371687205937728,
+        "min": 0.003026805321375529,
+        "max": 0.3596637725830078,
+        "median": 0.018286852836608886
+      },
+      "size_distribution": {
+        "small": 756,
+        "medium": 2033,
+        "large": 612
+      },
+      "small_ratio": 0.22228756248162304,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_001",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "val_night_002": {
+      "total_objects": 3768,
+      "class_distribution": [
+        1439,
+        1988,
+        213,
+        37,
+        54,
+        37,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0802300628761366,
+        "std": 0.08752149004984233,
+        "min": 0.005158592462539673,
+        "max": 0.6869403584798177,
+        "median": 0.06059666315714518
+      },
+      "size_distribution": {
+        "small": 344,
+        "medium": 1411,
+        "large": 2013
+      },
+      "small_ratio": 0.09129511677282377,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_002",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "val_night_003": {
+      "total_objects": 850,
+      "class_distribution": [
+        196,
+        654,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.10734766433846717,
+        "std": 0.09255915716593029,
+        "min": 0.013104627927144369,
+        "max": 0.5166240437825521,
+        "median": 0.06992948849995931
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 219,
+        "large": 631
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_003",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "val_night_004": {
+      "total_objects": 4407,
+      "class_distribution": [
+        424,
+        3805,
+        178,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.03061607662789824,
+        "std": 0.029527303574332666,
+        "min": 0.0038603003819783527,
+        "max": 0.17581501007080078,
+        "median": 0.01883494218190511
+      },
+      "size_distribution": {
+        "small": 944,
+        "medium": 2640,
+        "large": 823
+      },
+      "small_ratio": 0.21420467438166554,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_004",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "val_night_005": {
+      "total_objects": 4883,
+      "class_distribution": [
+        3184,
+        1160,
+        501,
+        0,
+        0,
+        0,
+        38,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.06220592628193272,
+        "std": 0.17340631465527662,
+        "min": 0.004588869015375773,
+        "max": 2.380560099283854,
+        "median": 0.01768757661183675
+      },
+      "size_distribution": {
+        "small": 723,
+        "medium": 3184,
+        "large": 976
+      },
+      "small_ratio": 0.1480647143149703,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_005",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "val_night_006": {
+      "total_objects": 1822,
+      "class_distribution": [
+        498,
+        1067,
+        161,
+        37,
+        59,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.09166688061222854,
+        "std": 0.0936370437601863,
+        "min": 0.012403261661529542,
+        "max": 0.5637279764811198,
+        "median": 0.06814419428507487
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 595,
+        "large": 1227
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_006",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "val_night_007": {
+      "total_objects": 2001,
+      "class_distribution": [
+        66,
+        1935,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.03516698430264848,
+        "std": 0.039343787484264994,
+        "min": 0.0034665358066558838,
+        "max": 0.41997299194335935,
+        "median": 0.020673116048177082
+      },
+      "size_distribution": {
+        "small": 423,
+        "medium": 1167,
+        "large": 411
+      },
+      "small_ratio": 0.21139430284857572,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_007",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "val_night_008": {
+      "total_objects": 3157,
+      "class_distribution": [
+        1436,
+        1662,
+        53,
+        0,
+        0,
+        6,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.060795864474998705,
+        "std": 0.08435994414896308,
+        "min": 0.004707717498143514,
+        "max": 0.5262176513671875,
+        "median": 0.04281944274902344
+      },
+      "size_distribution": {
+        "small": 379,
+        "medium": 1514,
+        "large": 1264
+      },
+      "small_ratio": 0.12005068102629078,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_008",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "val_night_009": {
+      "total_objects": 3860,
+      "class_distribution": [
+        421,
+        3439,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.03224833687372982,
+        "std": 0.030182995401042745,
+        "min": 0.004138258298238119,
+        "max": 0.1840769322713216,
+        "median": 0.020566901365915935
+      },
+      "size_distribution": {
+        "small": 681,
+        "medium": 2447,
+        "large": 732
+      },
+      "small_ratio": 0.17642487046632124,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_009",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "val_night_010": {
+      "total_objects": 3203,
+      "class_distribution": [
+        1267,
+        1875,
+        0,
+        61,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07683993785844558,
+        "std": 0.09057595009964761,
+        "min": 0.006491822004318237,
+        "max": 0.7616606648763021,
+        "median": 0.05750798543294271
+      },
+      "size_distribution": {
+        "small": 255,
+        "medium": 1233,
+        "large": 1715
+      },
+      "small_ratio": 0.07961286294099282,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_010",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "val_night_011": {
+      "total_objects": 170,
+      "class_distribution": [
+        31,
+        139,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.06528629403955796,
+        "std": 0.03361110033201359,
+        "min": 0.01301076332728068,
+        "max": 0.11549093882242839,
+        "median": 0.05928997039794922
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 66,
+        "large": 104
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "val_night_011",
+      "is_night": true,
+      "day_type": "night"
+    }
+  },
+  "test": {
+    "test_day_001": {
+      "total_objects": 1581,
+      "class_distribution": [
+        0,
+        1481,
+        47,
+        0,
+        0,
+        53,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.08669357339415448,
+        "std": 0.05721952314958623,
+        "min": 0.009226805369059244,
+        "max": 0.3608111826578776,
+        "median": 0.06961732864379883
+      },
+      "size_distribution": {
+        "small": 2,
+        "medium": 346,
+        "large": 1233
+      },
+      "small_ratio": 0.001265022137887413,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_001",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_002": {
+      "total_objects": 3686,
+      "class_distribution": [
+        957,
+        2282,
+        0,
+        0,
+        45,
+        402,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.04059139626348271,
+        "std": 0.046916356443835176,
+        "min": 0.001303125520547231,
+        "max": 0.39544456481933593,
+        "median": 0.02472660779953003
+      },
+      "size_distribution": {
+        "small": 981,
+        "medium": 1735,
+        "large": 970
+      },
+      "small_ratio": 0.26614215952251763,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_002",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_003": {
+      "total_objects": 1412,
+      "class_distribution": [
+        733,
+        381,
+        147,
+        0,
+        0,
+        151,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.08623196118220165,
+        "std": 0.13200425629285148,
+        "min": 0.008426047960917156,
+        "max": 0.9886077880859375,
+        "median": 0.024327808221181232
+      },
+      "size_distribution": {
+        "small": 51,
+        "medium": 925,
+        "large": 436
+      },
+      "small_ratio": 0.03611898016997167,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_003",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_004": {
+      "total_objects": 173,
+      "class_distribution": [
+        173,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0216908994299828,
+        "std": 0.004771678495531505,
+        "min": 0.014146246910095216,
+        "max": 0.033171892166137695,
+        "median": 0.0214564847946167
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 173,
+        "large": 0
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_004",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_005": {
+      "total_objects": 12924,
+      "class_distribution": [
+        6185,
+        5488,
+        0,
+        589,
+        26,
+        636,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0783464257344857,
+        "std": 0.10822582226959894,
+        "min": 0.002812361717224121,
+        "max": 1.269823710123698,
+        "median": 0.034737960497538245
+      },
+      "size_distribution": {
+        "small": 818,
+        "medium": 6419,
+        "large": 5687
+      },
+      "small_ratio": 0.06329309811203962,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_005",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_006": {
+      "total_objects": 11480,
+      "class_distribution": [
+        4695,
+        4843,
+        0,
+        250,
+        0,
+        1692,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.013622766375327515,
+        "std": 0.030345047196936127,
+        "min": 0.0003084683169921239,
+        "max": 0.6942773946126302,
+        "median": 0.005088079373041789
+      },
+      "size_distribution": {
+        "small": 7966,
+        "medium": 2920,
+        "large": 594
+      },
+      "small_ratio": 0.6939024390243902,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_006",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_007": {
+      "total_objects": 7251,
+      "class_distribution": [
+        6281,
+        535,
+        435,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.030929422925840725,
+        "std": 0.026038716502131923,
+        "min": 0.004856777985890706,
+        "max": 0.2595533498128255,
+        "median": 0.027123212814331055
+      },
+      "size_distribution": {
+        "small": 296,
+        "medium": 6392,
+        "large": 563
+      },
+      "small_ratio": 0.04082195559233209,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_007",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_008": {
+      "total_objects": 285,
+      "class_distribution": [
+        76,
+        82,
+        0,
+        0,
+        19,
+        108,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07950435121087303,
+        "std": 0.16797900807095506,
+        "min": 0.0032366007566452027,
+        "max": 0.8301619466145833,
+        "median": 0.017902924219767254
+      },
+      "size_distribution": {
+        "small": 106,
+        "medium": 102,
+        "large": 77
+      },
+      "small_ratio": 0.3719298245614035,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_008",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_009": {
+      "total_objects": 18690,
+      "class_distribution": [
+        5052,
+        9901,
+        163,
+        531,
+        0,
+        2703,
+        0,
+        340
+      ],
+      "area_stats": {
+        "mean": 0.03068284865119665,
+        "std": 0.04870770021816954,
+        "min": 0.00021724884708722433,
+        "max": 0.7787176513671875,
+        "median": 0.01451575517654419
+      },
+      "size_distribution": {
+        "small": 7392,
+        "medium": 8267,
+        "large": 3031
+      },
+      "small_ratio": 0.3955056179775281,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_009",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_010": {
+      "total_objects": 9799,
+      "class_distribution": [
+        4130,
+        4023,
+        0,
+        0,
+        390,
+        1256,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.018704390213261996,
+        "std": 0.03263192207814016,
+        "min": 0.00030190418163935343,
+        "max": 0.5258749389648437,
+        "median": 0.008660197257995605
+      },
+      "size_distribution": {
+        "small": 5542,
+        "medium": 3513,
+        "large": 744
+      },
+      "small_ratio": 0.5655679150933769,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_010",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_011": {
+      "total_objects": 1855,
+      "class_distribution": [
+        1083,
+        685,
+        0,
+        0,
+        0,
+        87,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.06544062247451961,
+        "std": 0.07714781615799254,
+        "min": 0.009674394925435384,
+        "max": 0.3771695709228516,
+        "median": 0.022134310404459637
+      },
+      "size_distribution": {
+        "small": 256,
+        "medium": 1000,
+        "large": 599
+      },
+      "small_ratio": 0.13800539083557953,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_011",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_012": {
+      "total_objects": 405,
+      "class_distribution": [
+        49,
+        302,
+        0,
+        19,
+        0,
+        35,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.13354450029600795,
+        "std": 0.1557545655255349,
+        "min": 0.016384932200113934,
+        "max": 0.8481654357910157,
+        "median": 0.06154803593953451
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 182,
+        "large": 223
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_012",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_013": {
+      "total_objects": 6661,
+      "class_distribution": [
+        2042,
+        3672,
+        110,
+        46,
+        0,
+        791,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.027872115039034407,
+        "std": 0.03065265690648477,
+        "min": 0.0024509874979654948,
+        "max": 0.2812109629313151,
+        "median": 0.017069503466288247
+      },
+      "size_distribution": {
+        "small": 1547,
+        "medium": 4245,
+        "large": 869
+      },
+      "small_ratio": 0.23224741029875395,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_013",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_014": {
+      "total_objects": 3327,
+      "class_distribution": [
+        2480,
+        571,
+        54,
+        80,
+        100,
+        42,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.04036166046834066,
+        "std": 0.07152381019513852,
+        "min": 0.005767944653828939,
+        "max": 0.692084706624349,
+        "median": 0.016864407857259116
+      },
+      "size_distribution": {
+        "small": 150,
+        "medium": 2514,
+        "large": 663
+      },
+      "small_ratio": 0.04508566275924256,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_014",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_day_015": {
+      "total_objects": 2126,
+      "class_distribution": [
+        1399,
+        613,
+        114,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.04506173290814603,
+        "std": 0.05852477000226697,
+        "min": 0.007162919044494629,
+        "max": 0.4851994832356771,
+        "median": 0.023998562494913736
+      },
+      "size_distribution": {
+        "small": 203,
+        "medium": 1349,
+        "large": 574
+      },
+      "small_ratio": 0.09548447789275635,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_day_015",
+      "is_night": false,
+      "day_type": "day"
+    },
+    "test_night_001": {
+      "total_objects": 1361,
+      "class_distribution": [
+        472,
+        856,
+        33,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.07483328986570818,
+        "std": 0.059033658713600556,
+        "min": 0.008838834762573243,
+        "max": 0.4159783426920573,
+        "median": 0.06429613113403321
+      },
+      "size_distribution": {
+        "small": 5,
+        "medium": 473,
+        "large": 883
+      },
+      "small_ratio": 0.0036737692872887582,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_001",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_002": {
+      "total_objects": 2492,
+      "class_distribution": [
+        1109,
+        1310,
+        30,
+        0,
+        43,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.06983106588507285,
+        "std": 0.08113091553788693,
+        "min": 0.009176046848297119,
+        "max": 0.5566215006510417,
+        "median": 0.05411562283833821
+      },
+      "size_distribution": {
+        "small": 3,
+        "medium": 1151,
+        "large": 1338
+      },
+      "small_ratio": 0.001203852327447833,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_002",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_003": {
+      "total_objects": 947,
+      "class_distribution": [
+        530,
+        357,
+        20,
+        0,
+        40,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.05533211632288496,
+        "std": 0.062331458599419534,
+        "min": 0.008573671181996664,
+        "max": 0.38971405029296874,
+        "median": 0.04075139999389649
+      },
+      "size_distribution": {
+        "small": 175,
+        "medium": 339,
+        "large": 433
+      },
+      "small_ratio": 0.18479408658922913,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_003",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_004": {
+      "total_objects": 3687,
+      "class_distribution": [
+        1870,
+        1424,
+        0,
+        0,
+        0,
+        393,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.0775269726223502,
+        "std": 0.09733116102861357,
+        "min": 0.005565555890401205,
+        "max": 0.608485361735026,
+        "median": 0.018183544476826987
+      },
+      "size_distribution": {
+        "small": 696,
+        "medium": 1268,
+        "large": 1723
+      },
+      "small_ratio": 0.1887713588283157,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_004",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_005": {
+      "total_objects": 2863,
+      "class_distribution": [
+        1425,
+        1122,
+        51,
+        0,
+        0,
+        221,
+        44,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.10597425223534954,
+        "std": 0.22693879416568327,
+        "min": 0.006659719944000244,
+        "max": 2.761757405598958,
+        "median": 0.03846984545389811
+      },
+      "size_distribution": {
+        "small": 594,
+        "medium": 891,
+        "large": 1378
+      },
+      "small_ratio": 0.20747467691232974,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_005",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_006": {
+      "total_objects": 2961,
+      "class_distribution": [
+        1204,
+        1550,
+        0,
+        80,
+        127,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.08220726571426082,
+        "std": 0.11561169662532797,
+        "min": 0.010377528667449952,
+        "max": 0.6662590026855468,
+        "median": 0.047621695200602214
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 1532,
+        "large": 1429
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_006",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_007": {
+      "total_objects": 2106,
+      "class_distribution": [
+        544,
+        1118,
+        0,
+        0,
+        0,
+        444,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.027579462310890677,
+        "std": 0.04379943768591829,
+        "min": 0.0005421179036299387,
+        "max": 0.31063735961914063,
+        "median": 0.009701699018478394
+      },
+      "size_distribution": {
+        "small": 1073,
+        "medium": 707,
+        "large": 326
+      },
+      "small_ratio": 0.5094966761633428,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_007",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_008": {
+      "total_objects": 3099,
+      "class_distribution": [
+        1399,
+        1512,
+        95,
+        64,
+        0,
+        29,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.08165106207706141,
+        "std": 0.08818932867224087,
+        "min": 0.009943989912668864,
+        "max": 0.6811490885416667,
+        "median": 0.06168519337972005
+      },
+      "size_distribution": {
+        "small": 31,
+        "medium": 1186,
+        "large": 1882
+      },
+      "small_ratio": 0.010003226847370119,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_008",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_009": {
+      "total_objects": 3501,
+      "class_distribution": [
+        2439,
+        1031,
+        0,
+        0,
+        0,
+        31,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.06261895898420629,
+        "std": 0.0977057674351936,
+        "min": 0.005414432287216187,
+        "max": 0.6162607828776042,
+        "median": 0.015581099192301433
+      },
+      "size_distribution": {
+        "small": 668,
+        "medium": 1956,
+        "large": 877
+      },
+      "small_ratio": 0.19080262782062268,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_009",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_010": {
+      "total_objects": 4894,
+      "class_distribution": [
+        509,
+        3531,
+        0,
+        107,
+        0,
+        747,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.031195860612249934,
+        "std": 0.05415978845848321,
+        "min": 0.0005706455806891123,
+        "max": 0.678140869140625,
+        "median": 0.010343373616536458
+      },
+      "size_distribution": {
+        "small": 2392,
+        "medium": 1610,
+        "large": 892
+      },
+      "small_ratio": 0.48876174908050674,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_010",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_011": {
+      "total_objects": 3945,
+      "class_distribution": [
+        972,
+        2802,
+        0,
+        0,
+        60,
+        111,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.12045231265884743,
+        "std": 0.12516631117857496,
+        "min": 0.01185050884882609,
+        "max": 0.5203819274902344,
+        "median": 0.07781258900960286
+      },
+      "size_distribution": {
+        "small": 0,
+        "medium": 878,
+        "large": 3067
+      },
+      "small_ratio": 0.0,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_011",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_012": {
+      "total_objects": 1988,
+      "class_distribution": [
+        898,
+        1030,
+        0,
+        27,
+        0,
+        33,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.09583374045704292,
+        "std": 0.1055285826298107,
+        "min": 0.005128864844640096,
+        "max": 0.7735337320963541,
+        "median": 0.06203330993652344
+      },
+      "size_distribution": {
+        "small": 126,
+        "medium": 762,
+        "large": 1100
+      },
+      "small_ratio": 0.06338028169014084,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_012",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_013": {
+      "total_objects": 3908,
+      "class_distribution": [
+        2002,
+        1682,
+        74,
+        0,
+        150,
+        0,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.06018277804016132,
+        "std": 0.05086037568223349,
+        "min": 0.006736909548441569,
+        "max": 0.3789949544270833,
+        "median": 0.05220249970753987
+      },
+      "size_distribution": {
+        "small": 85,
+        "medium": 1798,
+        "large": 2025
+      },
+      "small_ratio": 0.02175025588536336,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_013",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_014": {
+      "total_objects": 7914,
+      "class_distribution": [
+        2215,
+        4777,
+        0,
+        110,
+        0,
+        812,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.02333955290157038,
+        "std": 0.03872438204230371,
+        "min": 0.00042883127927780153,
+        "max": 0.2843707784016927,
+        "median": 0.007822384436925251
+      },
+      "size_distribution": {
+        "small": 4558,
+        "medium": 2311,
+        "large": 1045
+      },
+      "small_ratio": 0.5759413697245388,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_014",
+      "is_night": true,
+      "day_type": "night"
+    },
+    "test_night_015": {
+      "total_objects": 7319,
+      "class_distribution": [
+        1542,
+        5109,
+        0,
+        0,
+        0,
+        668,
+        0,
+        0
+      ],
+      "area_stats": {
+        "mean": 0.025719700274207627,
+        "std": 0.04052819449739295,
+        "min": 0.00022451356053352356,
+        "max": 0.30632954915364585,
+        "median": 0.009508687655131022
+      },
+      "size_distribution": {
+        "small": 3862,
+        "medium": 2369,
+        "large": 1088
+      },
+      "small_ratio": 0.5276677141686023,
+      "confidence_stats": {
+        "mean": 1.0,
+        "min": 1.0
+      },
+      "sequence_name": "test_night_015",
+      "is_night": true,
+      "day_type": "night"
+    }
+  }
+}

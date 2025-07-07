@@ -26,6 +26,8 @@ from .utils.detection import (
 )
 
 from utils.evaluation.confusion import ConfusionMeter
+from utils.evaluation.detailed_metrics import DetailedMetricsCalculator
+from utils.evaluation.experiment_logger import ExperimentLogger
 
 
 class Module(pl.LightningModule):
@@ -48,6 +50,10 @@ class Module(pl.LightningModule):
         self.cm = ConfusionMeter(
             num_classes=self.mdl_config.head.num_classes, iou_thres=0.5
         )
+        
+        # Initialize detailed metrics calculator and experiment logger
+        self.detailed_metrics = DetailedMetricsCalculator()
+        self.experiment_logger = None  # Will be initialized when needed
 
     def setup(self, stage: Optional[str] = None) -> None:
         dataset_name = self.full_config.dataset.name
@@ -513,6 +519,9 @@ class Module(pl.LightningModule):
 
         latest_path = "/home/oeoiewt/eTraM/rvt_eTram/confM/confusion_matrix_latest.png"
         shutil.copyfile(cm_filename, latest_path)
+        
+        # -------- Detailed metrics calculation and logging --------
+        self._calculate_and_save_detailed_metrics(epoch_idx, step_idx)
 
     def on_test_epoch_end(self) -> None:
         mode = Mode.TEST
@@ -557,3 +566,110 @@ class Module(pl.LightningModule):
         }
 
         return {"optimizer": optimizer, "lr_scheduler": lr_scheduler_config}
+    
+    def _calculate_and_save_detailed_metrics(self, epoch_idx: int, step_idx: int) -> None:
+        """Calculate detailed per-class metrics and save experiment results."""
+        
+        # Get validation data from Prophesee evaluator
+        mode = Mode.VAL
+        psee_evaluator = self.mode_2_psee_evaluator[mode]
+        
+        if psee_evaluator is None or not psee_evaluator.has_data():
+            print(f"⚠️ No validation data available for detailed metrics calculation")
+            return
+        
+        try:
+            # Extract ground truth and prediction data from evaluator
+            gt_boxes_list = psee_evaluator.gt_boxes_list
+            dt_boxes_list = psee_evaluator.dt_boxes_list
+            
+            if not gt_boxes_list or not dt_boxes_list:
+                print(f"⚠️ Empty boxes lists in evaluator")
+                return
+            
+            # Calculate detailed metrics
+            hw_tuple = self.mode_2_hw[mode]
+            if hw_tuple is None:
+                height, width = 384, 640  # Default values
+            else:
+                height, width = hw_tuple
+            
+            detailed_results = self.detailed_metrics.evaluate_detailed_detection(
+                gt_boxes_list=gt_boxes_list,
+                dt_boxes_list=dt_boxes_list,
+                height=height,
+                width=width
+            )
+            
+            # Create experiment ID
+            experiment_id = f"4scale_fpn_e{epoch_idx:03d}_s{step_idx:07d}"
+            
+            # Prepare experiment information
+            model_modifications = {
+                "architecture_changes": [
+                    "Added P1 features (stride 4) to backbone output",
+                    "Extended FPN from 3-scale to 4-scale (strides: 4,8,16,32)", 
+                    "Modified YOLOPAFPN to support 4 input stages",
+                    "Updated detection head to process 4 feature scales"
+                ],
+                "config_changes": [
+                    "fpn.in_stages: [2,3,4] → [1,2,3,4]",
+                    f"training.max_steps: {self.trainer.max_steps if hasattr(self.trainer, 'max_steps') else 'N/A'}",
+                    f"dataset: {self.full_config.dataset.name} with {self.full_config.dataset.path}"
+                ],
+                "baseline_vs_modified": "4-scale FPN vs original 3-scale FPN",
+                "key_features": [
+                    "High-resolution P1 features for small object detection",
+                    "4-scale feature pyramid network",
+                    "Enhanced small object detection capability"
+                ]
+            }
+            
+            training_config = {
+                "max_steps": getattr(self.trainer, 'max_steps', 'N/A'),
+                "max_epochs": getattr(self.trainer, 'max_epochs', 'N/A'),
+                "current_epoch": epoch_idx,
+                "current_step": step_idx,
+                "batch_size": {
+                    "train": self.full_config.batch_size.train,
+                    "eval": self.full_config.batch_size.eval
+                },
+                "learning_rate": self.full_config.training.learning_rate,
+                "dataset_name": self.full_config.dataset.name,
+                "dataset_path": self.full_config.dataset.path
+            }
+            
+            # Initialize experiment logger if needed
+            if self.experiment_logger is None:
+                experiments_dir = "/home/oeoiewt/eTraM/rvt_eTram/experiments"
+                self.experiment_logger = ExperimentLogger(experiments_dir)
+            
+            # Save detailed results
+            result_file = self.experiment_logger.save_experiment_results(
+                experiment_id=experiment_id,
+                model_modifications=model_modifications,
+                training_config=training_config,
+                metrics_data=detailed_results,
+                additional_info={
+                    "confusion_matrix_file": f"confusion_matrix_e{epoch_idx:03d}_s{step_idx:07d}.png",
+                    "checkpoint_info": {
+                        "epoch": epoch_idx,
+                        "step": step_idx,
+                        "model_state": "validation_checkpoint"
+                    }
+                }
+            )
+            
+            # Log summary to console
+            overall_map = detailed_results.get("overall_metrics", {}).get("mAP", 0.0)
+            small_obj_map = detailed_results.get("small_object_analysis", {}).get("avg_small_mAP", 0.0)
+            
+            print(f"📊 Detailed metrics saved: {result_file.name}")
+            print(f"   Overall mAP: {overall_map:.4f}")
+            print(f"   Small object avg mAP: {small_obj_map:.4f}")
+            print(f"   Active classes: {detailed_results.get('evaluation_summary', {}).get('active_classes', 0)}/8")
+            
+        except Exception as e:
+            print(f"❌ Error calculating detailed metrics: {e}")
+            import traceback
+            traceback.print_exc()
