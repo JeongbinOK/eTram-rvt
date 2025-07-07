@@ -1,0 +1,1808 @@
+{
+  "train": [
+    {
+      "sequence_name": "train_night_0035",
+      "stats": {
+        "total_objects": 9044,
+        "class_distribution": [
+          3000,
+          5061,
+          367,
+          546,
+          0,
+          70,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.02082789238227621,
+          "std": 0.036888252052994244,
+          "min": 0.0018789986769358316,
+          "max": 0.6007161458333333,
+          "median": 0.008935455083847046
+        },
+        "size_distribution": {
+          "small": 4958,
+          "medium": 3210,
+          "large": 876
+        },
+        "small_ratio": 0.5482087571870854,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0035",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.409233899581512,
+      "kl_divergence": 0.14284259795986368,
+      "class_diversity": 5,
+      "size_diversity": 0.8151057420603475
+    },
+    {
+      "sequence_name": "train_night_0043",
+      "stats": {
+        "total_objects": 5120,
+        "class_distribution": [
+          763,
+          3752,
+          164,
+          74,
+          139,
+          228,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.024492429858927307,
+          "std": 0.040076126209266295,
+          "min": 0.0010162990291913351,
+          "max": 0.6134405517578125,
+          "median": 0.01067393143971761
+        },
+        "size_distribution": {
+          "small": 2432,
+          "medium": 2011,
+          "large": 677
+        },
+        "small_ratio": 0.475,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0043",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.3088317326907253,
+      "kl_divergence": 0.19346984893026498,
+      "class_diversity": 6,
+      "size_diversity": 0.8538875961199741
+    },
+    {
+      "sequence_name": "train_night_0027",
+      "stats": {
+        "total_objects": 4539,
+        "class_distribution": [
+          2321,
+          1762,
+          266,
+          78,
+          0,
+          112,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.047951823027156525,
+          "std": 0.05974631829801777,
+          "min": 0.001864204208056132,
+          "max": 0.48197509765625,
+          "median": 0.027998453776041668
+        },
+        "size_distribution": {
+          "small": 1066,
+          "medium": 1908,
+          "large": 1565
+        },
+        "small_ratio": 0.23485349195858118,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0027",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.279075700060638,
+      "kl_divergence": 0.13650095256265848,
+      "class_diversity": 5,
+      "size_diversity": 0.9238365188741016
+    },
+    {
+      "sequence_name": "train_day_0055",
+      "stats": {
+        "total_objects": 8461,
+        "class_distribution": [
+          1850,
+          6174,
+          210,
+          133,
+          37,
+          57,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.026690451524603132,
+          "std": 0.03604004434143321,
+          "min": 0.001315733293692271,
+          "max": 0.33004051208496094,
+          "median": 0.013003882567087809
+        },
+        "size_distribution": {
+          "small": 3305,
+          "medium": 3919,
+          "large": 1237
+        },
+        "small_ratio": 0.3906157664578655,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0055",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.236797488950128,
+      "kl_divergence": 0.12893772853374796,
+      "class_diversity": 6,
+      "size_diversity": 0.8644009795963705
+    },
+    {
+      "sequence_name": "train_night_0036",
+      "stats": {
+        "total_objects": 6413,
+        "class_distribution": [
+          802,
+          4916,
+          82,
+          515,
+          0,
+          98,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.023578535447875866,
+          "std": 0.04312468360509132,
+          "min": 0.001925381620724996,
+          "max": 0.5951743570963541,
+          "median": 0.00987365961074829
+        },
+        "size_distribution": {
+          "small": 3232,
+          "medium": 2457,
+          "large": 724
+        },
+        "small_ratio": 0.5039762981443942,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0036",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.2234586355360604,
+      "kl_divergence": 0.35571344266022425,
+      "class_diversity": 5,
+      "size_diversity": 0.8365055647215518
+    },
+    {
+      "sequence_name": "train_night_0011",
+      "stats": {
+        "total_objects": 6764,
+        "class_distribution": [
+          2088,
+          4447,
+          103,
+          0,
+          0,
+          126,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.019508744054204986,
+          "std": 0.024718910226488627,
+          "min": 0.0014648649096488952,
+          "max": 0.18641727447509765,
+          "median": 0.010895065466562907
+        },
+        "size_distribution": {
+          "small": 3197,
+          "medium": 2963,
+          "large": 604
+        },
+        "small_ratio": 0.4726493199290361,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0011",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.1847033292211158,
+      "kl_divergence": 0.40371617651998787,
+      "class_diversity": 4,
+      "size_diversity": 0.8268627391828491
+    },
+    {
+      "sequence_name": "train_day_0049",
+      "stats": {
+        "total_objects": 6723,
+        "class_distribution": [
+          1187,
+          4821,
+          133,
+          230,
+          163,
+          189,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.0324478060214924,
+          "std": 0.05517577119140551,
+          "min": 0.0006531306107838948,
+          "max": 0.8419783020019531,
+          "median": 0.015128841400146484
+        },
+        "size_distribution": {
+          "small": 2203,
+          "medium": 3368,
+          "large": 1152
+        },
+        "small_ratio": 0.32768109474936785,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0049",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.1749887311284084,
+      "kl_divergence": 0.15515344423892916,
+      "class_diversity": 6,
+      "size_diversity": 0.865375998718598
+    },
+    {
+      "sequence_name": "train_night_0014",
+      "stats": {
+        "total_objects": 3209,
+        "class_distribution": [
+          1888,
+          1194,
+          54,
+          42,
+          0,
+          31,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.07764383716791036,
+          "std": 0.10793217030135446,
+          "min": 0.0025071086486180626,
+          "max": 0.7792754618326823,
+          "median": 0.02307944933573405
+        },
+        "size_distribution": {
+          "small": 200,
+          "medium": 1641,
+          "large": 1368
+        },
+        "small_ratio": 0.06232471174820817,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0014",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.1748676182726108,
+      "kl_divergence": 0.17560364325403127,
+      "class_diversity": 5,
+      "size_diversity": 0.8052461067379146
+    },
+    {
+      "sequence_name": "train_day_0003",
+      "stats": {
+        "total_objects": 2583,
+        "class_distribution": [
+          1044,
+          1219,
+          21,
+          30,
+          34,
+          235,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.07344522418091569,
+          "std": 0.08521797171214414,
+          "min": 0.005078349510828654,
+          "max": 0.6413467407226563,
+          "median": 0.04252910614013672
+        },
+        "size_distribution": {
+          "small": 562,
+          "medium": 828,
+          "large": 1193
+        },
+        "small_ratio": 0.2175764614789005,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0003",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.170767471108662,
+      "kl_divergence": 0.05525052368483206,
+      "class_diversity": 6,
+      "size_diversity": 0.8998608733418163
+    },
+    {
+      "sequence_name": "train_day_0050",
+      "stats": {
+        "total_objects": 5771,
+        "class_distribution": [
+          1080,
+          3984,
+          111,
+          265,
+          0,
+          331,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.02790102519678063,
+          "std": 0.04926705338947974,
+          "min": 0.0011466939250628153,
+          "max": 0.6419831339518229,
+          "median": 0.013236374060312906
+        },
+        "size_distribution": {
+          "small": 2389,
+          "medium": 2403,
+          "large": 979
+        },
+        "small_ratio": 0.41396638364234967,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0050",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.138504535463518,
+      "kl_divergence": 0.20478569230003424,
+      "class_diversity": 5,
+      "size_diversity": 0.8842480233346514
+    },
+    {
+      "sequence_name": "train_night_0039",
+      "stats": {
+        "total_objects": 5165,
+        "class_distribution": [
+          2622,
+          2294,
+          138,
+          0,
+          0,
+          111,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.09931769706076597,
+          "std": 0.15964395208869578,
+          "min": 0.001145712633927663,
+          "max": 0.6532224527994792,
+          "median": 0.025774240493774414
+        },
+        "size_distribution": {
+          "small": 1250,
+          "medium": 1881,
+          "large": 2034
+        },
+        "small_ratio": 0.2420135527589545,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0039",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.1166637969544766,
+      "kl_divergence": 0.39810285396692063,
+      "class_diversity": 4,
+      "size_diversity": 0.9343044940131189
+    },
+    {
+      "sequence_name": "train_day_0019",
+      "stats": {
+        "total_objects": 3665,
+        "class_distribution": [
+          1539,
+          1788,
+          88,
+          27,
+          0,
+          223,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.0654805184128394,
+          "std": 0.07061376444347277,
+          "min": 0.006911975542704264,
+          "max": 0.44978607177734375,
+          "median": 0.04131198565165202
+        },
+        "size_distribution": {
+          "small": 478,
+          "medium": 1607,
+          "large": 1580
+        },
+        "small_ratio": 0.13042291950886767,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0019",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.1155173924256896,
+      "kl_divergence": 0.09614538058916064,
+      "class_diversity": 5,
+      "size_diversity": 0.8564891522200397
+    },
+    {
+      "sequence_name": "train_day_0018",
+      "stats": {
+        "total_objects": 3944,
+        "class_distribution": [
+          725,
+          2194,
+          217,
+          520,
+          0,
+          288,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.028610143875848044,
+          "std": 0.07009729236599686,
+          "min": 0.0013609454035758972,
+          "max": 0.8111117553710937,
+          "median": 0.009241154193878175
+        },
+        "size_distribution": {
+          "small": 2070,
+          "medium": 1353,
+          "large": 521
+        },
+        "small_ratio": 0.5248478701825557,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0018",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.0900903995233908,
+      "kl_divergence": 0.2726418188200289,
+      "class_diversity": 5,
+      "size_diversity": 0.8395138801310958
+    },
+    {
+      "sequence_name": "train_night_0030",
+      "stats": {
+        "total_objects": 9176,
+        "class_distribution": [
+          6713,
+          1792,
+          475,
+          0,
+          0,
+          174,
+          22,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.04690555067797346,
+          "std": 0.10124441295579013,
+          "min": 0.002426510453224182,
+          "max": 2.061708780924479,
+          "median": 0.013570507367451985
+        },
+        "size_distribution": {
+          "small": 3012,
+          "medium": 4540,
+          "large": 1624
+        },
+        "small_ratio": 0.3282476024411508,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0030",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.0844799314483506,
+      "kl_divergence": 0.6729218501941456,
+      "class_diversity": 5,
+      "size_diversity": 0.8702147700744121
+    },
+    {
+      "sequence_name": "train_day_0031",
+      "stats": {
+        "total_objects": 5838,
+        "class_distribution": [
+          2096,
+          2611,
+          384,
+          0,
+          38,
+          709,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.021098469585023732,
+          "std": 0.04007217327581918,
+          "min": 0.0008295005559921264,
+          "max": 0.40267796834309894,
+          "median": 0.006333954334259033
+        },
+        "size_distribution": {
+          "small": 3642,
+          "medium": 1604,
+          "large": 592
+        },
+        "small_ratio": 0.6238437821171634,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0031",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.0840727916411765,
+      "kl_divergence": 0.36561861367365095,
+      "class_diversity": 5,
+      "size_diversity": 0.782729754424243
+    },
+    {
+      "sequence_name": "train_night_0018",
+      "stats": {
+        "total_objects": 1922,
+        "class_distribution": [
+          946,
+          795,
+          69,
+          0,
+          0,
+          112,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.05704226565048837,
+          "std": 0.08375656609850637,
+          "min": 0.00320585032304128,
+          "max": 0.5662680053710938,
+          "median": 0.037841997146606444
+        },
+        "size_distribution": {
+          "small": 521,
+          "medium": 704,
+          "large": 697
+        },
+        "small_ratio": 0.27107180020811655,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0018",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.0746357219829035,
+      "kl_divergence": 0.40362138237117323,
+      "class_diversity": 4,
+      "size_diversity": 0.9559493473878575
+    },
+    {
+      "sequence_name": "train_day_0052",
+      "stats": {
+        "total_objects": 5582,
+        "class_distribution": [
+          826,
+          3018,
+          580,
+          436,
+          0,
+          722,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.0301640849051959,
+          "std": 0.0610590780309575,
+          "min": 0.00110831747452418,
+          "max": 0.6563201904296875,
+          "median": 0.010130804777145386
+        },
+        "size_distribution": {
+          "small": 2766,
+          "medium": 1983,
+          "large": 833
+        },
+        "small_ratio": 0.4955213185238266,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0052",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.068095241585595,
+      "kl_divergence": 0.34281018900652604,
+      "class_diversity": 5,
+      "size_diversity": 0.857780217426668
+    },
+    {
+      "sequence_name": "train_night_0037",
+      "stats": {
+        "total_objects": 11498,
+        "class_distribution": [
+          4458,
+          6899,
+          0,
+          0,
+          0,
+          141,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.017121157917341107,
+          "std": 0.023483972335547835,
+          "min": 0.001381862759590149,
+          "max": 0.18968978881835938,
+          "median": 0.008268679777781169
+        },
+        "size_distribution": {
+          "small": 6523,
+          "medium": 4118,
+          "large": 857
+        },
+        "small_ratio": 0.5673160549660811,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0037",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.066277038101364,
+      "kl_divergence": 0.8704100530983923,
+      "class_diversity": 3,
+      "size_diversity": 0.798059022521973
+    },
+    {
+      "sequence_name": "train_night_0001",
+      "stats": {
+        "total_objects": 4499,
+        "class_distribution": [
+          2560,
+          1588,
+          178,
+          0,
+          0,
+          173,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.056108925116453434,
+          "std": 0.07791219021962591,
+          "min": 0.004071593284606934,
+          "max": 0.5309330240885417,
+          "median": 0.03708476066589356
+        },
+        "size_distribution": {
+          "small": 583,
+          "medium": 2369,
+          "large": 1547
+        },
+        "small_ratio": 0.1295843520782396,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0001",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.0462850858056902,
+      "kl_divergence": 0.443777320263388,
+      "class_diversity": 4,
+      "size_diversity": 0.8377641182462616
+    },
+    {
+      "sequence_name": "train_day_0038",
+      "stats": {
+        "total_objects": 5838,
+        "class_distribution": [
+          1987,
+          3371,
+          277,
+          0,
+          83,
+          120,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.027572116126402393,
+          "std": 0.03630974604242258,
+          "min": 0.0014117142558097838,
+          "max": 0.37252029418945315,
+          "median": 0.014024891058603921
+        },
+        "size_distribution": {
+          "small": 2001,
+          "medium": 2926,
+          "large": 911
+        },
+        "small_ratio": 0.34275436793422404,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0038",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.0459713346334252,
+      "kl_divergence": 0.32131942016581183,
+      "class_diversity": 5,
+      "size_diversity": 0.8589347189813044
+    },
+    {
+      "sequence_name": "train_night_0005",
+      "stats": {
+        "total_objects": 4774,
+        "class_distribution": [
+          2210,
+          2294,
+          0,
+          158,
+          0,
+          112,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.050101871224355145,
+          "std": 0.07125322424973443,
+          "min": 0.0008452492952346802,
+          "max": 0.6383657328287761,
+          "median": 0.029249958992004395
+        },
+        "size_distribution": {
+          "small": 1220,
+          "medium": 1880,
+          "large": 1674
+        },
+        "small_ratio": 0.25555090071219105,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0005",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.0324687643708061,
+      "kl_divergence": 0.5804122100154905,
+      "class_diversity": 4,
+      "size_diversity": 0.9422472550147238
+    },
+    {
+      "sequence_name": "train_night_0031",
+      "stats": {
+        "total_objects": 3247,
+        "class_distribution": [
+          1046,
+          2107,
+          5,
+          0,
+          31,
+          58,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.11365938841348164,
+          "std": 0.11189466467417461,
+          "min": 0.006207194328308106,
+          "max": 0.5428247578938802,
+          "median": 0.06096019744873047
+        },
+        "size_distribution": {
+          "small": 12,
+          "medium": 1108,
+          "large": 2127
+        },
+        "small_ratio": 0.0036957191253464737,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_night_0031",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.0291224744948368,
+      "kl_divergence": 0.3772368765618518,
+      "class_diversity": 5,
+      "size_diversity": 0.7340203713173232
+    },
+    {
+      "sequence_name": "train_day_0020",
+      "stats": {
+        "total_objects": 2788,
+        "class_distribution": [
+          739,
+          1615,
+          147,
+          120,
+          0,
+          167,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.11525762041979917,
+          "std": 0.1160518708552491,
+          "min": 0.011826505661010742,
+          "max": 0.6482956949869791,
+          "median": 0.05799843470255534
+        },
+        "size_distribution": {
+          "small": 0,
+          "medium": 1143,
+          "large": 1645
+        },
+        "small_ratio": 0.0,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0020",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.0277301964481635,
+      "kl_divergence": 0.13558927700169543,
+      "class_diversity": 5,
+      "size_diversity": 0.7531012364692382
+    },
+    {
+      "sequence_name": "train_day_0054",
+      "stats": {
+        "total_objects": 2250,
+        "class_distribution": [
+          1471,
+          606,
+          14,
+          48,
+          0,
+          111,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.07151713573208561,
+          "std": 0.12800074666008826,
+          "min": 0.005364540815353393,
+          "max": 1.293852030436198,
+          "median": 0.016811222235361738
+        },
+        "size_distribution": {
+          "small": 658,
+          "medium": 843,
+          "large": 749
+        },
+        "small_ratio": 0.29244444444444445,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0054",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.024582037680923,
+      "kl_divergence": 0.2640981998793137,
+      "class_diversity": 5,
+      "size_diversity": 0.9664314472068647
+    },
+    {
+      "sequence_name": "train_day_0032",
+      "stats": {
+        "total_objects": 5330,
+        "class_distribution": [
+          4200,
+          783,
+          33,
+          42,
+          0,
+          272,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.048009739210711486,
+          "std": 0.1261199118985844,
+          "min": 0.0025039108594258628,
+          "max": 1.2654243977864583,
+          "median": 0.004950594902038574
+        },
+        "size_distribution": {
+          "small": 3981,
+          "medium": 297,
+          "large": 1052
+        },
+        "small_ratio": 0.7469043151969981,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0032",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.0218259788923183,
+      "kl_divergence": 0.5268106247789307,
+      "class_diversity": 5,
+      "size_diversity": 0.7018982595499967
+    },
+    {
+      "sequence_name": "train_day_0005",
+      "stats": {
+        "total_objects": 1638,
+        "class_distribution": [
+          351,
+          1109,
+          130,
+          18,
+          0,
+          30,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.056894796682558854,
+          "std": 0.07419485019233955,
+          "min": 0.00791271448135376,
+          "max": 0.589404805501302,
+          "median": 0.026851723988850912
+        },
+        "size_distribution": {
+          "small": 193,
+          "medium": 975,
+          "large": 470
+        },
+        "small_ratio": 0.11782661782661782,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0005",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.004510857488841,
+      "kl_divergence": 0.19012389745238528,
+      "class_diversity": 5,
+      "size_diversity": 0.8023555149209928
+    },
+    {
+      "sequence_name": "train_day_0060",
+      "stats": {
+        "total_objects": 4389,
+        "class_distribution": [
+          1010,
+          3184,
+          121,
+          0,
+          0,
+          74,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.02334953779211672,
+          "std": 0.03297546662276264,
+          "min": 0.0010400540630022684,
+          "max": 0.21436106363932292,
+          "median": 0.008529214064280193
+        },
+        "size_distribution": {
+          "small": 2339,
+          "medium": 1397,
+          "large": 653
+        },
+        "small_ratio": 0.5329232171337435,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0060",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 0.9911958813979062,
+      "kl_divergence": 0.4538082473540989,
+      "class_diversity": 4,
+      "size_diversity": 0.8428145483572109
+    },
+    {
+      "sequence_name": "train_day_0027",
+      "stats": {
+        "total_objects": 1038,
+        "class_distribution": [
+          255,
+          600,
+          94,
+          30,
+          0,
+          59,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.14547441456397528,
+          "std": 0.18945409953026254,
+          "min": 0.006113961140314738,
+          "max": 1.1906894938151042,
+          "median": 0.08326914151509603
+        },
+        "size_distribution": {
+          "small": 31,
+          "medium": 344,
+          "large": 663
+        },
+        "small_ratio": 0.029865125240847785,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0027",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 0.9899577341999782,
+      "kl_divergence": 0.1603908982967312,
+      "class_diversity": 5,
+      "size_diversity": 0.7514289062437755
+    },
+    {
+      "sequence_name": "train_day_0045",
+      "stats": {
+        "total_objects": 2276,
+        "class_distribution": [
+          1509,
+          529,
+          74,
+          41,
+          40,
+          83,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.045587771115208064,
+          "std": 0.057234711881717165,
+          "min": 0.007162919044494629,
+          "max": 0.4851994832356771,
+          "median": 0.02438753684361776
+        },
+        "size_distribution": {
+          "small": 203,
+          "medium": 1437,
+          "large": 636
+        },
+        "small_ratio": 0.08919156414762741,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0045",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 0.9893970831065977,
+      "kl_divergence": 0.22636299850063235,
+      "class_diversity": 6,
+      "size_diversity": 0.7753993918729528
+    },
+    {
+      "sequence_name": "train_day_0041",
+      "stats": {
+        "total_objects": 2789,
+        "class_distribution": [
+          1675,
+          749,
+          236,
+          47,
+          0,
+          82,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.05350195388220054,
+          "std": 0.06451780119904874,
+          "min": 0.005720737377802531,
+          "max": 0.5114331563313802,
+          "median": 0.02727937380472819
+        },
+        "size_distribution": {
+          "small": 193,
+          "medium": 1736,
+          "large": 860
+        },
+        "small_ratio": 0.06920043026174257,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "train_day_0041",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 0.9644935651165218,
+      "kl_divergence": 0.2531115632798006,
+      "class_diversity": 5,
+      "size_diversity": 0.7734491326403591
+    }
+  ],
+  "val": [
+    {
+      "sequence_name": "val_night_002",
+      "stats": {
+        "total_objects": 3768,
+        "class_distribution": [
+          1439,
+          1988,
+          213,
+          37,
+          54,
+          37,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.0802300628761366,
+          "std": 0.08752149004984233,
+          "min": 0.005158592462539673,
+          "max": 0.6869403584798177,
+          "median": 0.06059666315714518
+        },
+        "size_distribution": {
+          "small": 344,
+          "medium": 1411,
+          "large": 2013
+        },
+        "small_ratio": 0.09129511677282377,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "val_night_002",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.3058598619853223,
+      "kl_divergence": 0.047305199656433726,
+      "class_diversity": 6,
+      "size_diversity": 0.8168457777519507
+    },
+    {
+      "sequence_name": "val_day_011",
+      "stats": {
+        "total_objects": 9790,
+        "class_distribution": [
+          5030,
+          3624,
+          198,
+          553,
+          26,
+          359,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.07671917224608191,
+          "std": 0.11998351652651898,
+          "min": 0.00403213103612264,
+          "max": 1.269823710123698,
+          "median": 0.02611533006032308
+        },
+        "size_distribution": {
+          "small": 237,
+          "medium": 5811,
+          "large": 3742
+        },
+        "small_ratio": 0.024208375893769153,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "val_day_011",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.1513605513763479,
+      "kl_divergence": 0.13384077625239552,
+      "class_diversity": 6,
+      "size_diversity": 0.7650040743293545
+    },
+    {
+      "sequence_name": "val_day_009",
+      "stats": {
+        "total_objects": 3791,
+        "class_distribution": [
+          915,
+          2636,
+          78,
+          79,
+          0,
+          83,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.03212533251314524,
+          "std": 0.05869700981025631,
+          "min": 0.0036278518040974935,
+          "max": 0.8354532368977865,
+          "median": 0.015881471633911133
+        },
+        "size_distribution": {
+          "small": 962,
+          "medium": 2255,
+          "large": 574
+        },
+        "small_ratio": 0.2537589026642047,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "val_day_009",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.1308296249804528,
+      "kl_divergence": 0.11175134712878682,
+      "class_diversity": 5,
+      "size_diversity": 0.8104319184212929
+    },
+    {
+      "sequence_name": "val_night_008",
+      "stats": {
+        "total_objects": 3157,
+        "class_distribution": [
+          1436,
+          1662,
+          53,
+          0,
+          0,
+          6,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.060795864474998705,
+          "std": 0.08435994414896308,
+          "min": 0.004707717498143514,
+          "max": 0.5262176513671875,
+          "median": 0.04281944274902344
+        },
+        "size_distribution": {
+          "small": 379,
+          "medium": 1514,
+          "large": 1264
+        },
+        "small_ratio": 0.12005068102629078,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "val_night_008",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.0616531204788568,
+      "kl_divergence": 0.3704085035409061,
+      "class_diversity": 4,
+      "size_diversity": 0.8457602604973451
+    },
+    {
+      "sequence_name": "val_day_001",
+      "stats": {
+        "total_objects": 1598,
+        "class_distribution": [
+          354,
+          1104,
+          20,
+          27,
+          0,
+          93,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.11736562227426992,
+          "std": 0.09808684328128542,
+          "min": 0.00494022250175476,
+          "max": 0.4877407836914063,
+          "median": 0.09128409067789714
+        },
+        "size_distribution": {
+          "small": 144,
+          "medium": 284,
+          "large": 1170
+        },
+        "small_ratio": 0.09011264080100125,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "val_day_001",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.0307663028687026,
+      "kl_divergence": 0.1328932343370791,
+      "class_diversity": 5,
+      "size_diversity": 0.7157243075950321
+    },
+    {
+      "sequence_name": "val_day_013",
+      "stats": {
+        "total_objects": 2922,
+        "class_distribution": [
+          1041,
+          1374,
+          349,
+          0,
+          38,
+          120,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.06424177518037529,
+          "std": 0.07244726069886666,
+          "min": 0.0020732696851094566,
+          "max": 0.35016805013020835,
+          "median": 0.03896834055582682
+        },
+        "size_distribution": {
+          "small": 331,
+          "medium": 1326,
+          "large": 1265
+        },
+        "small_ratio": 0.1132785763175907,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "val_day_013",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 0.9535760685118603,
+      "kl_divergence": 0.30376402076097964,
+      "class_diversity": 5,
+      "size_diversity": 0.8441645631237202
+    },
+    {
+      "sequence_name": "val_day_012",
+      "stats": {
+        "total_objects": 3434,
+        "class_distribution": [
+          1074,
+          2251,
+          70,
+          0,
+          0,
+          39,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.07335599921995217,
+          "std": 0.06733146088576417,
+          "min": 0.004807469447453817,
+          "max": 0.423452631632487,
+          "median": 0.06062836964925131
+        },
+        "size_distribution": {
+          "small": 75,
+          "medium": 1398,
+          "large": 1961
+        },
+        "small_ratio": 0.021840419336051253,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "val_day_012",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 0.9164491835368305,
+      "kl_divergence": 0.3114763432714835,
+      "class_diversity": 4,
+      "size_diversity": 0.7697962140761744
+    },
+    {
+      "sequence_name": "val_day_006",
+      "stats": {
+        "total_objects": 4448,
+        "class_distribution": [
+          2482,
+          1609,
+          205,
+          0,
+          0,
+          152,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.05130824144063093,
+          "std": 0.06284031253003894,
+          "min": 0.0009134410818417867,
+          "max": 0.38102933247884113,
+          "median": 0.03149672190348307
+        },
+        "size_distribution": {
+          "small": 668,
+          "medium": 2280,
+          "large": 1500
+        },
+        "small_ratio": 0.15017985611510792,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "val_day_006",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 0.915268498868517,
+      "kl_divergence": 0.41682909351664155,
+      "class_diversity": 4,
+      "size_diversity": 0.8520210503005888
+    }
+  ],
+  "test": [
+    {
+      "sequence_name": "test_night_014",
+      "stats": {
+        "total_objects": 7914,
+        "class_distribution": [
+          2215,
+          4777,
+          0,
+          110,
+          0,
+          812,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.02333955290157038,
+          "std": 0.03872438204230371,
+          "min": 0.00042883127927780153,
+          "max": 0.2843707784016927,
+          "median": 0.007822384436925251
+        },
+        "size_distribution": {
+          "small": 4558,
+          "medium": 2311,
+          "large": 1045
+        },
+        "small_ratio": 0.5759413697245388,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "test_night_014",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.233415959603918,
+      "kl_divergence": 0.39067233749036845,
+      "class_diversity": 4,
+      "size_diversity": 0.8164397126450458
+    },
+    {
+      "sequence_name": "test_day_009",
+      "stats": {
+        "total_objects": 18690,
+        "class_distribution": [
+          5052,
+          9901,
+          163,
+          531,
+          0,
+          2703,
+          0,
+          340
+        ],
+        "area_stats": {
+          "mean": 0.03068284865119665,
+          "std": 0.04870770021816954,
+          "min": 0.00021724884708722433,
+          "max": 0.7787176513671875,
+          "median": 0.01451575517654419
+        },
+        "size_distribution": {
+          "small": 7392,
+          "medium": 8267,
+          "large": 3031
+        },
+        "small_ratio": 0.3955056179775281,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "test_day_009",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.2147676096336313,
+      "kl_divergence": 0.19311225479653638,
+      "class_diversity": 6,
+      "size_diversity": 0.8774710262097315
+    },
+    {
+      "sequence_name": "test_day_006",
+      "stats": {
+        "total_objects": 11480,
+        "class_distribution": [
+          4695,
+          4843,
+          0,
+          250,
+          0,
+          1692,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.013622766375327515,
+          "std": 0.030345047196936127,
+          "min": 0.0003084683169921239,
+          "max": 0.6942773946126302,
+          "median": 0.005088079373041789
+        },
+        "size_distribution": {
+          "small": 7966,
+          "medium": 2920,
+          "large": 594
+        },
+        "small_ratio": 0.6939024390243902,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "test_day_006",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.146283284004205,
+      "kl_divergence": 0.37059153698334646,
+      "class_diversity": 4,
+      "size_diversity": 0.7319569794699379
+    },
+    {
+      "sequence_name": "test_day_013",
+      "stats": {
+        "total_objects": 6661,
+        "class_distribution": [
+          2042,
+          3672,
+          110,
+          46,
+          0,
+          791,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.027872115039034407,
+          "std": 0.03065265690648477,
+          "min": 0.0024509874979654948,
+          "max": 0.2812109629313151,
+          "median": 0.017069503466288247
+        },
+        "size_distribution": {
+          "small": 1547,
+          "medium": 4245,
+          "large": 869
+        },
+        "small_ratio": 0.23224741029875395,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "test_day_013",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.0983708627709048,
+      "kl_divergence": 0.20151132029005295,
+      "class_diversity": 5,
+      "size_diversity": 0.7810888469395035
+    },
+    {
+      "sequence_name": "test_night_008",
+      "stats": {
+        "total_objects": 3099,
+        "class_distribution": [
+          1399,
+          1512,
+          95,
+          64,
+          0,
+          29,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.08165106207706141,
+          "std": 0.08818932867224087,
+          "min": 0.009943989912668864,
+          "max": 0.6811490885416667,
+          "median": 0.06168519337972005
+        },
+        "size_distribution": {
+          "small": 31,
+          "medium": 1186,
+          "large": 1882
+        },
+        "small_ratio": 0.010003226847370119,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "test_night_008",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.0752132565551915,
+      "kl_divergence": 0.29725187363557704,
+      "class_diversity": 5,
+      "size_diversity": 0.7536712555067484
+    },
+    {
+      "sequence_name": "test_night_015",
+      "stats": {
+        "total_objects": 7319,
+        "class_distribution": [
+          1542,
+          5109,
+          0,
+          0,
+          0,
+          668,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.025719700274207627,
+          "std": 0.04052819449739295,
+          "min": 0.00022451356053352356,
+          "max": 0.30632954915364585,
+          "median": 0.009508687655131022
+        },
+        "size_distribution": {
+          "small": 3862,
+          "medium": 2369,
+          "large": 1088
+        },
+        "small_ratio": 0.5276677141686023,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "test_night_015",
+        "is_night": true,
+        "day_type": "night"
+      },
+      "selection_score": 1.070545447996054,
+      "kl_divergence": 0.7113566441923733,
+      "class_diversity": 3,
+      "size_diversity": 0.845117827620918
+    },
+    {
+      "sequence_name": "test_day_005",
+      "stats": {
+        "total_objects": 12924,
+        "class_distribution": [
+          6185,
+          5488,
+          0,
+          589,
+          26,
+          636,
+          0,
+          0
+        ],
+        "area_stats": {
+          "mean": 0.0783464257344857,
+          "std": 0.10822582226959894,
+          "min": 0.002812361717224121,
+          "max": 1.269823710123698,
+          "median": 0.034737960497538245
+        },
+        "size_distribution": {
+          "small": 818,
+          "medium": 6419,
+          "large": 5687
+        },
+        "small_ratio": 0.06329309811203962,
+        "confidence_stats": {
+          "mean": 1.0,
+          "min": 1.0
+        },
+        "sequence_name": "test_day_005",
+        "is_night": false,
+        "day_type": "day"
+      },
+      "selection_score": 1.0691028707306252,
+      "kl_divergence": 0.26180765437418646,
+      "class_diversity": 5,
+      "size_diversity": 0.8076577958928529
+    }
+  ]
+}

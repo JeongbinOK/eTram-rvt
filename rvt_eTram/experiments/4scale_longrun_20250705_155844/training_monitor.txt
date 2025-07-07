@@ -1,0 +1,5 @@
+[2025-07-05 15:58:44] experiment_initialized
+  Details: 4-scale FPN experiment setup completed
+[2025-07-05 15:58:44] SYSTEM READY
+  GPU Memory: 1/24564 MB
+  GPU Utilization: 0%
