@@ -1,0 +1,193 @@
+Training Command and Environment Details
+=======================================
+
+Experiment: 4scale_sizeaware_100k
+Date: 2025-07-10 07:22:39 AM
+Screen Session: 4scale_sizeaware_100k (PID: 1055086)
+
+===============================
+EXACT TRAINING COMMAND
+===============================
+
+python train.py dataset=gen4 dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample +experiment/gen4='size_aware.yaml' hardware.gpus=0 batch_size.train=6 batch_size.eval=2 hardware.num_workers.train=4 hardware.num_workers.eval=3 training.max_steps=100000 dataset.train.sampling=stream wandb.project_name=etram_size_aware wandb.group_name=4scale_sizeaware_100k
+
+===============================
+PARAMETER BREAKDOWN
+===============================
+
+Core Settings:
+- dataset=gen4
+- dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample
+- +experiment/gen4='size_aware.yaml'
+
+Hardware Configuration:
+- hardware.gpus=0
+- hardware.num_workers.train=4
+- hardware.num_workers.eval=3
+
+Batch Configuration:
+- batch_size.train=6
+- batch_size.eval=2
+
+Training Configuration:
+- training.max_steps=100000
+- dataset.train.sampling=stream
+
+Experiment Tracking:
+- wandb.project_name=etram_size_aware
+- wandb.group_name=4scale_sizeaware_100k
+
+===============================
+ENVIRONMENT SETUP
+===============================
+
+Working Directory: /home/oeoiewt/eTraM/rvt_eTram
+Screen Session: 4scale_sizeaware_100k
+WandB Project: etram_size_aware
+WandB Run ID: 6nao
+
+Python Environment:
+- Conda environment: rvt
+- Python version: 3.9
+- PyTorch: Available with CUDA support
+
+Dataset:
+- Name: etram_cls8_sample
+- Classes: 8 (Car, Truck, Motorcycle, Bicycle, Pedestrian, Bus, Static, Other)
+- Location: /home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample
+
+===============================
+CONFIGURATION FILES USED
+===============================
+
+Primary Config:
+- config/experiment/gen4/size_aware.yaml
+
+Model Config (loaded via defaults):
+- config/model/maxvit_yolox/size_aware.yaml
+
+Key Config Values:
+- model.head.size_aware_loss: true
+- model.head.size_aware_weight: 2.5
+- model.head.small_threshold: 1024
+- model.head.num_classes: 8
+- model.fpn.in_stages: [1, 2, 3, 4]
+
+===============================
+TRAINING PROGRESS
+===============================
+
+Start Time: 2025-07-10 07:22:39 AM
+Expected Duration: ~6-7 hours (100k steps)
+Expected Completion: ~2:00 PM
+
+Initial Status:
+- Sanity checking: Completed successfully
+- Initial loss: 94.3 → 13.4 (good convergence)
+- Training speed: 4.08 it/s
+- Memory usage: Normal
+
+Progress Checkpoints:
+- Step 431: loss=13.4, speed=4.08 it/s (07:25 AM)
+- [Updates will be added as training progresses]
+
+===============================
+EXPERIMENT STRUCTURE
+===============================
+
+Folder: experiments/4scale_sizeaware_100k/
+├── checkpoints/           # Model checkpoints
+├── confusion_matrices/    # Validation confusion matrices
+├── training_logs/         # Training log files
+├── validation_results/    # Detailed validation metrics
+├── model_config.yaml      # Backup of model config
+├── experiment_config.yaml # Backup of experiment config
+├── modification_details.txt    # Detailed code changes
+├── experiment_hypothesis.txt   # Research hypothesis
+├── code_changes_summary.txt    # Quick reference
+└── training_command.txt        # This file
+
+===============================
+MONITORING COMMANDS
+===============================
+
+Check Training Status:
+screen -r 4scale_sizeaware_100k
+
+Check Screen List:
+screen -list
+
+Monitor Training Progress:
+screen -r 4scale_sizeaware_100k -X hardcopy /tmp/training_status.txt && tail -20 /tmp/training_status.txt
+
+Kill Training (if needed):
+screen -S 4scale_sizeaware_100k -X quit
+
+===============================
+VALIDATION COMMAND (POST-TRAINING)
+===============================
+
+When training completes, run validation with:
+
+screen -dmS validation_4scale_sizeaware
+screen -S validation_4scale_sizeaware -p 0 -X stuff "cd /home/oeoiewt/eTraM/rvt_eTram\n"
+screen -S validation_4scale_sizeaware -p 0 -X stuff "python validation.py dataset=gen4 dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample checkpoint=experiments/4scale_sizeaware_100k/checkpoints/final_model.ckpt +experiment/gen4='size_aware.yaml' hardware.gpus=0 batch_size.eval=8; echo 'Validation completed! Press Enter to continue...'; read\n"
+
+===============================
+EXPECTED OUTPUTS
+===============================
+
+Training Outputs:
+- Model checkpoint: experiments/4scale_sizeaware_100k/checkpoints/final_model.ckpt
+- WandB logs: Online dashboard with loss curves
+- Confusion matrices: confM/ folder (moved to experiment folder post-training)
+
+Validation Outputs:
+- Detailed metrics: JSON format with per-class performance
+- Performance comparison: vs baseline and previous experiments
+- Size-based analysis: Small vs medium vs large object performance
+
+===============================
+SUCCESS CRITERIA
+===============================
+
+Minimum Success:
+- Training completes without errors
+- Final loss < 5.0
+- Small object mAP > 18% (vs 17.28% baseline)
+
+Target Success:
+- Small object mAP > 20%
+- Overall mAP > 36%
+- Outperforms 4-scale FPN failure (30.93%)
+
+Validation Success:
+- All metrics collected successfully
+- Comparison analysis completed
+- Results documented in JSON format
+
+===============================
+TROUBLESHOOTING
+===============================
+
+Common Issues:
+1. OOM Error: Reduce batch_size.train from 6 to 4
+2. Config Error: Check YAML syntax in size_aware.yaml
+3. Import Error: Verify size_aware_losses.py is correctly placed
+4. Screen Disconnect: Training continues, use 'screen -r' to reconnect
+
+Recovery Commands:
+- Find checkpoint: ls experiments/4scale_sizeaware_100k/checkpoints/
+- Resume training: Add checkpoint path to training command
+- Check GPU usage: nvidia-smi
+
+===============================
+NOTES
+===============================
+
+- This is the first implementation of size-aware loss in the eTraM codebase
+- 4-scale FPN + size-aware loss combination is novel approach
+- Results will inform future small object detection research
+- Documentation serves as template for future experiments
+
+Last Updated: 2025-07-10 07:25:00 AM
