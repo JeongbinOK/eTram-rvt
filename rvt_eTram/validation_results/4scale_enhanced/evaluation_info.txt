@@ -1,0 +1,88 @@
+4-Scale FPN Enhanced - Evaluation Information
+============================================
+
+Experiment Metadata:
+--------------------
+Experiment ID: 4scale_enhanced_100k
+Timestamp: 2025-07-10 05:00:00
+Duration: Validation completed in 2:01 minutes
+WandB ID: 4zbwvsi0
+
+Model Configuration:
+-------------------
+Architecture: 4-scale Feature Pyramid Network
+FPN Stages: [1, 2, 3, 4] 
+FPN Strides: [4, 8, 16, 32]  ← ENHANCED with P1 features
+Backbone: MaxViT + ConvLSTM
+Detection Head: YOLOX
+Number of Classes: 8
+
+Training Details:
+----------------
+Total Training Steps: 100,000
+Training Duration: ~6 hours 20 minutes
+Final Training Loss: 3.83
+Best Validation AP: 27.19% (during training)
+Final Validation AP: 30.93% (post-training evaluation)
+
+Dataset Information:
+-------------------
+Dataset: etram_cls8_sample
+Path: /home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample
+Input Resolution: 640×384
+Event Representation: Stacked histograms (dt=50ms, 10 bins)
+
+Validation Configuration:
+------------------------
+Batch Size: 8
+GPU: 0
+Total Validation Samples: 724 iterations
+Evaluation Framework: COCO API
+Time Tolerance: Default
+
+Performance Analysis:
+--------------------
+❌ UNEXPECTED RESULTS - Performance Degradation:
+
+Class Categories by Size:
+- Small (classes 2,3,4): Motorcycle, Bicycle, Pedestrian → 14.83% mAP (WORSE than baseline)
+- Medium/Large (classes 0,1,5,6,7): Car, Truck, Bus, Static, Other → 30.97% mAP (WORSE than baseline)
+
+Comparison with 3-scale Baseline:
+- Overall mAP: 34.02% → 30.93% (-3.09%)
+- Small objects: 17.28% → 14.83% (-2.45%)
+- This contradicts our hypothesis that P1 features improve small object detection
+
+Hardware Environment:
+--------------------
+GPU: Available (CUDA)
+Screen Session: validation_4scale
+Evaluation Tool: detectron2.evaluation.fast_eval_api
+
+Files Generated:
+---------------
+- validation_output.log: Complete validation console output
+- metrics_summary.txt: Performance analysis and comparison
+- evaluation_info.txt: This file with experiment details
+- confusion matrices: Available in experiments/4scale_enhanced_100k/confusion_matrices/
+
+Critical Analysis:
+-----------------
+🔍 Why P1 Features May Have Hurt Performance:
+1. **Increased Model Complexity**: More parameters without sufficient training
+2. **Noisy High-Resolution Features**: P1 features may contain too much noise
+3. **Training Strategy Mismatch**: Same training config may not suit larger model
+4. **Feature Imbalance**: P1 features may overwhelm lower-resolution features
+5. **Overfitting**: Additional parameters may have caused overfitting on small dataset
+
+🔬 Research Implications:
+- P1 features alone are not sufficient for small object improvement
+- Need additional strategies: size-aware loss, longer training, different architectures
+- This negative result is valuable for understanding FPN limitations
+
+Next Research Directions:
+------------------------
+1. Size-aware loss functions to properly weight small object contributions
+2. Attention mechanisms specifically for small objects
+3. Different training strategies for larger models
+4. Analysis of P1 feature quality and noise levels
