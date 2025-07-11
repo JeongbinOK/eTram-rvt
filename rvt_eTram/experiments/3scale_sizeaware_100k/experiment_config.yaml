@@ -1,0 +1,45 @@
+# @package _global_
+defaults:
+  - /model/maxvit_yolox: size_aware
+
+# 3-scale FPN + Size-aware Loss experiment configuration
+# This experiment combines proven 3-scale architecture with size-aware loss weighting
+# to achieve optimal small object detection performance
+
+model:
+  fpn:
+    # Use stable 3-scale FPN (excluding P1 features)
+    in_stages: [2, 3, 4]  # P2, P3, P4 only - proven stable architecture
+  head:
+    # Size-aware loss parameters optimized for eTraM dataset
+    size_aware_loss: true
+    size_aware_weight: 2.5      # Higher weight for small objects (up to 2.5x boost)
+    small_threshold: 1024       # 32x32 pixels (motorcycles, bicycles, small pedestrians)
+    medium_threshold: 9216      # 96x96 pixels (cars, trucks)
+    weight_type: "exponential"  # Exponential decay for smooth weighting
+    num_classes: 8
+
+# Training parameters
+training:
+  max_steps: 100000
+  
+# Wandb experiment tracking
+wandb:
+  project_name: "etram_3scale_sizeaware"
+  group_name: "3scale_sizeaware"
+  
+# Dataset configuration
+dataset:
+  name: "gen4"
+  path: "/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample"
+  
+# Hardware and batch size configuration
+hardware:
+  gpus: 0
+  num_workers:
+    train: 4
+    eval: 3
+    
+batch_size:
+  train: 6
+  eval: 2

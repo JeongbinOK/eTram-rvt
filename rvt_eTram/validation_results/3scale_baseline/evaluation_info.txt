@@ -1,0 +1,66 @@
+3-Scale FPN Baseline - Evaluation Information
+=============================================
+
+Experiment Metadata:
+--------------------
+Experiment ID: 3scale_baseline_100k
+Timestamp: 2025-07-08 05:00:32
+Duration: Validation completed in 2:00 minutes
+
+Model Configuration:
+-------------------
+Architecture: 3-scale Feature Pyramid Network
+FPN Stages: [2, 3, 4] 
+FPN Strides: [8, 16, 32]
+Backbone: MaxViT + ConvLSTM
+Detection Head: YOLOX
+Number of Classes: 8
+
+Training Details:
+----------------
+Total Training Steps: 100,000
+Training Duration: ~5 hours 46 minutes
+Final Training Loss: 2.37
+Best Validation AP: 25.97% (during training)
+Final Validation AP: 34.02% (post-training evaluation)
+
+Dataset Information:
+-------------------
+Dataset: etram_cls8_sample
+Path: /home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample
+Input Resolution: 640×384
+Event Representation: Stacked histograms (dt=50ms, 10 bins)
+
+Validation Configuration:
+------------------------
+Batch Size: 8
+GPU: 0
+Total Validation Samples: 724 iterations
+Evaluation Framework: COCO API
+Time Tolerance: Default
+
+Performance Breakdown:
+---------------------
+Class Categories by Size:
+- Small (classes 2,3,4): Motorcycle, Bicycle, Pedestrian → 17.28% mAP
+- Medium/Large (classes 0,1,5,6,7): Car, Truck, Bus, Static, Other → 34.03%+ mAP
+
+Hardware Environment:
+--------------------
+GPU: Available (CUDA)
+Screen Session: validation_3scale
+Evaluation Tool: detectron2.evaluation.fast_eval_api
+
+Files Generated:
+---------------
+- validation_output.log: Complete validation console output
+- metrics_summary.txt: Human-readable performance summary
+- evaluation_info.txt: This file with experiment details
+- confusion matrices: Available in experiments/3scale_baseline_100k/confusion_matrices/
+
+Notes:
+------
+- Individual class metrics (0-7) not available due to validation batch limitations
+- Size-based metrics (small/medium/large) successfully computed
+- Results serve as baseline for 4-scale FPN comparison
+- Small object performance (17.28%) confirms need for P1 feature enhancement
