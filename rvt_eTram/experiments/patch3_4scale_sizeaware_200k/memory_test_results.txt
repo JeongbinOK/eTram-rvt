@@ -1,0 +1,36 @@
+patch3_4scale_sizeaware Memory Test Results
+===========================================
+
+Date: 2025-07-16
+Test Configuration: patch_size=3 + 4-scale FPN + size-aware loss
+GPU: NVIDIA GeForce RTX 4090 (23.5 GB)
+
+SYNTHETIC MEMORY TEST RESULTS:
+- batch_size=4: 0.12 GB allocated, 0.13 GB cached (OK)
+- batch_size=6: 0.18 GB allocated, 0.19 GB cached (OK)
+- batch_size=8: 0.25 GB allocated, 0.26 GB cached (OK)
+
+ACTUAL TRAINING TEST:
+- batch_size=6: Successfully loaded model and started training
+- Configuration loaded without errors
+- No memory overflow issues detected
+
+COMPARISON WITH PREVIOUS EXPERIMENTS:
+- patch_size=2: Required batch_size=2 (memory constrained)
+- patch_size=3: Can handle batch_size=6+ comfortably
+- patch_size=4 (baseline): Typically uses batch_size=6
+
+FINAL RECOMMENDATION:
+- Optimal batch_size: 6
+- Memory safety margin: Excellent
+- Expected training stability: Good (larger batch_size than patch_size=2)
+
+TRAINING PARAMETERS SELECTED:
+- batch_size.train: 6
+- batch_size.eval: 4
+- hardware.num_workers.train: 4
+- hardware.num_workers.eval: 3
+- Expected memory usage: ~2-3 GB (well within limits)
+
+CONCLUSION:
+patch_size=3 provides excellent memory efficiency while maintaining high spatial resolution. The configuration should train stably with batch_size=6.

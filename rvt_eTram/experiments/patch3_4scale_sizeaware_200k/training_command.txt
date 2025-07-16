@@ -1,0 +1,54 @@
+patch3_4scale_sizeaware_200k Training Command
+=============================================
+
+Date: 2025-07-16
+Experiment: patch_size=3 + 4-scale FPN + size-aware loss
+
+TRAINING COMMAND:
+python train.py \
+  +model/maxvit_yolox=patch3_4scale_sizeaware \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=4 \
+  batch_size.eval=4 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=200000 \
+  dataset.train.sampling=stream \
+  ++model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=patch3_4scale_sizeaware_200k
+
+SCREEN COMMAND:
+screen -dmS patch3_4scale_sizeaware_200k
+screen -S patch3_4scale_sizeaware_200k -p 0 -X stuff "cd /home/oeoiewt/eTraM/rvt_eTram\n"
+screen -S patch3_4scale_sizeaware_200k -p 0 -X stuff "source /home/oeoiewt/miniconda3/etc/profile.d/conda.sh && conda activate rvt && python train.py +model/maxvit_yolox=patch3_4scale_sizeaware dataset=gen4 dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample hardware.gpus=0 batch_size.train=4 batch_size.eval=4 hardware.num_workers.train=4 hardware.num_workers.eval=3 training.max_steps=200000 dataset.train.sampling=stream ++model.head.num_classes=8 wandb.project_name=etram_enhanced wandb.group_name=patch3_4scale_sizeaware_200k; echo 'Training completed! Press Enter to continue...'; read\n"
+
+VALIDATION COMMAND:
+python validation.py dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  checkpoint=experiments/patch3_4scale_sizeaware_200k/checkpoints/final_model.ckpt \
+  +model/maxvit_yolox=patch3_4scale_sizeaware \
+  hardware.gpus=0 batch_size.eval=4 \
+  +batch_size.train=4 +hardware.num_workers.train=2 hardware.num_workers.eval=2 \
+  ++model.head.num_classes=8
+
+PARAMETERS:
+- Model: patch3_4scale_sizeaware
+- Dataset: etram_cls8_sample
+- Steps: 200,000
+- Batch size: 4 (train), 4 (eval)
+- Workers: 4 (train), 3 (eval)
+- Classes: 8
+- GPU: 0
+- Sampling: stream
+
+EXPECTED TRAINING TIME: ~6-8 hours
+EXPECTED MEMORY USAGE: ~8-10GB (moderate increase from baseline)
+
+MONITORING:
+- WandB project: etram_enhanced
+- WandB group: patch3_4scale_sizeaware_200k
+- Screen session: patch3_4scale_sizeaware_200k
+- Log location: experiments/patch3_4scale_sizeaware_200k/training_logs/
