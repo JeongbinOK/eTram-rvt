@@ -1,0 +1,270 @@
+# Training Command for Patch Size 2 + 4-scale FPN + 200k Steps Experiment
+
+## Experiment ID: patch2_4scale_sizeaware_200k
+## Date: 2025-07-15
+## Expected WandB ID: To be assigned during training
+
+## Pre-training Setup
+
+### 1. Environment Preparation
+```bash
+# Activate conda environment
+conda activate rvt
+
+# Navigate to working directory
+cd /home/oeoiewt/eTraM/rvt_eTram
+
+# Verify GPU availability
+nvidia-smi
+```
+
+### 2. Screen Session Management
+```bash
+# Create dedicated screen session
+screen -dmS patch2_4scale_sizeaware_200k
+
+# Attach to screen session for initial setup
+screen -r patch2_4scale_sizeaware_200k
+
+# Activate environment within screen
+conda activate rvt
+cd /home/oeoiewt/eTraM/rvt_eTram
+```
+
+## Memory Optimization Testing
+
+### Test 1: batch_size=2 (Primary Strategy)
+```bash
+# Test command for memory feasibility
+python train.py model/maxvit_yolox=patch2_4scale_sizeaware \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=2 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=2 \
+  hardware.num_workers.eval=1 \
+  training.max_steps=100 \
+  dataset.train.sampling=stream \
+  ++model.head.num_classes=8 \
+  wandb.mode=disabled
+```
+
+### Test 2: batch_size=1 + Gradient Accumulation (Fallback)
+```bash
+# Alternative if batch_size=2 causes OOM
+python train.py model/maxvit_yolox=patch2_4scale_sizeaware \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=1 \
+  batch_size.eval=1 \
+  training.accumulate_grad_batches=2 \
+  hardware.num_workers.train=2 \
+  hardware.num_workers.eval=1 \
+  training.max_steps=100 \
+  dataset.train.sampling=stream \
+  ++model.head.num_classes=8 \
+  wandb.mode=disabled
+```
+
+## Final Training Command
+
+### Primary Training Command (batch_size=2)
+```bash
+python train.py model/maxvit_yolox=patch2_4scale_sizeaware \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=2 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=200000 \
+  dataset.train.sampling=stream \
+  ++model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=patch2_4scale_sizeaware_200k \
+  wandb.name="patch2_4scale_200k_experiment"
+```
+
+### Alternative Training Command (batch_size=1 + accumulation)
+```bash
+python train.py model/maxvit_yolox=patch2_4scale_sizeaware \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=1 \
+  batch_size.eval=1 \
+  training.accumulate_grad_batches=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=200000 \
+  dataset.train.sampling=stream \
+  ++model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=patch2_4scale_sizeaware_200k \
+  wandb.name="patch2_4scale_200k_batch1_accum2"
+```
+
+## Training Execution Steps
+
+### 1. Memory Test Phase
+```bash
+# Execute memory test in screen session
+screen -S patch2_4scale_sizeaware_200k -p 0 -X stuff "conda activate rvt && cd /home/oeoiewt/eTraM/rvt_eTram\n"
+
+# Run memory test
+screen -S patch2_4scale_sizeaware_200k -p 0 -X stuff "[MEMORY_TEST_COMMAND]\n"
+
+# Monitor for OOM errors
+screen -S patch2_4scale_sizeaware_200k -X hardcopy /tmp/memory_test.log
+```
+
+### 2. Full Training Phase
+```bash
+# Execute full training command
+screen -S patch2_4scale_sizeaware_200k -p 0 -X stuff "[FINAL_TRAINING_COMMAND]\n"
+
+# Add completion notification
+screen -S patch2_4scale_sizeaware_200k -p 0 -X stuff "; echo 'Training completed! Press Enter to continue...'; read\n"
+```
+
+## Configuration Parameters Explanation
+
+### Model Configuration
+- **model/maxvit_yolox=patch2_4scale_sizeaware**: Custom model config with patch_size=2 + 4-scale FPN
+- **++model.head.num_classes=8**: Force override for 8 classes (Car, Truck, Motorcycle, Bicycle, Pedestrian, Bus, Static, Other)
+
+### Training Configuration
+- **training.max_steps=200000**: Extended training for convergence (2x previous experiments)
+- **dataset.train.sampling=stream**: Streaming data loading for efficiency
+- **batch_size.train=2**: Optimized for memory constraints
+- **batch_size.eval=2**: Evaluation batch size
+
+### Hardware Configuration
+- **hardware.gpus=0**: Single GPU training
+- **hardware.num_workers.train=4**: Data loading workers for training
+- **hardware.num_workers.eval=3**: Data loading workers for evaluation
+
+### Logging Configuration
+- **wandb.project_name=etram_enhanced**: W&B project for tracking
+- **wandb.group_name=patch2_4scale_sizeaware_200k**: Experiment group
+- **wandb.name**: Specific run identifier
+
+## Expected Training Behavior
+
+### Training Phases
+1. **Initial Phase (0-20k steps)**:
+   - Rapid loss decrease from ~8.0 to ~4.0
+   - Feature learning and adaptation
+   - Memory usage stabilization
+
+2. **Convergence Phase (20k-150k steps)**:
+   - Steady loss decrease to ~3.5
+   - Performance improvements
+   - Validation AP increases
+
+3. **Fine-tuning Phase (150k-200k steps)**:
+   - Loss refinement to ~3.0
+   - Performance stabilization
+   - Final convergence
+
+### Performance Targets
+- **Target final loss**: < 3.5% (vs 5.18% at 100k steps)
+- **Target validation AP**: > 25% (vs 15.64% current)
+- **Training speed**: ~3-4 it/s (slower due to 4-scale complexity)
+
+## Monitoring and Checkpoints
+
+### Progress Monitoring
+```bash
+# Check training progress
+screen -S patch2_4scale_sizeaware_200k -X hardcopy /tmp/training_progress.log
+tail -f /tmp/training_progress.log
+
+# Monitor GPU memory usage
+nvidia-smi -l 1
+```
+
+### Checkpoint Management
+- **Automatic checkpoints**: Every 5000 steps
+- **Best model saving**: Based on validation AP
+- **Final checkpoint**: At step 200000
+- **Location**: `experiments/patch2_4scale_sizeaware_200k/checkpoints/`
+
+## Troubleshooting Commands
+
+### Memory Issues
+```bash
+# If OOM occurs, restart with batch_size=1
+python train.py model/maxvit_yolox=patch2_4scale_sizeaware \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=1 \
+  batch_size.eval=1 \
+  training.accumulate_grad_batches=2 \
+  hardware.num_workers.train=2 \
+  hardware.num_workers.eval=1 \
+  training.max_steps=200000 \
+  dataset.train.sampling=stream \
+  ++model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=patch2_4scale_sizeaware_200k
+```
+
+### Training Instability
+```bash
+# Reduce learning rate if training becomes unstable
+python train.py model/maxvit_yolox=patch2_4scale_sizeaware \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=2 \
+  batch_size.eval=2 \
+  optimizer.lr=0.0005 \
+  training.max_steps=200000 \
+  dataset.train.sampling=stream \
+  ++model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=patch2_4scale_sizeaware_200k
+```
+
+## Post-Training Validation
+
+### Validation Command
+```bash
+python validation.py dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  checkpoint=experiments/patch2_4scale_sizeaware_200k/checkpoints/final_model.ckpt \
+  model/maxvit_yolox=patch2_4scale_sizeaware \
+  hardware.gpus=0 \
+  batch_size.eval=4 \
+  ++model.head.num_classes=8
+```
+
+### Expected Validation Results
+- **Overall mAP**: Target > 25%
+- **Small object mAP**: Target > 18%
+- **Training stability**: Successful 200k step completion
+- **Memory efficiency**: No OOM errors during training
+
+## Success Criteria
+
+### Training Success
+- **Completion**: Successfully complete 200k steps
+- **Convergence**: Final loss < 3.5%
+- **Stability**: No training divergence or instability
+
+### Performance Success
+- **Overall improvement**: mAP > 25% (vs 15.64% current)
+- **Small object improvement**: Small object mAP > 18% (vs 17.28% baseline)
+- **Loss convergence**: Final loss competitive with other experiments (~3%)
+
+### Technical Success
+- **Memory feasibility**: Training completes without OOM
+- **Scalability**: Demonstrates 4-scale FPN viability
+- **Reproducibility**: Consistent results across runs
+
+This training command structure ensures systematic execution, comprehensive monitoring, and fallback strategies for successful completion of the patch2_4scale_sizeaware_200k experiment.

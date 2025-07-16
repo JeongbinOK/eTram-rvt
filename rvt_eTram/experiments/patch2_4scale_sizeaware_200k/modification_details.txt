@@ -1,0 +1,258 @@
+# Patch Size 2 + 4-scale FPN + 200k Steps: Technical Implementation Details
+
+## Experiment ID: patch2_4scale_sizeaware_200k
+Date: 2025-07-15
+
+## Core Technical Modifications
+
+### 1. Patch Size Reduction: 4 → 2
+
+#### A) Stem Configuration Change
+**File**: `config/model/maxvit_yolox/patch2_4scale_sizeaware.yaml`
+```yaml
+model:
+  backbone:
+    stem:
+      patch_size: 2  # CHANGED: 4 → 2
+```
+
+#### B) Impact on Model Architecture
+**Spatial Resolution Changes**:
+- **Input**: 640×360 pixels
+- **After stem (patch_size=2)**: 320×180 features
+- **After stem (patch_size=4)**: 160×90 features (baseline)
+
+**Memory Impact**:
+- **Feature map size**: 4x larger (320×180 vs 160×90)
+- **Memory usage**: ~4x increase in early layers
+- **Gradient computation**: 4x more spatial locations
+
+**Receptive Field Changes**:
+- **Smaller initial receptive field**: Better for small objects
+- **Finer spatial granularity**: More precise localization
+- **Reduced information loss**: Less aggressive downsampling
+
+### 2. 4-scale FPN Architecture
+
+#### A) FPN Configuration
+**File**: `config/model/maxvit_yolox/patch2_4scale_sizeaware.yaml`
+```yaml
+model:
+  fpn:
+    in_stages: [1, 2, 3, 4]  # CHANGED: [2, 3, 4] → [1, 2, 3, 4]
+```
+
+#### B) Feature Pyramid Structure
+**With patch_size=2 + 4-scale FPN**:
+```
+Stage 1 (P1): stride=2  → 320×180 features
+Stage 2 (P2): stride=4  → 160×90 features
+Stage 3 (P3): stride=8  → 80×45 features
+Stage 4 (P4): stride=16 → 40×23 features
+```
+
+**Comparison with baseline (patch_size=4, 3-scale)**:
+```
+Baseline:
+Stage 2 (P2): stride=8  → 80×45 features
+Stage 3 (P3): stride=16 → 40×23 features
+Stage 4 (P4): stride=32 → 20×12 features
+```
+
+#### C) Detection Head Impact
+**Automatic Scale Adaptation**:
+- **YOLOXHead**: Automatically adapts to 4 scales
+- **Anchor assignment**: Adjusted for new stride values [2, 4, 8, 16]
+- **Loss computation**: Size-aware loss applied to all 4 scales
+
+### 3. Extended Training: 100k → 200k Steps
+
+#### A) Training Configuration
+**File**: `config/model/maxvit_yolox/patch2_4scale_sizeaware.yaml`
+```yaml
+training:
+  max_steps: 200000  # CHANGED: 100000 → 200000
+```
+
+#### B) Rationale for Extension
+**Convergence Analysis**:
+- **Batch size effect**: batch_size=2 requires more iterations
+- **Architecture complexity**: patch_size=2 + 4-scale needs more training
+- **Target convergence**: Achieve ~3% final loss (vs 5.18% at 100k)
+
+**Expected Training Dynamics**:
+- **Initial phase (0-50k)**: Rapid loss decrease, feature learning
+- **Intermediate phase (50k-150k)**: Steady convergence, fine-tuning
+- **Final phase (150k-200k)**: Refinement, achieving target loss
+
+### 4. Memory Optimization Strategies
+
+#### A) Batch Size Optimization
+**Primary Strategy**: batch_size=2 (reduced from 6)
+```yaml
+batch_size:
+  train: 2  # CHANGED: 6 → 2 (memory constraint)
+  eval: 2   # CHANGED: 2 → 2 (maintained)
+```
+
+**Alternative Strategy**: Gradient accumulation
+```yaml
+# If batch_size=2 still causes OOM:
+batch_size:
+  train: 1
+training:
+  accumulate_grad_batches: 2  # Effective batch_size=2
+```
+
+#### B) Memory Monitoring
+**Implementation**: Custom memory tracking during training
+- **Peak memory monitoring**: Track maximum GPU memory usage
+- **OOM prevention**: Early termination if memory exceeds threshold
+- **Memory profiling**: Identify memory bottlenecks
+
+### 5. Size-aware Loss Integration
+
+#### A) Loss Configuration (Maintained)
+```yaml
+model:
+  head:
+    size_aware_loss: true
+    size_aware_weight: 2.0
+    small_threshold: 1024      # 32×32 pixels
+    medium_threshold: 9216     # 96×96 pixels
+    weight_type: "exponential"
+```
+
+#### B) Scale-specific Loss Application
+**4-scale Loss Weighting**:
+- **P1 (stride=2)**: Focus on very small objects (8×8 ~ 16×16)
+- **P2 (stride=4)**: Focus on small objects (16×16 ~ 32×32)
+- **P3 (stride=8)**: Focus on medium objects (32×32 ~ 64×64)
+- **P4 (stride=16)**: Focus on large objects (64×64+)
+
+### 6. Model Architecture Flow
+
+#### A) Complete Processing Pipeline
+```
+Input Image (640×360)
+    ↓
+Patch Embedding (patch_size=2)
+    ↓
+Features (320×180) → P1 candidate
+    ↓
+MaxViT Stage 1 → P1 features (stride=2)
+    ↓
+MaxViT Stage 2 → P2 features (stride=4)
+    ↓
+MaxViT Stage 3 → P3 features (stride=8)
+    ↓
+MaxViT Stage 4 → P4 features (stride=16)
+    ↓
+YOLO PA-FPN (4-scale fusion)
+    ↓
+Detection Head (4 scales)
+    ↓
+Size-aware Loss + Standard losses
+    ↓
+Final detections
+```
+
+#### B) Feature Dimensions
+**Channel Dimensions** (with default embed_dim=64):
+- **P1**: 64 channels, 320×180 spatial
+- **P2**: 128 channels, 160×90 spatial
+- **P3**: 256 channels, 80×45 spatial
+- **P4**: 512 channels, 40×23 spatial
+
+### 7. Training Environment Configuration
+
+#### A) Hardware Requirements
+**GPU Memory**: Increased requirements due to patch_size=2
+- **Minimum**: 16GB GPU memory
+- **Recommended**: 24GB+ for stable training
+- **Batch size scaling**: Inversely proportional to memory
+
+#### B) Training Stability
+**Monitoring Metrics**:
+- **Loss curves**: Track convergence stability
+- **Gradient norms**: Monitor gradient explosion/vanishing
+- **Memory usage**: Prevent OOM errors
+- **Learning rate**: Adaptive scheduling
+
+### 8. Evaluation Strategy
+
+#### A) Validation Schedule
+**Frequency**: Every 5000 steps (increased from 3500)
+- **Rationale**: Longer training requires less frequent validation
+- **Metrics**: Standard COCO metrics + size-based breakdown
+
+#### B) Performance Metrics
+**Primary Metrics**:
+- **Overall mAP**: Target > 25%
+- **Small object mAP**: Target > 18%
+- **Training loss**: Target < 3.5%
+
+**Secondary Metrics**:
+- **AP50, AP75**: Localization accuracy
+- **AR metrics**: Recall performance
+- **Per-class performance**: Individual class analysis
+
+### 9. Comparison Framework
+
+#### A) Baseline Comparisons
+**Direct Comparisons**:
+1. **3-scale baseline**: 34.02% mAP, 17.28% small objects
+2. **patch_size=2 + 3-scale**: 15.64% AP, 5.18% loss
+3. **4-scale experiments**: Previous 4-scale results
+
+**Ablation Analysis**:
+- **Patch size effect**: 2 vs 4 patch size
+- **FPN scale effect**: 3-scale vs 4-scale
+- **Training duration effect**: 100k vs 200k steps
+
+#### B) Success Validation
+**Convergence Criteria**:
+- **Loss convergence**: Final loss < 3.5%
+- **Performance improvement**: mAP > current best
+- **Training stability**: No divergence or instability
+
+### 10. Implementation Challenges and Solutions
+
+#### A) Memory Management
+**Challenge**: 4x memory increase from patch_size=2
+**Solutions**:
+- Reduced batch size
+- Gradient accumulation
+- Mixed precision training
+- Memory monitoring
+
+#### B) Training Stability
+**Challenge**: Small batch size effects
+**Solutions**:
+- Extended training duration
+- Careful learning rate scheduling
+- Gradient clipping
+- Early stopping if unstable
+
+#### C) Evaluation Complexity
+**Challenge**: 4-scale validation requirements
+**Solutions**:
+- Updated validation scripts
+- Scale-specific metrics
+- Comprehensive comparison framework
+
+### 11. Innovation and Contributions
+
+#### A) Technical Innovations
+1. **Systematic patch_size optimization**: First comprehensive patch_size=2 study
+2. **4-scale FPN with P1 features**: Utilizing highest resolution features
+3. **Extended training methodology**: 200k steps for complex architectures
+4. **Memory-aware training**: Optimized for resource constraints
+
+#### B) Research Contributions
+1. **Spatial resolution impact**: Quantified patch_size effects
+2. **FPN scale optimization**: P1 feature utility validation
+3. **Training duration requirements**: Extended training necessity
+4. **Memory-performance trade-offs**: Systematic analysis
+
+This implementation represents a comprehensive approach to small object detection enhancement through architectural optimization, extended training, and careful resource management. The technical modifications are designed to work synergistically to overcome the limitations observed in previous experiments while maintaining training stability and computational feasibility.

@@ -1,0 +1,71 @@
+# @package _global_
+defaults:
+  - override /model: rnndet
+
+model:
+  name: rnndet
+  backbone:
+    name: MaxViTRNN
+    compile:
+      enable: False
+      args:
+        mode: reduce-overhead
+    input_channels: 20
+    enable_masking: False
+    partition_split_32: 2
+    embed_dim: 64
+    dim_multiplier: [1, 2, 4, 8]
+    num_blocks: [1, 1, 1, 1]
+    T_max_chrono_init: [4, 8, 16, 32]
+    stem:
+      patch_size: 2  # KEY CHANGE: 4 → 2 for enhanced spatial resolution
+    stage:
+      downsample:
+        type: patch
+        overlap: True
+        norm_affine: True
+      attention:
+        use_torch_mha: False
+        partition_size: ???
+        dim_head: 32
+        attention_bias: True
+        mlp_activation: gelu
+        mlp_gated: False
+        mlp_bias: True
+        mlp_ratio: 4
+        drop_mlp: 0
+        drop_path: 0
+        ls_init_value: 1e-5
+      lstm:
+        dws_conv: False
+        dws_conv_only_hidden: True
+        dws_conv_kernel_size: 3
+        drop_cell_update: 0
+  fpn:
+    name: PAFPN
+    compile:
+      enable: False
+      args:
+        mode: reduce-overhead
+    depth: 0.67 # round(depth * 3) == num bottleneck blocks
+    # KEY CHANGE: 4-scale FPN with P1 features for very small objects
+    in_stages: [1, 2, 3, 4]  # P1, P2, P3, P4 features (stride 2,4,8,16)
+    depthwise: False
+    act: "silu"
+  head:
+    name: YoloX
+    compile:
+      enable: False
+      args:
+        mode: reduce-overhead
+    depthwise: False
+    act: "silu"
+    # Size-aware loss configuration (maintained from previous experiments)
+    size_aware_loss: true
+    size_aware_weight: 2.0
+    small_threshold: 1024      # 32x32 pixels (small objects)
+    medium_threshold: 9216     # 96x96 pixels (medium objects) 
+    weight_type: "exponential"  # options: "exponential", "step", "linear"
+  postprocess:
+    confidence_threshold: 0.1
+    nms_threshold: 0.45
