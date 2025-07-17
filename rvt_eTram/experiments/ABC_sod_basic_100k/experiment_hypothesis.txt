@@ -1,0 +1,118 @@
+ABC_sod_basic_100k Experiment Hypothesis
+======================================
+
+Date: 2025-07-16
+Experiment ID: ABC_sod_basic_100k
+Model: ABC (Auxiliary Balanced Classifier) for Small Object Detection
+
+HYPOTHESIS:
+Auxiliary Balanced Classifier (ABC) approach will significantly improve small object detection performance by combining main detection head with auxiliary small object detector specialized for high-resolution features.
+
+THEORETICAL FOUNDATION:
+
+1. **Auxiliary Detection Principle:**
+   - Main YOLOX Head: Handles all objects across all scales (P1, P2, P3, P4)
+   - Auxiliary Small Object Detector: Specializes in small objects (Motorcycle, Bicycle, Pedestrian) on high-resolution scales (P1, P2)
+   - Multi-task learning enhances feature representation for small objects
+
+2. **Balanced Training Strategy:**
+   - Main detection loss weight: 1.0 (standard detection for all objects)
+   - Auxiliary detection loss weight: 2.0 (enhanced focus on small objects)
+   - Small object classes: [2, 3, 4] (Motorcycle, Bicycle, Pedestrian)
+   - Balanced training addresses class imbalance problem
+
+3. **Enhanced Feature Processing:**
+   - Additional convolution layers in auxiliary detector for small object feature enhancement
+   - High-resolution feature maps (P1: stride 4, P2: stride 8) provide better spatial resolution
+   - Cross-scale feature sharing between main and auxiliary detectors
+
+4. **Size-Aware Loss Integration:**
+   - Main head uses size-aware loss (exponential weighting, weight=2.0)
+   - Auxiliary head focuses specifically on small objects with enhanced loss
+   - Combined loss function: Total = 1.0 × Main + 2.0 × Auxiliary
+
+ARCHITECTURAL DESIGN:
+
+```
+Event Data → MaxViT+LSTM → 4-Scale FPN → Main YOLOX Head (All objects, All scales)
+                                      → Auxiliary SOD Head (Small objects, P1+P2 only)
+                                      → Multi-task ABC Loss
+```
+
+**Key Components:**
+- **Main Head**: Standard YOLOX detection on all 4 scales
+- **Auxiliary Head**: Small object detection on P1, P2 scales with enhanced features
+- **ABC Loss**: Balanced combination of main and auxiliary losses
+
+EXPECTED PERFORMANCE:
+
+**Primary Goals:**
+- Small objects AP: >20% (vs 17.28% baseline) - +15% improvement
+- Overall mAP: >36% (vs 34.02% baseline) - +5% improvement
+- Balanced detection across all object sizes
+
+**Performance Breakdown:**
+- Motorcycle (class 2): Significant improvement expected
+- Bicycle (class 3): Significant improvement expected  
+- Pedestrian (class 4): Significant improvement expected
+- Other classes: Maintain or slight improvement
+
+COMPARISON WITH PREVIOUS EXPERIMENTS:
+
+**vs Baseline (3-scale FPN):**
+- Better small object detection through auxiliary detector
+- Enhanced feature processing for high-resolution scales
+- Balanced training strategy
+
+**vs patch_size=2 experiment:**
+- More stable training (patch_size=4 vs patch_size=2)
+- Better memory efficiency (batch_size=6 vs batch_size=2)
+- Focused approach on detection task rather than architecture changes
+
+TRAINING CONFIGURATION:
+
+- **Architecture**: patch_size=4 + 4-scale FPN + ABC Head
+- **Training Steps**: 100,000 (faster iteration for ABC validation)
+- **Batch Size**: 6 (expected stable with patch_size=4)
+- **Loss Weighting**: Main=1.0, Auxiliary=2.0
+- **Small Object Classes**: [2, 3, 4] (Motorcycle, Bicycle, Pedestrian)
+- **Auxiliary Scales**: [0, 1] (P1, P2 - stride 4, 8)
+
+RISKS AND MITIGATION:
+
+**Potential Risks:**
+- Increased model complexity may slow training
+- Auxiliary detector may interfere with main detector performance
+- Memory usage increase due to dual detection heads
+
+**Mitigation Strategies:**
+- Careful loss weighting to balance main and auxiliary tasks
+- Efficient auxiliary detector design (only 2 scales vs 4)
+- Memory optimization through enhanced feature sharing
+
+SUCCESS CRITERIA:
+
+**Must Achieve:**
+- Small objects AP > 19% (vs 17.28% baseline)
+- Overall mAP > 35% (vs 34.02% baseline)
+- Stable training convergence (final loss < 3.5)
+
+**Target Achievement:**
+- Small objects AP > 20% (+15% improvement)
+- Overall mAP > 36% (+5% improvement)
+- Maintained performance on medium/large objects
+
+**Breakthrough Achievement:**
+- Small objects AP > 22% (+25% improvement)
+- Overall mAP > 38% (+10% improvement)
+- Balanced detection across all object sizes
+
+INNOVATION ASPECTS:
+
+1. **First ABC implementation for event-based object detection**
+2. **Specialized auxiliary detector for small objects**
+3. **Multi-task learning approach for detection**
+4. **High-resolution feature enhancement for small objects**
+5. **Balanced training strategy for class imbalance**
+
+This experiment represents a significant advancement in small object detection for event-based vision systems, combining the strengths of multi-task learning with specialized auxiliary detection.

@@ -1,0 +1,85 @@
+ABC_sod_basic_100k Training Command
+=================================
+
+Date: 2025-07-16
+Experiment: ABC (Auxiliary Balanced Classifier) for Small Object Detection
+
+TRAINING COMMAND:
+python train.py \
+  +model/maxvit_yolox=abc_sod_basic \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=4 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  ++model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=ABC_sod_basic_100k
+
+SCREEN COMMAND:
+screen -dmS ABC_sod_basic_100k
+screen -S ABC_sod_basic_100k -p 0 -X stuff "cd /home/oeoiewt/eTraM/rvt_eTram\n"
+screen -S ABC_sod_basic_100k -p 0 -X stuff "source /home/oeoiewt/miniconda3/etc/profile.d/conda.sh && conda activate rvt && python train.py +model/maxvit_yolox=abc_sod_basic dataset=gen4 dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample hardware.gpus=0 batch_size.train=6 batch_size.eval=4 hardware.num_workers.train=4 hardware.num_workers.eval=3 training.max_steps=100000 dataset.train.sampling=stream ++model.head.num_classes=8 wandb.project_name=etram_enhanced wandb.group_name=ABC_sod_basic_100k; echo 'Training completed! Press Enter to continue...'; read\n"
+
+VALIDATION COMMAND:
+python validation.py dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  checkpoint=experiments/ABC_sod_basic_100k/checkpoints/final_model.ckpt \
+  +model/maxvit_yolox=abc_sod_basic \
+  hardware.gpus=0 batch_size.eval=4 \
+  +batch_size.train=4 +hardware.num_workers.train=2 hardware.num_workers.eval=2 \
+  ++model.head.num_classes=8
+
+PARAMETERS:
+- Model: abc_sod_basic (ABC Head with auxiliary small object detector)
+- Dataset: etram_cls8_sample
+- Steps: 100,000 (faster iteration for ABC validation)
+- Batch size: 6 (train), 4 (eval)
+- Workers: 4 (train), 3 (eval)
+- Classes: 8 (Car, Truck, Motorcycle, Bicycle, Pedestrian, Bus, Static, Other)
+- Small object classes: [2, 3, 4] (Motorcycle, Bicycle, Pedestrian)
+- GPU: 0
+- Sampling: stream
+
+ABC-SPECIFIC PARAMETERS:
+- Main loss weight: 1.0
+- Auxiliary loss weight: 2.0
+- Auxiliary scales: [0, 1] (P1, P2 - stride 4, 8)
+- Enhanced features: True
+- Size-aware loss: True (weight=2.0)
+
+EXPECTED TRAINING TIME: ~4-6 hours (faster than 200k experiments)
+EXPECTED MEMORY USAGE: ~10-12GB (slightly higher than baseline due to auxiliary head)
+
+MONITORING:
+- WandB project: etram_enhanced
+- WandB group: ABC_sod_basic_100k
+- Screen session: ABC_sod_basic_100k
+- Log location: experiments/ABC_sod_basic_100k/training_logs/
+
+CHECKPOINT MANAGEMENT:
+- Checkpoint save path: experiments/ABC_sod_basic_100k/checkpoints/
+- Final model: final_model.ckpt
+- Confusion matrices: experiments/ABC_sod_basic_100k/confusion_matrices/
+
+SUCCESS INDICATORS:
+- Training starts without errors
+- ABC head properly initializes
+- Multi-task loss computation works correctly
+- Memory usage within acceptable limits
+- Convergence to final loss < 3.5
+
+DEBUGGING NOTES:
+- If import errors occur, check auxiliary_detector.py, abc_loss.py, abc_head.py imports
+- If configuration errors occur, verify abc_sod_basic.yaml syntax
+- If memory errors occur, reduce batch_size.train to 4
+- If loss computation errors occur, check target filtering in ABC loss
+
+COMPARISON BASELINE:
+- Baseline: 34.02% mAP, 17.28% small objects AP
+- Target: >36% mAP, >20% small objects AP
+- Improvement: +5% overall, +15% small objects

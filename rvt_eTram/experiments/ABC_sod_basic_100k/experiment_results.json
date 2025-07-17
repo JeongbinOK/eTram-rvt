@@ -1,0 +1,73 @@
+{
+  "experiment_id": "ABC_sod_basic_100k",
+  "date": "2025-07-16",
+  "status": "completed",
+  "architecture": "RVT + ABC (Auxiliary Balanced Classifier)",
+  "training": {
+    "total_steps": 100000,
+    "epochs": 2,
+    "final_loss": 4.1,
+    "training_time_hours": 4.5,
+    "batch_size": 6,
+    "learning_rate": "default",
+    "optimizer": "AdamW",
+    "wandb_id": "2x3aelwm"
+  },
+  "model_config": {
+    "backbone": "MaxViT + ConvLSTM",
+    "fpn": "YOLO PAFPN (3-scale)",
+    "strides": [8, 16, 32],
+    "head": "ABC Head (Main + Auxiliary)",
+    "aux_head": {
+      "use_auxiliary": true,
+      "num_small_classes": 3,
+      "small_classes": [2, 3, 4],
+      "aux_scales": [0, 1],
+      "enhanced_features": true
+    },
+    "loss": {
+      "main_loss_weight": 1.0,
+      "aux_loss_weight": 2.0,
+      "type": "ABCMultiTaskLoss"
+    }
+  },
+  "performance": {
+    "overall_map": 0.317,
+    "overall_ap50": 0.654,
+    "overall_ap75": 0.264,
+    "small_objects_map": 0.148,
+    "medium_objects_map": 0.331,
+    "large_objects_map": 0.484,
+    "comparison_vs_baseline": {
+      "overall_map_change": -2.3,
+      "small_objects_change": -2.5,
+      "status": "underperforming"
+    }
+  },
+  "detailed_metrics": {
+    "class_2_motorcycle": {
+      "ap": 0.405,
+      "ap50": 0.737,
+      "instances": 16174
+    },
+    "class_3_bicycle": {
+      "ap": 0.104,
+      "ap50": 0.283,
+      "instances": 1180
+    }
+  },
+  "conclusions": {
+    "success": false,
+    "key_findings": [
+      "ABC auxiliary head did not improve small object detection",
+      "Overall performance degraded compared to baseline",
+      "Multi-task learning may have introduced optimization conflicts",
+      "Auxiliary loss weight of 2.0 may have been too aggressive"
+    ],
+    "next_steps": [
+      "Try different auxiliary loss weights (0.5, 1.0)",
+      "Implement size-aware loss instead of auxiliary head approach",
+      "Focus on single-task optimization with better anchoring"
+    ]
+  }
+}
