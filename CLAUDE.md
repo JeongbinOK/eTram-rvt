@@ -612,3 +612,396 @@ validation_results/{EXPERIMENT_ID}/
 2. **체계성**: 표준 폴더 구조 유지
 3. **비교성**: 베이스라인 대비 성능 측정
 4. **문서화**: 각 실험의 목적과 결과 명확히 기록
+
+## 640×360 해상도 소형 객체 검출 혁신 전략
+
+### 🎯 현재 성능 한계 및 목표
+
+**현재 베이스라인 성능:**
+- **Overall mAP**: 34.02%
+- **Small objects mAP**: 17.28% (클래스 2,3,4: Motorcycle, Bicycle, Pedestrian)
+
+**목표 성능:**
+- **Small objects mAP**: 20-25% (+15-45% 향상)
+- **Overall mAP**: 37-39% (+5-10% 향상)
+
+### 📊 혁신적 접근법 우선순위
+
+| 방법 | 예상 개선폭 | 구현 난이도 | 우선순위 |
+|------|-------------|-------------|----------|
+| **ConvLSTM + Temporal Attention** | +4-6% mAP | 중간 | 🔥 최고 |
+| **Size-aware Loss v2** | +3-5% mAP | 낮음 | 🔥 최고 |
+| **4-scale P1 최적화** | +2-3% mAP | 낮음 | ⚡ 높음 |
+| **Deformable Conv + SE** | +2-4% mAP | 중간 | ⚡ 높음 |
+| **VTEI + Advanced Aug** | +1-3% mAP | 높음 | 🎯 중간 |
+| **Multi-res Training** | +3-5% mAP | 높음 | 🎯 중간 |
+
+### 🚀 1단계: 고급 시간적 모델링 (이벤트 카메라 특화)
+
+**이론적 근거**: 이벤트 카메라의 시간적 정보는 소형 객체의 motion pattern에서 핵심적 역할
+
+#### A) ConvLSTM 강화 (Recurrent YOLOv8 기반)
+```python
+class EnhancedConvLSTM(nn.Module):
+    def __init__(self, input_channels, hidden_channels, num_layers=2):
+        # Multi-temporal fusion으로 여러 시간 스케일 통합
+        self.multi_temporal_fusion = MultiTemporalFusion()
+        self.conv_lstm = ConvLSTM(input_channels, hidden_channels, num_layers)
+```
+
+#### B) Sparse Cross-Attention (ASTMNet 기반)
+```python
+class EventSparseAttention(nn.Module):
+    def __init__(self, channels):
+        # Event features와 backbone features 간 cross-attention
+        self.cross_attention = SparseMultiHeadAttention()
+        self.temporal_consistency = TemporalConsistencyModule()
+```
+
+#### C) Motion-Aware Feature Enhancement
+```python
+class MotionAwareEnhancer(nn.Module):
+    def __init__(self):
+        # Event polarity 기반 motion direction 예측
+        self.motion_predictor = MotionPredictor()
+        self.trajectory_tracker = TrajectoryTracker()
+```
+
+### ⚖️ 2단계: 적응적 Loss 함수 혁신
+
+#### A) Size-Weighted Loss with Feedback
+```python
+class AdaptiveSizeAwareLoss(nn.Module):
+    def forward(self, pred, target, bbox_sizes):
+        # 동적 가중치 with feedback mechanism
+        feedback_multiplier = self.compute_feedback(training_history)
+        small_weight = torch.exp(-bbox_sizes / threshold) * feedback_multiplier
+        return weighted_loss
+```
+
+#### B) Temporal Consistency Loss
+```python
+class TemporalConsistencyLoss(nn.Module):
+    def forward(self, current_pred, previous_pred, motion_vectors):
+        # 연속 프레임 간 small object tracking loss
+        temporal_loss = self.consistency_penalty(current_pred, previous_pred)
+        return temporal_loss
+```
+
+#### C) Hard Negative Mining for Small Objects
+```python
+class SmallObjectHardMining(nn.Module):
+    def mine_hard_negatives(self, predictions, targets):
+        # Small object 주변의 어려운 negative samples 강화 학습
+        hard_negatives = self.select_hard_samples(predictions, targets)
+        return hard_negatives
+```
+
+### 🔍 3단계: Multi-Scale Feature 혁신
+
+#### A) 4-Scale FPN 최적화
+```python
+class OptimizedP1Features(nn.Module):
+    def __init__(self):
+        # P1 features를 small objects 전용으로 fine-tuning
+        self.small_object_enhancer = SmallObjectEnhancer()
+        self.scale_specific_norm = ScaleSpecificNormalization()
+```
+
+#### B) Squeeze-and-Excitation + Deformable Convolutions
+```python
+class AdaptiveFeatureModule(nn.Module):
+    def __init__(self, channels):
+        # 각 scale별 adaptive feature enhancement
+        self.se_block = SEBlock(channels)
+        self.deformable_conv = DeformableConv2d(channels, channels)
+```
+
+#### C) Adaptive Feature Fusion
+```python
+class EventDensityFusion(nn.Module):
+    def __init__(self):
+        # Event density에 따른 dynamic feature fusion
+        self.density_estimator = EventDensityEstimator()
+        self.adaptive_fusion = AdaptiveFusionLayer()
+```
+
+### 📡 4단계: Event Data 처리 혁신
+
+#### A) Volume of Ternary Event Images (VTEI)
+```python
+class VTEIRepresentation(nn.Module):
+    def __init__(self):
+        # Positive/Negative/Zero states로 세분화
+        self.ternary_encoder = TernaryEventEncoder()
+        self.volume_processor = VolumeProcessor()
+```
+
+#### B) Random Polarity Suppression
+```python
+class EventAugmentation(nn.Module):
+    def __init__(self):
+        # Small objects에 특화된 augmentation strategies
+        self.polarity_suppression = PolaritySuppressionAug()
+        self.noise_injection = NoiseInjectionAug()
+```
+
+#### C) Sparse Data Optimization
+```python
+class SparseEventProcessor(nn.Module):
+    def __init__(self):
+        # Memory-efficient sparse tensor operations
+        self.sparse_conv = SparseConv3d()
+        self.sparse_attention = SparseAttentionLayer()
+```
+
+### 🏗️ 5단계: 아키텍처 수준 혁신
+
+#### A) Multi-Resolution Training
+```python
+class MultiResolutionTraining:
+    def __init__(self):
+        # 640×360 + 1280×720 mixed training
+        self.resolution_scheduler = ResolutionScheduler()
+        self.scale_invariance_loss = ScaleInvarianceLoss()
+```
+
+#### B) Teacher-Student Distillation
+```python
+class SmallObjectDistillation(nn.Module):
+    def __init__(self, teacher_model, student_model):
+        # High-resolution teacher → Low-resolution student
+        self.knowledge_transfer = KnowledgeTransferModule()
+        self.feature_distillation = FeatureDistillationLoss()
+```
+
+#### C) Neural Architecture Search (NAS)
+```python
+class EventNAS:
+    def __init__(self):
+        # Small object detection에 특화된 architecture 자동 탐색
+        self.search_space = EventBasedSearchSpace()
+        self.performance_estimator = SmallObjectPerformanceEstimator()
+```
+
+### 🎯 실험 로드맵
+
+#### Phase 1: 즉시 구현 (1-2주)
+1. **Size-aware Loss v2**: Dynamic feedback mechanism 추가
+2. **4-scale P1 최적화**: P1 features 전용 처리 모듈
+3. **ConvLSTM 강화**: Multi-temporal fusion 구현
+
+#### Phase 2: 중기 구현 (2-4주)
+1. **Temporal Attention**: Event-specific attention mechanisms
+2. **Deformable Convolutions**: Shape-adaptive feature extraction
+3. **Advanced Augmentation**: Small object 특화 data augmentation
+
+#### Phase 3: 장기 실험 (4-8주)
+1. **Multi-resolution Training**: Scale invariance 강화
+2. **Teacher-Student Distillation**: Knowledge transfer
+3. **Neural Architecture Search**: Optimal architecture 탐색
+
+### 📈 예상 성능 향상
+
+**누적 개선 효과:**
+- **Phase 1 완료**: 17.28% → 19-21% mAP (+10-20%)
+- **Phase 2 완료**: 19-21% → 22-24% mAP (+15-25%)  
+- **Phase 3 완료**: 22-24% → 25-27% mAP (+20-30%)
+
+**최종 목표**: Small objects 25% mAP, Overall 38-40% mAP
+
+## 표준 실험 문서화 프로세스
+
+### 📋 필수 문서화 파일 구조
+
+```
+experiments/{EXPERIMENT_ID}/
+├── experiment_hypothesis.txt      # 실험 가설 및 이론적 근거
+├── modification_details.txt       # 코드 수정사항 상세 기록  
+├── implementation_details.txt     # 구현 세부사항 및 아키텍처
+├── experiment_config.yaml         # 실험 설정 파일 백업
+├── code_changes_summary.txt       # 주요 변경사항 요약
+├── training_command.txt           # 실제 사용한 훈련 명령어
+├── memory_test_results.txt        # 메모리 테스트 및 최적화 결과
+├── experiment_results.json        # 최종 성능 결과 및 분석
+├── checkpoints/final_model.ckpt   # 최종 훈련된 모델
+├── confusion_matrices/            # Confusion matrix 이미지들
+├── training_logs/                 # 훈련 로그 파일들
+└── validation_results/            # Validation 상세 결과
+```
+
+### 🔄 실험 단계별 체크리스트
+
+#### 1. 실험 기획 단계 (Day 0)
+- [ ] **실험 가설 수립**: `experiment_hypothesis.txt` 작성
+- [ ] **이론적 근거 정리**: 기존 연구 및 예상 효과 분석
+- [ ] **성공 기준 설정**: 정량적 성능 목표 설정
+- [ ] **리스크 분석**: 잠재적 실패 원인 및 대응책
+
+#### 2. 구현 단계 (Day 1-3)
+- [ ] **코드 수정사항 기록**: `modification_details.txt` 실시간 업데이트
+- [ ] **설정 파일 백업**: `experiment_config.yaml` 저장
+- [ ] **Git 브랜치 생성**: 실험 전용 브랜치에서 작업
+- [ ] **Unit Test 실행**: 개별 컴포넌트 기능 검증
+
+#### 3. 메모리 최적화 단계 (Day 3-4)
+- [ ] **메모리 테스트**: `memory_test_results.txt` 작성
+- [ ] **Batch size 최적화**: OOM 방지 및 성능 균형
+- [ ] **Hardware 설정 확인**: GPU 메모리 및 Workers 수 조정
+
+#### 4. 훈련 실행 단계 (Day 4-5)
+- [ ] **Screen 세션 생성**: 장시간 훈련 안정성 확보
+- [ ] **훈련 명령어 기록**: `training_command.txt` 저장
+- [ ] **실시간 모니터링**: WandB 또는 로그를 통한 진행상황 추적
+- [ ] **중간 체크포인트 확인**: Overfitting 및 수렴성 모니터링
+
+#### 5. 검증 및 분석 단계 (Day 5-6)
+- [ ] **Validation 실행**: 표준 평가 스크립트 사용
+- [ ] **성능 지표 수집**: mAP, AP50, AR 등 상세 메트릭
+- [ ] **베이스라인 비교**: 기존 실험 대비 성능 변화 분석
+- [ ] **Confusion Matrix 분석**: 클래스별 성능 개선/저하 확인
+
+#### 6. 문서화 및 정리 단계 (Day 6-7)
+- [ ] **실험 결과 종합**: `experiment_results.json` 완성
+- [ ] **주요 발견사항 정리**: 성공/실패 원인 분석
+- [ ] **다음 실험 방향 제시**: 개선점 및 후속 연구 계획
+- [ ] **Git 커밋**: 모든 실험 결과물 저장
+
+### 📊 성능 평가 표준
+
+#### 정량적 지표
+- **Overall mAP**: 전체 평균 정밀도
+- **Small Objects mAP**: 클래스 2,3,4 (Motorcycle, Bicycle, Pedestrian) 성능
+- **AP50/AP75**: IoU threshold별 성능
+- **AR (Average Recall)**: 재현율 지표
+
+#### 정성적 분석
+- **훈련 안정성**: Loss 수렴 패턴 및 안정성
+- **메모리 효율성**: 메모리 사용량 및 훈련 속도
+- **실용성**: 실제 배포 가능성 및 계산 복잡도
+
+#### 비교 기준
+- **베이스라인**: 3-scale baseline (34.02% mAP, 17.28% small objects)
+- **상대 성능**: 베이스라인 대비 개선/저하 정도
+- **실험 시리즈**: 동일 카테고리 실험들 간 비교
+
+### 🚨 일반적 실험 실패 원인 및 대응
+
+#### 메모리 관련 실패
+- **원인**: Batch size 과다, Workers 수 부적절
+- **대응**: 체계적 메모리 테스트 및 단계적 조정
+
+#### 수렴 관련 실패  
+- **원인**: Learning rate 부적절, Loss 함수 불균형
+- **대응**: 훈련 초기 상세 모니터링 및 조기 중단
+
+#### 성능 저하
+- **원인**: 과도한 복잡성, 데이터셋 미스매치
+- **대응**: 단계적 복잡성 증가 및 Ablation study
+
+#### 재현성 실패
+- **원인**: 설정 파일 불일치, Random seed 미설정
+- **대응**: 완전한 설정 백업 및 환경 고정
+
+## 실험 성능 순위 및 주요 발견사항
+
+### 📊 전체 실험 성능 순위 (Overall mAP)
+
+| 순위 | 실험명 | Overall mAP | Small Objects mAP | 아키텍처 | 주요 특징 |
+|------|--------|-------------|-------------------|----------|-----------|
+| 🥇 | **3scale_sizeaware_100k** | **34.08%** | 13.53% | 3-scale + Size-aware Loss | 안정적 최고 성능 |
+| 🥈 | **3scale_baseline** | **34.02%** | **17.28%** | 3-scale FPN | Small objects 최고 |
+| 🥉 | **4scale_sizeaware_100k** | 32.23% | 12.75% | 4-scale + Size-aware | P1 features 활용 |
+| 4 | **ABC_sod_basic_100k** | 31.7% | 14.8% | 4-scale + Multi-task | ABC 접근법 |
+| 5 | **patch2_4scale_sizeaware_200k** | 31.24% | 14.92% | patch=2 + 4-scale | Memory 제약 |
+| 6 | **4scale_enhanced_100k** | 30.93% | 14.83% | 4-scale FPN | P1 노이즈 문제 |
+| 7 | **3scale_sizeaware_attention_100k** | 24.7% | TBD | 3-scale + Attention | 극심한 성능 저하 |
+
+### 🔍 Small Objects 성능 순위
+
+| 순위 | 실험명 | Small Objects mAP | 변화량 | 상태 |
+|------|--------|------------------|--------|------|
+| 🥇 | **3scale_baseline** | **17.28%** | 기준점 | ✅ 최고 성능 |
+| 2 | **ABC_sod_basic_100k** | 14.8% | -2.5% | ❌ 하락 |
+| 3 | **patch2_4scale_sizeaware_200k** | 14.92% | -2.36% | ❌ 하락 |
+| 4 | **4scale_enhanced_100k** | 14.83% | -2.45% | ❌ 하락 |
+| 5 | **3scale_sizeaware_100k** | 13.53% | -3.75% | ❌ 하락 |
+| 6 | **4scale_sizeaware_100k** | 12.75% | -4.53% | ❌ 하락 |
+
+### 🚨 핵심 발견사항
+
+#### 1. **복잡성 역설** (Complexity Paradox)
+**발견**: 모든 "개선" 시도가 베이스라인보다 성능 저하를 일으켰음
+
+**관찰된 패턴**:
+```
+복잡성 순서: 3scale_baseline < ABC < 4scale < attention
+성능 순서:   3scale_baseline > ABC > 4scale > attention
+```
+
+**결론**: 640×360 해상도에서 **단순함이 최고의 성능**을 보장
+
+#### 2. **해상도 제약의 근본적 한계**
+**발견**: 아키텍처 개선보다 **해상도 증가**가 더 중요
+
+**증거**:
+- P1 features (stride 4) 활용 시도들 모두 실패
+- 고해상도 features의 노이즈 문제
+- Small objects 정보 부족 (640×360 제약)
+
+**제안**: 1280×720 해상도 우선 실험 필요
+
+#### 3. **Multi-task Learning의 한계**
+**ABC 실험 교훈**:
+- Multi-task learning이 단일 task보다 어려움
+- Gradient conflicts로 인한 최적화 문제
+- Small dataset에서 복잡한 architecture의 과적합 위험
+
+#### 4. **Small Object Detection의 근본 문제**
+**관찰**: 모든 small object 개선 시도 실패
+
+**원인 분석**:
+- **데이터 품질**: Event-based data의 sparse nature
+- **해상도 한계**: 640×360에서 small objects 정보 부족
+- **클래스 불균형**: Motorcycle(16K) vs Bicycle(1K) instances
+
+### 🎯 혁신적 접근법 우선순위 (업데이트)
+
+| 접근법 | 기존 예상 | 실제 결과 | 수정된 우선순위 |
+|--------|----------|----------|-----------------|
+| **해상도 증가** | +3-5% mAP | **미실험** | 🔥 **최우선** |
+| **Data-centric 개선** | +1-3% mAP | **미실험** | 🔥 **최우선** |
+| **Simple Loss 개선** | +3-5% mAP | **부분 성공** | ⚡ 높음 |
+| ~~Multi-task Learning~~ | +4-6% mAP | **-2.3% 실패** | ❌ 비추천 |
+| ~~4-scale FPN~~ | +2-3% mAP | **-3% 실패** | ❌ 비추천 |
+| ~~Attention Mechanisms~~ | +4-6% mAP | **-9.3% 실패** | ❌ 절대 금지 |
+
+### 💡 실용적 권장사항
+
+#### 즉시 실행할 방향
+1. **해상도 증가**: 640×360 → 1280×720 실험
+2. **Data augmentation**: 아키텍처 수정 대신 데이터 다양성
+3. **3-scale baseline 최적화**: 검증된 아키텍처 세밀 조정
+
+#### 피해야 할 접근법
+1. **복잡한 아키텍처**: Attention, Multi-task learning
+2. **P1 features 활용**: 노이즈 대비 이득 없음
+3. **과도한 engineering**: Simple is better
+
+### 📈 성능 개선 로드맵 (수정)
+
+#### Phase 1: Resolution First (최우선)
+- **목표**: 1280×720에서 베이스라인 재현
+- **예상 효과**: Small objects 20-25% mAP 달성 가능
+
+#### Phase 2: Data-Centric (고우선순위)
+- **목표**: Advanced augmentation, 데이터 품질 개선
+- **예상 효과**: 추가 2-3% mAP 향상
+
+#### Phase 3: Focused Enhancement (중간 우선순위)
+- **목표**: 검증된 simple modifications만
+- **예상 효과**: 미세 조정으로 1-2% 추가 향상
+
+**최종 목표**: Small objects 25% mAP, Overall 40% mAP (고해상도에서)
+
+이러한 발견사항들은 Event-based Small Object Detection 연구에서 **"복잡함보다 기본에 충실"**하라는 중요한 교훈을 제공합니다.

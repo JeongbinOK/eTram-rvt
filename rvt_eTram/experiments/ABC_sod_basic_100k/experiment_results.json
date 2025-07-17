@@ -15,8 +15,8 @@
   },
   "model_config": {
     "backbone": "MaxViT + ConvLSTM",
-    "fpn": "YOLO PAFPN (3-scale)",
-    "strides": [8, 16, 32],
+    "fpn": "YOLO PAFPN (4-scale)",
+    "strides": [4, 8, 16, 32],
     "head": "ABC Head (Main + Auxiliary)",
     "aux_head": {
       "use_auxiliary": true,
