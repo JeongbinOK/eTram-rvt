@@ -1,0 +1,4 @@
+🎉 LightweightEnhancedConvLSTM 훈련 성공적으로 시작됨!
+시작 시간: Wed Jul 23 05:27:35 AM UTC 2025
+예상 완료: ~6-7시간 후
+모니터링: screen -r lightweight_enhanced_100k
