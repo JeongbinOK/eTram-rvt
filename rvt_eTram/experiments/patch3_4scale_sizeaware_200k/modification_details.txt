@@ -1,0 +1,78 @@
+patch3_4scale_sizeaware_200k Modification Details
+=================================================
+
+Date: 2025-07-16
+Architecture: patch_size=3 + 4-scale FPN + size-aware loss
+
+TECHNICAL IMPLEMENTATION:
+
+1. **Backbone Changes:**
+   - Modified stem.patch_size: 4 → 3
+   - File: config/model/maxvit_yolox/patch3_4scale_sizeaware.yaml
+   - Impact: Higher spatial resolution in initial feature extraction
+
+2. **Stride Calculations:**
+   - Stage 1 (P1): patch_size × 1 = 3 × 1 = 3
+   - Stage 2 (P2): patch_size × 2 = 3 × 2 = 6  
+   - Stage 3 (P3): patch_size × 4 = 3 × 4 = 12
+   - Stage 4 (P4): patch_size × 8 = 3 × 8 = 24
+   - Final detection strides: [3, 6, 12, 24]
+
+3. **Feature Pyramid Network:**
+   - in_stages: [1, 2, 3, 4] (4-scale FPN)
+   - Uses P1 features for small object detection
+   - Channel dimensions: [64, 128, 256, 512] (unchanged)
+   - Depth: 0.67 (unchanged)
+
+4. **Detection Head Configuration:**
+   - name: YoloX (unchanged)
+   - depthwise: False (unchanged)
+   - act: "silu" (unchanged)
+   - Automatic stride adaptation to [3, 6, 12, 24]
+
+5. **Size-Aware Loss Implementation:**
+   - size_aware_loss: True
+   - size_aware_weight: 2.0
+   - small_threshold: 1024 (32x32 pixels)
+   - medium_threshold: 9216 (96x96 pixels)  
+   - weight_type: "exponential"
+
+6. **Training Configuration:**
+   - max_steps: 200000
+   - Expected batch_size: 4-6 (to be determined by memory test)
+   - num_workers: 4 (train), 3 (eval)
+   - dataset: etram_cls8_sample
+   - num_classes: 8
+
+ARCHITECTURE FLOW:
+Input (720x1280) → patch_size=3 → P1(240x427) → P2(120x213) → P3(60x107) → P4(30x53)
+                                      ↓           ↓           ↓           ↓
+                                   stride=3    stride=6    stride=12   stride=24
+                                      ↓           ↓           ↓           ↓
+                                   Detection   Detection   Detection   Detection
+                                   Head        Head        Head        Head
+
+MEMORY OPTIMIZATION:
+- patch_size=3 reduces memory compared to patch_size=2
+- Expected ~33% memory reduction vs patch_size=2
+- Should enable batch_size=4 (2x improvement vs patch_size=2)
+
+EXPECTED BENEFITS:
+1. **Spatial Resolution:** 25% finer than baseline (stride 3 vs 4)
+2. **Memory Efficiency:** Better than patch_size=2
+3. **Training Stability:** Larger batch_size improves gradient statistics
+4. **Small Object Focus:** Size-aware loss prioritizes small objects
+
+IMPLEMENTATION FILES:
+- Model config: config/model/maxvit_yolox/patch3_4scale_sizeaware.yaml
+- Training command: experiments/patch3_4scale_sizeaware_200k/training_command.txt
+- Checkpoint: experiments/patch3_4scale_sizeaware_200k/checkpoints/
+
+VALIDATION COMMAND:
+python validation.py dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  checkpoint=experiments/patch3_4scale_sizeaware_200k/checkpoints/final_model.ckpt \
+  +model/maxvit_yolox=patch3_4scale_sizeaware \
+  hardware.gpus=0 batch_size.eval=4 \
+  +batch_size.train=4 +hardware.num_workers.train=2 hardware.num_workers.eval=2 \
+  ++model.head.num_classes=8

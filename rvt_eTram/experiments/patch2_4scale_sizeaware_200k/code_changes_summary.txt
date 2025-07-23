@@ -1,0 +1,269 @@
+Code Changes Summary - Patch Size 2 + 4-scale FPN + 200k Steps
+=================================================================
+
+Experiment: patch2_4scale_sizeaware_200k
+Date: 2025-07-15
+Strategy: Architectural optimization through spatial resolution enhancement
+
+===============================
+CORE MODIFICATIONS
+===============================
+
+### 1. Patch Size Reduction
+**Target**: Enhanced spatial resolution for small object detection
+**Change**: patch_size: 4 → 2 (2x spatial resolution increase)
+**Impact**: 
+- Initial feature map size: 160×90 → 320×180
+- Memory requirements: ~4x increase
+- Spatial granularity: 2x finer localization
+
+### 2. FPN Scale Extension
+**Target**: Utilize highest resolution features for very small objects
+**Change**: in_stages: [2, 3, 4] → [1, 2, 3, 4] (3-scale → 4-scale)
+**Impact**:
+- New P1 features: stride=2, 320×180 resolution
+- Detection strides: [4, 8, 16, 32] → [2, 4, 8, 16]
+- Small object coverage: Enhanced very small object detection
+
+### 3. Training Duration Extension
+**Target**: Overcome batch size limitations through extended training
+**Change**: max_steps: 100000 → 200000 (2x training duration)
+**Impact**:
+- Convergence time: Sufficient for complex architecture
+- Target loss: < 3.5% (vs 5.18% at 100k steps)
+- Training stability: Better accommodation of small batch sizes
+
+===============================
+NEW FILES CREATED
+===============================
+
+### 1. Model Configuration
+**File**: `config/model/maxvit_yolox/patch2_4scale_sizeaware.yaml`
+**Purpose**: Define patch_size=2 + 4-scale FPN architecture
+
+**Key Settings**:
+```yaml
+model:
+  backbone:
+    stem:
+      patch_size: 2  # Core change: 4 → 2
+  fpn:
+    in_stages: [1, 2, 3, 4]  # 4-scale FPN with P1 features
+  head:
+    size_aware_loss: true    # Maintained from previous experiments
+    size_aware_weight: 2.0
+    small_threshold: 1024
+    medium_threshold: 9216
+    weight_type: "exponential"
+training:
+  max_steps: 200000  # Extended training: 100k → 200k
+```
+
+### 2. Experiment Documentation
+**Files Created**:
+- `experiments/patch2_4scale_sizeaware_200k/experiment_hypothesis.txt`
+- `experiments/patch2_4scale_sizeaware_200k/modification_details.txt`
+- `experiments/patch2_4scale_sizeaware_200k/training_command.txt`
+- `experiments/patch2_4scale_sizeaware_200k/code_changes_summary.txt`
+
+**Purpose**: Complete experimental documentation following established standards
+
+===============================
+ARCHITECTURE CHANGES
+===============================
+
+### Before (Baseline: patch_size=4, 3-scale)
+```
+Input (640×360)
+    ↓ patch_size=4
+Features (160×90)
+    ↓
+P2 (stride=8):  80×45   - Small objects
+P3 (stride=16): 40×23   - Medium objects  
+P4 (stride=32): 20×12   - Large objects
+```
+
+### After (patch_size=2, 4-scale)
+```
+Input (640×360)
+    ↓ patch_size=2
+Features (320×180)
+    ↓
+P1 (stride=2):  320×180 - Very small objects ← NEW
+P2 (stride=4):  160×90  - Small objects
+P3 (stride=8):  80×45   - Medium objects
+P4 (stride=16): 40×23   - Large objects
+```
+
+### Impact Analysis
+**Resolution Enhancement**:
+- **2x spatial resolution** at all FPN levels
+- **4x feature map area** in early stages
+- **Finer spatial granularity** for small object localization
+
+**Object Detection Mapping**:
+- **P1 (stride=2)**: 8×8 ~ 16×16 pixel objects (distant pedestrians)
+- **P2 (stride=4)**: 16×16 ~ 32×32 pixel objects (motorcycles, close pedestrians)
+- **P3 (stride=8)**: 32×32 ~ 64×64 pixel objects (cars, trucks)
+- **P4 (stride=16)**: 64×64+ pixel objects (buses, large vehicles)
+
+===============================
+MEMORY OPTIMIZATION
+===============================
+
+### Challenge: 4x Memory Increase
+**Root Cause**: patch_size=2 + 4-scale FPN dramatically increases memory usage
+
+**Solution Strategy**:
+1. **Reduced batch size**: 6 → 2 (primary)
+2. **Gradient accumulation**: batch_size=1 + accumulation=2 (fallback)
+3. **Mixed precision**: Optional memory saving
+4. **Worker reduction**: Reduced data loading workers if needed
+
+### Training Configuration
+**Primary Configuration**:
+```yaml
+batch_size:
+  train: 2  # Reduced from 6
+  eval: 2
+hardware:
+  num_workers:
+    train: 4
+    eval: 3
+```
+
+**Fallback Configuration**:
+```yaml
+batch_size:
+  train: 1
+  eval: 1
+training:
+  accumulate_grad_batches: 2  # Effective batch_size = 2
+hardware:
+  num_workers:
+    train: 2  # Reduced workers
+    eval: 1
+```
+
+===============================
+TRAINING STRATEGY
+===============================
+
+### Extended Training Rationale
+**Problem**: Previous patch_size=2 experiment achieved 5.18% final loss vs 3%+ in other experiments
+**Solution**: Double training duration to 200k steps
+
+**Expected Training Phases**:
+1. **0-50k steps**: Rapid initial learning and adaptation
+2. **50k-150k steps**: Steady convergence and performance improvement
+3. **150k-200k steps**: Fine-tuning and final convergence
+
+### Performance Targets
+- **Final loss**: < 3.5% (vs 5.18% at 100k steps)
+- **Overall mAP**: > 25% (vs 15.64% current)
+- **Small object mAP**: > 18% (vs 17.28% baseline)
+
+===============================
+COMPARISON FRAMEWORK
+===============================
+
+### Experimental Hierarchy
+**This experiment builds upon**:
+1. **3-scale baseline**: 34.02% mAP, 17.28% small objects (proven architecture)
+2. **patch_size=2 + 3-scale**: 15.64% AP, 5.18% loss (under-trained)
+3. **4-scale experiments**: Mixed results, P1 potential unexplored
+
+### Ablation Components
+**This experiment isolates**:
+- **Patch size effect**: 2 vs 4 (spatial resolution)
+- **FPN scale effect**: 3-scale vs 4-scale (P1 features)
+- **Training duration effect**: 100k vs 200k steps (convergence)
+
+===============================
+EXPECTED OUTCOMES
+===============================
+
+### Success Scenario
+**Quantitative**:
+- Overall mAP: 25-30% (significant improvement)
+- Small object mAP: 18-22% (exceeds baseline)
+- Final loss: ~3% (proper convergence)
+
+**Qualitative**:
+- Successful 200k step completion
+- Stable training without OOM
+- Clear performance improvements
+
+### Failure Scenario
+**Indicators**:
+- OOM errors preventing training completion
+- Final loss > 4% (insufficient convergence)
+- mAP < 20% (no improvement over current)
+
+**Contingency**: Immediate pivot to data-driven threshold tuning
+
+===============================
+TECHNICAL INNOVATIONS
+===============================
+
+### Novel Contributions
+1. **Systematic patch_size optimization**: First comprehensive patch_size=2 study for small objects
+2. **4-scale FPN with P1 features**: Utilization of highest resolution features
+3. **Extended training methodology**: 200k steps for complex architectures
+4. **Memory-constrained training**: Optimization strategies for resource limits
+
+### Research Value
+**Positive Results**: Validates spatial resolution enhancement approach
+**Negative Results**: Confirms architectural limitation, guides future research
+
+===============================
+IMPLEMENTATION STATUS
+===============================
+
+### Completed Components
+- ✅ Model configuration file creation
+- ✅ Experiment documentation framework
+- ✅ Training command specification
+- ✅ Memory optimization strategy
+- ✅ Evaluation framework design
+
+### Pending Implementation
+- 🔄 Model config file deployment
+- 🔄 Memory feasibility testing
+- 🔄 200k step training execution
+- 🔄 Validation and results analysis
+
+===============================
+REUSED COMPONENTS
+===============================
+
+### Maintained from Previous Experiments
+- **Size-aware loss**: Complete preservation of proven loss function
+- **RVT backbone**: Unchanged recurrent vision transformer
+- **YOLOX detection head**: Automatic adaptation to 4 scales
+- **Training pipeline**: Established optimization and data loading
+- **Evaluation framework**: Standard COCO metrics and comparison
+
+### Configuration Inheritance
+- **Dataset**: etram_cls8_sample (consistency across experiments)
+- **Hardware setup**: Same GPU and system configuration
+- **Optimization**: Same optimizer and learning rate schedule
+- **Logging**: WandB integration and progress tracking
+
+===============================
+CONCLUSION
+===============================
+
+This experiment represents a systematic approach to small object detection enhancement through:
+
+1. **Spatial Resolution**: patch_size=2 for 2x finer spatial granularity
+2. **Feature Utilization**: 4-scale FPN with P1 features for very small objects
+3. **Training Adequacy**: 200k steps for proper convergence
+4. **Memory Management**: Optimized batch sizes and resource usage
+
+The implementation maintains proven components while introducing targeted architectural improvements, providing a controlled test of spatial resolution enhancement effects on small object detection performance.
+
+**Success will validate** the spatial resolution approach for small object detection.
+**Failure will confirm** the need for alternative approaches (data-driven threshold tuning).
+
+Both outcomes provide valuable research insights for the eTraM small object detection project.

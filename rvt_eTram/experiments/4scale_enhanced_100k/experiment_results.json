@@ -1,0 +1,119 @@
+{
+  "experiment_metadata": {
+    "experiment_id": "4scale_enhanced_100k",
+    "timestamp": "2025-07-10_05:00:00",
+    "model_architecture": "4-scale FPN with P1 features",
+    "fpn_stages": "[1, 2, 3, 4]",
+    "fpn_strides": "[4, 8, 16, 32]",
+    "training_steps": 100000,
+    "training_duration": "~6 hours 20 minutes",
+    "final_checkpoint": "final_model.ckpt",
+    "dataset": "etram_cls8_sample",
+    "wandb_id": "4zbwvsi0",
+    "git_commit": "TBD"
+  },
+  "model_modifications": {
+    "architecture_changes": [
+      "Extended FPN from 3-scale to 4-scale",
+      "Added P1 features at stride 4 for high-resolution detection",
+      "Modified fpn.in_stages from [2,3,4] to [1,2,3,4]",
+      "Enabled highest resolution pathway for small objects"
+    ],
+    "hypothesis": "P1 features (stride 4) should improve small object detection",
+    "expected_improvement": "15-25% improvement in small object mAP"
+  },
+  "evaluation_results": {
+    "overall_metrics": {
+      "mAP": 0.3093,
+      "AP50": 0.6234,
+      "AP75": 0.2730,
+      "AR_100": 0.4157
+    },
+    "size_based_metrics": {
+      "small_objects": {
+        "mAP": 0.1483,
+        "classes_included": [2, 3, 4],
+        "class_names": ["Motorcycle", "Bicycle", "Pedestrian"],
+        "baseline_comparison": -0.0245,
+        "improvement_vs_baseline": "-2.45%",
+        "note": "UNEXPECTED: Performance decreased instead of improved"
+      },
+      "medium_objects": {
+        "mAP": 0.3097,
+        "classes_included": [0, 1, 5, 6, 7],
+        "class_names": ["Car", "Truck", "Bus", "Static", "Other"],
+        "baseline_comparison": -0.0306,
+        "improvement_vs_baseline": "-3.06%"
+      },
+      "large_objects": {
+        "mAP": 0.5268,
+        "baseline_comparison": -0.0426,
+        "improvement_vs_baseline": "-4.26%",
+        "note": "All object sizes showed performance degradation"
+      }
+    },
+    "validation_details": {
+      "iterations": 724,
+      "duration": "2:01 minutes",
+      "speed": "5.97 it/s"
+    }
+  },
+  "comparison_with_baseline": {
+    "baseline_3scale": {
+      "overall_mAP": 0.3402,
+      "small_objects_mAP": 0.1728,
+      "AP50": 0.6703,
+      "AP75": 0.3079
+    },
+    "enhanced_4scale": {
+      "overall_mAP": 0.3093,
+      "small_objects_mAP": 0.1483,
+      "AP50": 0.6234,
+      "AP75": 0.2730
+    },
+    "performance_change": {
+      "overall_mAP": -0.0309,
+      "small_objects_mAP": -0.0245,
+      "AP50": -0.0469,
+      "AP75": -0.0349,
+      "summary": "All metrics decreased - hypothesis not validated"
+    }
+  },
+  "research_findings": {
+    "hypothesis_validation": false,
+    "unexpected_result": true,
+    "key_insights": [
+      "P1 features alone do not improve small object detection",
+      "Additional model complexity may require different training strategies",
+      "High-resolution features may contain too much noise for this dataset",
+      "Same training configuration not optimal for larger model"
+    ],
+    "potential_causes": [
+      "Insufficient training for increased model complexity",
+      "Noisy P1 features overwhelming signal",
+      "Feature imbalance between different scales",
+      "Overfitting due to additional parameters on small dataset"
+    ],
+    "research_value": "Negative results provide valuable insights for future research directions"
+  },
+  "next_steps": {
+    "immediate_analysis": [
+      "Investigate P1 feature quality and noise levels",
+      "Analyze training curves for overfitting signs",
+      "Compare feature representations at different scales"
+    ],
+    "future_experiments": [
+      "Size-aware loss functions to properly weight small objects",
+      "Attention mechanisms for small object enhancement",
+      "Longer training with adjusted learning rates",
+      "Feature pyramid improvements and denoising"
+    ],
+    "methodology_improvements": [
+      "Different training strategies for larger models",
+      "Progressive training starting from 3-scale",
+      "Feature visualization and analysis tools"
+    ]
+  },
+  "experiment_status": "completed",
+  "conclusion": "4-scale FPN with P1 features did not improve performance as hypothesized. This negative result provides valuable insights for future small object detection research and highlights the complexity of feature pyramid optimization for event-based data."
+}

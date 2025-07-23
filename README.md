@@ -27,12 +27,13 @@ This repository contains an enhanced implementation of the eTraM (Event-based Tr
 
 ### Original vs Enhanced Architecture
 
-| Component | Original (3-scale) | Enhanced (4-scale) |
-|-----------|-------------------|-------------------|
-| **FPN Scales** | 8, 16, 32 | **4, 8, 16, 32** |
-| **P1 Features** | ❌ Not used | ✅ **Enabled for small objects** |
-| **Small Object mAP** | Baseline | **+15-25% improvement** |
-| **Detection Resolution** | 1/8 minimum | **1/4 minimum** |
+| Component | Original (3-scale) | Enhanced (4-scale) | Result |
+|-----------|-------------------|-------------------|---------|
+| **FPN Scales** | 8, 16, 32 | **4, 8, 16, 32** | ✅ Successfully implemented |
+| **P1 Features** | ❌ Not used | ✅ **Enabled for small objects** | ✅ Architecture works |
+| **Small Object mAP** | **17.28%** | **14.83%** | ❌ **-2.45% decrease** |
+| **Overall mAP** | **34.02%** | **30.93%** | ❌ **-3.09% decrease** |
+| **Detection Resolution** | 1/8 minimum | **1/4 minimum** | ⚠️ **Higher res = worse performance** |
 
 ### Feature Pyramid Network Flow
 
@@ -62,27 +63,27 @@ Detection Head (YOLOX) → Final Predictions
 
 ## 📊 Performance Results
 
-### Small Object Detection Improvement
+### Experimental Results Summary
 
-| Class | Baseline mAP | Enhanced mAP | Improvement |
-|-------|-------------|-------------|-------------|
-| **Motorcycle** | TBD | TBD | **+XX%** |
-| **Bicycle** | TBD | TBD | **+XX%** |
-| **Pedestrian** | TBD | TBD | **+XX%** |
-| Car | TBD | TBD | +XX% |
-| Truck | TBD | TBD | +XX% |
-| Bus | TBD | TBD | +XX% |
-| Static | TBD | TBD | +XX% |
-| Other | TBD | TBD | +XX% |
+| Experiment | Overall mAP | Small Objects mAP | AP50 | AP75 | Status |
+|------------|-------------|-------------------|------|------|--------|
+| **3-scale Baseline** | **34.02%** | **17.28%** | **67.03%** | **30.79%** | ✅ Completed |
+| **4-scale Enhanced** | **30.93%** | **14.83%** | **62.34%** | **27.30%** | ✅ Completed |
+| **Performance Change** | **-3.09%** | **-2.45%** | **-4.69%** | **-3.49%** | ⚠️ **Unexpected decrease** |
 
-*Results will be updated as experiments complete*
+### Key Findings from 4-scale FPN Experiment
 
-### Overall Performance Metrics
+**❌ Unexpected Results**: The 4-scale FPN with P1 features actually **decreased** performance instead of improving it.
 
-- **Overall mAP**: TBD (baseline) → TBD (enhanced)
-- **Small Object Avg mAP**: TBD → TBD (**+XX% improvement**)
-- **AP50**: TBD → TBD
-- **AP75**: TBD → TBD
+**Critical Analysis**:
+- **Small Objects** (Motorcycle, Bicycle, Pedestrian): 17.28% → 14.83% **(-2.45%)**
+- **Overall Performance**: All metrics showed degradation
+- **Hypothesis**: P1 features alone are insufficient and may introduce noise
+
+**Research Implications**:
+- Adding high-resolution P1 features requires careful training strategy adjustments
+- Model complexity increased without proportional performance gains
+- Need for size-aware loss functions and specialized training approaches
 
 ## 🚀 Quick Start
 
@@ -242,19 +243,40 @@ Each experiment generates comprehensive results stored in `experiments/`:
 - Automatic tracking of configuration changes
 - Easy comparison between experiment versions
 
-## 🔮 Future Enhancements
+## 🔬 Research Findings & Lessons Learned
 
-### Phase 2: Advanced Components
-- [ ] Size-aware loss function
+### Completed Experiments (July 2025)
+
+#### ✅ 4-scale FPN Experiment (Phase 1)
+**Status**: Completed - **Negative Results** 🔍
+
+**What we learned**:
+1. **P1 features alone don't improve small object detection** - Counter-intuitive result
+2. **Model complexity requires adjusted training strategies** - Same training config failed
+3. **High-resolution features may contain excess noise** - Signal-to-noise ratio critical
+4. **Negative results are valuable** - Guide future research directions
+
+**Technical Implementation**:
+- ✅ Successfully extended FPN from 3-scale to 4-scale
+- ✅ Added P1 features (stride 4) for highest resolution detection
+- ✅ Modified YOLOPAFPN architecture with backward compatibility
+- ❌ Performance decreased across all metrics (-3.09% overall mAP)
+
+### Next Research Directions
+
+#### Phase 2: Corrective Strategies (High Priority)
+- [ ] **Size-aware loss functions** - Weight small objects properly
+- [ ] **Denoising techniques for P1 features** - Filter high-frequency noise
+- [ ] **Progressive training strategy** - Start with 3-scale, gradually add P1
+- [ ] **Longer training with adjusted learning rates** - Account for model complexity
+
+#### Phase 3: Advanced Components (Medium Priority)
 - [ ] Small object attention mechanisms  
 - [ ] Temporal feature enhancement modules
-
-### Phase 3: Training Optimizations
 - [ ] Multi-scale training strategy
 - [ ] Hard negative mining for small objects
-- [ ] Adaptive sampling for class imbalance
 
-### Phase 4: Architecture Exploration
+#### Phase 4: Architecture Exploration (Future Work)
 - [ ] Deformable convolutions for small objects
 - [ ] Neural architecture search adaptations
 - [ ] Event-specific attention mechanisms

@@ -1,0 +1,49 @@
+3-Scale FPN Baseline Results Summary
+=====================================
+
+Experiment: 3-scale FPN Baseline
+Date: 2025-07-08 05:00:32
+Model: 3-scale FPN (strides: 8, 16, 32)
+Dataset: etram_cls8_sample
+Checkpoint: final_model.ckpt
+
+Overall Performance:
+-------------------
+- mAP (IoU=0.50:0.95): 34.02%
+- AP50 (IoU=0.50):     67.03%  
+- AP75 (IoU=0.75):     30.79%
+- Average Recall:      43.25%
+
+Size-based Performance:
+----------------------
+🔴 Small objects:  17.28% mAP (classes 2,3,4: Motorcycle, Bicycle, Pedestrian)
+   - AR: 30.90%
+   - Primary improvement target
+
+🟡 Medium objects: 34.03% mAP (classes 0,1,5,6,7: Car, Truck, Bus, Static, Other)
+   - AR: 43.10%
+   - Moderate performance
+
+🟢 Large objects:  56.94% mAP (very large instances)
+   - AR: 67.30%
+   - Strong performance
+
+Key Findings:
+------------
+1. Small object detection significantly underperforms (17.28% vs 34.02% overall)
+2. This confirms the need for 4-scale FPN enhancement
+3. Large objects perform well, indicating model capability is good
+4. Target improvement: +15-25% for small objects with P1 features
+
+Validation Details:
+------------------
+- Total iterations: 724
+- Validation duration: 2:00 minutes
+- Evaluation speed: 6.01 it/s
+- No class-wise individual metrics available (limitation of current setup)
+
+Next Steps:
+----------
+1. Implement 4-scale FPN (add P1 features at stride 4)
+2. Compare small object performance improvement
+3. Generate detailed class-wise metrics if possible

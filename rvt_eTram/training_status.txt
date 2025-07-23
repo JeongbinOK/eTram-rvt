@@ -1,0 +1,24 @@
+_rnn.py", line 125, in forward
+    x = self.att_window(x)
+  File "/home/oeoiewt/miniconda3/envs/rvt/lib/python3.9/site-packages/torch/nn/m
+odules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/oeoiewt/eTraM/rvt_eTram/models/layers/maxvit/maxvit.py", line 268,
+ in forward
+    x = x + self.drop_path1(self.ls1(self._partition_attn(self.norm1(x))))
+  File "/home/oeoiewt/eTraM/rvt_eTram/models/layers/maxvit/maxvit.py", line 255,
+ in _partition_attn
+    partitioned = window_partition(x, self.partition_size)
+  File "/home/oeoiewt/eTraM/rvt_eTram/models/layers/maxvit/maxvit.py", line 276,
+ in window_partition
+    _assert(W % window_size[1] == 0, f'width ({W}) must be divisible by window (
+{window_size[1]})')
+  File "/home/oeoiewt/miniconda3/envs/rvt/lib/python3.9/site-packages/torch/__in
+it__.py", line 1209, in _assert
+    assert condition, message
+AssertionError: width (107) must be divisible by window (2)
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+== Timing statistics ==
+Training completed\! Press Enter to continue...
+

@@ -1,0 +1,54 @@
+patch3_4scale_sizeaware_200k Experiment Hypothesis
+=================================================
+
+Date: 2025-07-16
+Experiment ID: patch3_4scale_sizeaware_200k
+Previous Experiments: patch2_4scale_sizeaware_200k (failed), baseline 3-scale (34.02% mAP)
+
+HYPOTHESIS:
+patch_size=3 + 4-scale FPN + size-aware loss will achieve optimal balance between spatial resolution and training stability, resulting in improved small object detection performance.
+
+THEORETICAL FOUNDATION:
+
+1. **Spatial Resolution Advantage:**
+   - patch_size=3 provides higher spatial resolution than baseline (patch_size=4)
+   - Effective strides: [3, 6, 12, 24] vs baseline [4, 8, 16, 32]
+   - Stride=3 at finest scale provides 33% more spatial granularity for small objects
+
+2. **Memory Efficiency:**
+   - patch_size=3 requires less memory than patch_size=2
+   - Enables larger batch_size (expected 4-6 vs 2 in patch_size=2)
+   - Better gradient statistics and training stability
+
+3. **Training Convergence:**
+   - patch_size=3 should converge better than patch_size=2
+   - Target final loss: < 3.5 (vs 4.44 in patch_size=2 experiment)
+   - 200k steps should be sufficient for convergence
+
+4. **Size-Aware Loss Benefits:**
+   - Exponential weighting (weight=2.0) for objects < 32x32 pixels
+   - Should improve small object detection recall
+   - Balanced training focus across object sizes
+
+EXPECTED PERFORMANCE:
+- Overall mAP: 36-38% (+2-4% vs baseline 34.02%)
+- Small objects AP: 19-21% (+2-4% vs baseline 17.28%)
+- Training stability: Better than patch_size=2, similar to baseline
+- Memory usage: Moderate increase, manageable with batch_size=4
+
+COMPARISON WITH PREVIOUS EXPERIMENTS:
+- vs patch_size=2: Better convergence, higher batch_size, similar spatial resolution
+- vs patch_size=4: Higher spatial resolution, slightly higher memory usage
+- vs 3-scale: Additional P1 features for small objects
+
+RISKS AND MITIGATION:
+- Risk: Insufficient spatial resolution improvement
+- Mitigation: Size-aware loss compensation, extended training if needed
+- Risk: Memory constraints
+- Mitigation: Batch size optimization, gradient accumulation if necessary
+
+SUCCESS CRITERIA:
+- Overall mAP > 35% (vs 34.02% baseline)
+- Small objects AP > 18% (vs 17.28% baseline)
+- Training convergence: final loss < 3.5
+- No significant memory issues during training

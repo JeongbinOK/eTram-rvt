@@ -1,0 +1,97 @@
+Patch Size 2 + Size-aware Loss Experiment Summary
+================================================
+
+Experiment: patch2_sizeaware_100k
+Date: 2025-07-15
+Status: Training Completed, Validation Issues
+
+===========================================
+MAIN FINDINGS
+===========================================
+
+❌ PERFORMANCE CONCERN:
+- Final validation AP: 15.64% (significantly below baseline ~34% mAP)
+- Performance gap: -18.38% vs baseline
+- Requires investigation into root causes
+
+⚠️ MEMORY IMPACT:
+- patch_size=2 increased memory usage dramatically
+- Required batch_size reduction: 6 → 2
+- May have affected training stability and final performance
+
+✅ TRAINING STABILITY:
+- Successfully completed 100,000 steps
+- Stable convergence with final loss: 5.18
+- Training speed: 5.43 it/s
+
+===========================================
+TECHNICAL CHALLENGES
+===========================================
+
+1. CHECKPOINT COMPATIBILITY:
+   - Trained model incompatible with standard validation configs
+   - patch_size=2 creates different architecture dimensions
+   - Need custom validation setup
+
+2. MEMORY CONSTRAINTS:
+   - CUDA OOM with standard batch sizes
+   - Small batch_size may negatively impact performance
+   - Need memory optimization strategies
+
+===========================================
+KEY CONFIGURATION
+===========================================
+
+Model Architecture:
+- Backbone: MaxViTRNN with patch_size=2
+- FPN: 3-scale (P2, P3, P4) → effective strides 2, 4, 8
+- Head: YoloX with size-aware loss (weight=2.0)
+
+Training Settings:
+- Steps: 100,000
+- Batch size: 2 (reduced from 6 due to memory)
+- Dataset: etram_cls8_sample (8 classes)
+- Classes: Car, Truck, Motorcycle, Bicycle, Pedestrian, Bus, Static, Other
+
+===========================================
+ANALYSIS & NEXT STEPS
+===========================================
+
+IMMEDIATE PRIORITIES:
+1. Fix validation setup for patch_size=2 model
+2. Get detailed performance metrics
+3. Compare with baseline performance
+
+INVESTIGATION NEEDED:
+- Why performance is significantly lower than baseline
+- Impact of batch_size reduction on training dynamics
+- Whether patch_size=2 is optimal for small object detection
+
+ALTERNATIVE APPROACHES:
+- Data-driven threshold tuning (proceed with this)
+- ABC-based auxiliary classifier approach
+- Memory optimization techniques
+
+===========================================
+EXPERIMENT CONCLUSION
+===========================================
+
+The patch_size=2 experiment revealed important insights:
+
+POSITIVE:
+- Training completed successfully
+- Stable convergence achieved
+- Memory constraints identified and managed
+
+NEGATIVE:
+- Performance significantly below expectations
+- Validation setup issues
+- Memory limitations may have impacted results
+
+RECOMMENDATION:
+- Continue with data-driven threshold tuning
+- Investigate memory optimization
+- Consider alternative small object detection approaches
+
+This experiment demonstrates that simply reducing patch_size may not be 
+the optimal approach for small object detection improvement.

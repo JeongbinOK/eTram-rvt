@@ -17,7 +17,7 @@ model:
     num_blocks: [1, 1, 1, 1]
     T_max_chrono_init: [4, 8, 16, 32]
     stem:
-      patch_size: 4
+      patch_size: 4  # Standard patch size for ABC
     stage:
       downsample:
         type: patch
@@ -52,13 +52,33 @@ model:
     depthwise: False
     act: "silu"
   head:
-    name: YoloX
+    name: ABC  # ABC Head instead of YoloX
     compile:
       enable: False
       args:
         mode: reduce-overhead
     depthwise: False
     act: "silu"
+    
+    # ABC-specific parameters
+    use_auxiliary: True
+    num_small_classes: 3  # Motorcycle, Bicycle, Pedestrian
+    small_classes: [2, 3, 4]  # Class indices for small objects
+    aux_scales: [0, 1]  # P1, P2 scales for auxiliary detection
+    main_loss_weight: 1.0  # Weight for main detection loss
+    aux_loss_weight: 2.0  # Weight for auxiliary small object loss
+    enhanced_features: True  # Enhanced feature processing in auxiliary detector
+    
+    # Size-aware loss parameters (for main head)
+    size_aware_loss: True
+    size_aware_weight: 2.0
+    small_threshold: 1024  # 32x32 pixels
+    medium_threshold: 9216  # 96x96 pixels
+    weight_type: "exponential"  # exponential weighting for smaller objects
+    
+    # Training parameters
+    use_l1: False
+    
   postprocess:
     confidence_threshold: 0.1
     nms_threshold: 0.45

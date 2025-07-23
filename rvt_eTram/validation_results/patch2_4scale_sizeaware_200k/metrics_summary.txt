@@ -1,0 +1,29 @@
+patch2_4scale_sizeaware_200k Validation Results
+=================================================
+
+Experiment Configuration:
+- Model: patch_size=2 + 4-scale FPN + size-aware loss
+- Training Steps: 200k
+- Checkpoint: experiments/patch2_4scale_sizeaware_200k/checkpoints/final_model.ckpt
+- Date: 2025-07-16
+
+Performance Metrics:
+- Overall AP: 31.24%
+- AP50: 64.72%
+- AP75: 25.99%
+
+Size-based Performance:
+- Small objects AP: 14.92%
+- Medium objects AP: 32.19%
+- Large objects AP: 47.52%
+
+Recall Metrics:
+- AR @[IoU=0.50:0.95 | area=all | maxDets=100]: 42.07%
+- AR @[IoU=0.50:0.95 | area=small | maxDets=100]: 31.10%
+- AR @[IoU=0.50:0.95 | area=medium | maxDets=100]: 42.30%
+- AR @[IoU=0.50:0.95 | area=large | maxDets=100]: 61.50%
+
+Validation Performance:
+- Total iterations: 2753
+- Processing time: 2m 57s
+- Processing speed: 15.51 it/s

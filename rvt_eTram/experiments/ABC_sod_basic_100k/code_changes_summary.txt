@@ -1,0 +1,196 @@
+# ABC_sod_basic_100k: 주요 변경사항 요약
+
+## 실험 개요
+- **실험 ID**: ABC_sod_basic_100k
+- **날짜**: 2025-07-16
+- **목적**: Multi-task Learning을 통한 Small Object Detection 성능 향상
+
+## 핵심 변경사항
+
+### 1. 새로운 모듈 추가
+
+#### A) Auxiliary Small Object Detector
+**파일**: `models/detection/yolox/models/auxiliary_detector.py`
+- **기능**: Small objects (클래스 2,3,4) 전용 검출기
+- **특징**: P1, P2 features만 처리하여 고해상도 정보 활용
+- **구조**: Enhanced convolution layers + Detection heads
+
+#### B) Multi-task Loss Function
+**파일**: `models/detection/yolox/models/abc_loss.py`
+- **기능**: Main task + Auxiliary task loss 통합
+- **가중치**: Main loss (1.0) + Auxiliary loss (2.0)
+- **Target filtering**: Small object classes만 auxiliary task로 분리
+
+#### C) ABC Head Integration
+**파일**: `models/detection/yolox/models/abc_head.py`
+- **기능**: Main YOLOX Head + Auxiliary Detector 통합
+- **Mode switching**: Training (multi-task) vs Inference (main only)
+- **Configuration**: YAML으로 flexible 제어
+
+### 2. 기존 모듈 확장
+
+#### A) Build System Update
+**파일**: `models/detection/yolox_extension/models/build.py`
+- **변경**: ABC head 지원 추가
+- **호환성**: 기존 YOLOX head 완전 호환 유지
+
+```python
+# Before
+if head_name in {"YoloX", "yolox"}:
+    return YOLOXHead(...)
+
+# After  
+elif head_name in {'ABC', 'abc'}:
+    return ABCHead(...)
+```
+
+### 3. 설정 파일 생성
+
+#### A) ABC Model Configuration
+**파일**: `config/model/maxvit_yolox/abc_sod_basic.yaml`
+- **FPN**: 4-scale (P1, P2, P3, P4) 활성화
+- **Head**: ABC head with auxiliary detection
+- **Loss**: Size-aware loss + Multi-task loss
+
+```yaml
+fpn:
+  in_stages: [1, 2, 3, 4]  # 4-scale FPN
+head:
+  name: ABC
+  use_auxiliary: True
+  small_classes: [2, 3, 4]
+  aux_loss_weight: 2.0
+```
+
+## 아키텍처 변화
+
+### Before (Baseline)
+```
+Input → 3-scale FPN → YOLOX Head → Predictions
+[P2, P3, P4]      [All objects]
+```
+
+### After (ABC)
+```
+Input → 4-scale FPN → ABC Head → Predictions
+[P1,P2,P3,P4]    ├─ Main: All objects (P1,P2,P3,P4)
+                 └─ Aux: Small objects (P1,P2)
+```
+
+## 메모리 최적화
+
+### 테스트 결과
+- **최적 batch size**: 6
+- **메모리 증가**: ~1GB (ABC overhead)
+- **훈련 속도**: 기존 대비 ~90% 유지
+
+### 효율성 확보
+- Auxiliary detector는 2 scales만 처리
+- Shared backbone features
+- Inference mode에서 auxiliary head 비활성화
+
+## 구현 세부사항
+
+### Multi-task Loss Computation
+```python
+def forward(self, main_outputs, aux_outputs, targets):
+    # 1. Main detection loss (all objects, all scales)
+    main_loss = self.main_loss_fn(main_outputs, targets)
+    
+    # 2. Filter targets for small objects
+    small_targets = self.filter_small_objects(targets)
+    
+    # 3. Auxiliary detection loss (small objects, P1+P2 scales)
+    aux_loss = self.aux_loss_fn(aux_outputs, small_targets)
+    
+    # 4. Weighted combination
+    total_loss = 1.0 * main_loss + 2.0 * aux_loss
+    return total_loss
+```
+
+### Smart Target Filtering
+```python
+def filter_small_object_targets(self, targets):
+    small_classes = [2, 3, 4]  # Motorcycle, Bicycle, Pedestrian
+    filtered_targets = []
+    
+    for target in targets:
+        # Extract small object instances
+        mask = torch.isin(target['labels'], torch.tensor(small_classes))
+        if mask.any():
+            # Remap class indices [2,3,4] → [0,1,2]
+            small_target = {
+                'labels': self.remap_labels(target['labels'][mask]),
+                'boxes': target['boxes'][mask]
+            }
+            filtered_targets.append(small_target)
+    
+    return filtered_targets
+```
+
+## 훈련 전략
+
+### Loss Balancing
+- **Main task weight**: 1.0 (전체 성능 유지)
+- **Auxiliary task weight**: 2.0 (small object 우선 학습)
+- **Size-aware loss**: Main head에서 유지
+
+### Feature Specialization
+- **P1 features**: Small object spatial details
+- **P2 features**: Small object semantic information
+- **Enhanced processing**: Additional convolution layers
+
+## 검증 결과
+
+### 단위 테스트
+- [x] AuxiliarySmallObjectDetector forward pass
+- [x] ABCMultiTaskLoss computation  
+- [x] ABCHead integration
+- [x] Configuration loading
+
+### 통합 테스트
+- [x] 4-scale FPN feature flow
+- [x] Multi-task loss computation
+- [x] Memory usage within limits
+- [x] Training stability
+
+## 실제 성능 결과
+
+### 최종 성능 (실측)
+- **Overall mAP**: 31.7% (vs 베이스라인 34.02% = -2.3%)
+- **Small objects mAP**: 14.8% (vs 베이스라인 17.28% = -2.5%)
+- **Training loss**: 4.1 (vs 베이스라인 ~2.8)
+
+### 예상 vs 실제
+| 지표 | 예상 | 실제 | 차이 |
+|------|------|------|------|
+| Overall mAP | 35-37% | 31.7% | **-3.3~-5.3%** |
+| Small mAP | 20-22% | 14.8% | **-5.2~-7.2%** |
+
+## 실패 원인 분석
+
+### 1. Multi-task Learning 충돌
+- Main task와 auxiliary task 간 gradient 충돌 발생
+- Loss balancing (2.0x)이 과도하여 main performance 저해
+
+### 2. Feature Quality 한계
+- P1 features의 노이즈가 auxiliary task 성능 저하 유발
+- 4-scale FPN 자체의 instability 문제
+
+### 3. 복잡성 증가의 역효과
+- Multi-task architecture가 단순한 baseline보다 최적화 어려움
+- Small dataset에서 과적합 위험 증가
+
+## 교훈 및 후속 방향
+
+### 핵심 교훈
+1. **복잡성 ≠ 성능**: Architectural complexity가 성능을 보장하지 않음
+2. **해상도 우선**: 640×360에서 architectural modification보다 resolution 증가 필요
+3. **Single-task focus**: Multi-task보다 focused approach가 효과적
+
+### 다음 실험 방향
+1. **해상도 증가**: 1280×720 실험 우선
+2. **Data-centric**: Augmentation 및 data quality 개선
+3. **Simple enhancement**: 단순한 loss function 개선
+
+이 ABC 실험은 기술적으로는 성공했지만 성능적으로는 실패하여, Small Object Detection 개선을 위한 중요한 negative result를 제공했습니다.

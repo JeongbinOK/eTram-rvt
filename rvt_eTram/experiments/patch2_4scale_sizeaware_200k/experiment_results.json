@@ -1,0 +1,49 @@
+{
+  "experiment_name": "patch2_4scale_sizeaware_200k",
+  "experiment_date": "2025-07-15 to 2025-07-16",
+  "model_config": {
+    "patch_size": 2,
+    "fpn_scales": 4,
+    "size_aware_loss": true,
+    "size_aware_weight": 2.0,
+    "architecture": "patch_size=2 + 4-scale FPN + size-aware loss"
+  },
+  "training_config": {
+    "max_steps": 200000,
+    "batch_size": 2,
+    "num_workers": 2,
+    "dataset": "etram_cls8_sample",
+    "classes": 8,
+    "training_time": "~7h 38m",
+    "final_loss": 4.44
+  },
+  "performance_metrics": {
+    "overall_ap": 31.24,
+    "ap50": 64.72,
+    "ap75": 25.99,
+    "small_objects_ap": 14.92,
+    "medium_objects_ap": 32.19,
+    "large_objects_ap": 47.52,
+    "ar_all": 42.07,
+    "ar_small": 31.10,
+    "ar_medium": 42.30,
+    "ar_large": 61.50
+  },
+  "comparison_with_baseline": {
+    "baseline_overall_ap": 34.02,
+    "baseline_small_objects_ap": 17.28,
+    "overall_ap_change": -2.78,
+    "small_objects_ap_change": -2.36,
+    "performance_verdict": "Decline across all metrics"
+  },
+  "key_findings": [
+    "patch_size=2 + 4-scale FPN + size-aware loss shows performance decline",
+    "Small object detection AP decreased by 2.36% (14.92% vs 17.28%)",
+    "Large object detection most affected (-9.42%)",
+    "Training convergence issues: final loss 4.44 vs target 3%",
+    "Memory constraints required batch size reduction (6→2)"
+  ],
+  "experiment_status": "completed",
+  "validation_completed": true,
+  "checkpoint_path": "experiments/patch2_4scale_sizeaware_200k/checkpoints/final_model.ckpt"
+}

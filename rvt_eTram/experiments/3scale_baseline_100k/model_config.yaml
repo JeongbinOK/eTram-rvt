@@ -48,7 +48,7 @@ model:
         mode: reduce-overhead
     depth: 0.67 # round(depth * 3) == num bottleneck blocks
     # stage 1 is the first and len(num_layers) is the last
-    in_stages: [1, 2, 3, 4]  # 4-scale FPN with P1 features for small objects
+    in_stages: [2, 3, 4]  # Original 3-scale FPN for baseline comparison
     depthwise: False
     act: "silu"
   head:

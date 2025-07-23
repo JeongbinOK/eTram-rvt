@@ -1,0 +1,338 @@
+Training Command and Environment Details - 3-scale + Size-aware Loss
+======================================================================
+
+Experiment: 3scale_sizeaware_100k
+Date: 2025-07-10
+Strategy: Optimal combination of proven stable architecture with effective loss weighting
+
+===============================
+EXACT TRAINING COMMAND
+===============================
+
+python train.py dataset=gen4 dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample +experiment/gen4='3scale_sizeaware.yaml' hardware.gpus=0 batch_size.train=6 batch_size.eval=2 hardware.num_workers.train=4 hardware.num_workers.eval=3 training.max_steps=100000 dataset.train.sampling=stream wandb.project_name=etram_3scale_sizeaware wandb.group_name=3scale_sizeaware_100k
+
+===============================
+PARAMETER BREAKDOWN
+===============================
+
+Core Configuration:
+- dataset=gen4
+- dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample
+- +experiment/gen4='3scale_sizeaware.yaml'
+
+Architecture Settings (from config):
+- model.fpn.in_stages: [2, 3, 4]  # 3-scale FPN (stable)
+- model.head.size_aware_loss: true
+- model.head.size_aware_weight: 2.5
+- model.head.num_classes: 8
+
+Hardware Configuration:
+- hardware.gpus=0
+- hardware.num_workers.train=4
+- hardware.num_workers.eval=3
+
+Batch Configuration:
+- batch_size.train=6
+- batch_size.eval=2
+
+Training Configuration:
+- training.max_steps=100000
+- dataset.train.sampling=stream
+
+Experiment Tracking:
+- wandb.project_name=etram_3scale_sizeaware
+- wandb.group_name=3scale_sizeaware_100k
+
+===============================
+ARCHITECTURAL DETAILS
+===============================
+
+FPN Configuration:
+- Scales: 3 (P2, P3, P4 features only)
+- Strides: [8, 16, 32]
+- No P1 features (eliminates noise from 4-scale experiments)
+
+Size-aware Loss Configuration:
+- Weight function: Exponential (w = 2.5 × exp(-area/1024))
+- Small threshold: 1024 (32×32 pixels)
+- Medium threshold: 9216 (96×96 pixels)
+- Max weight boost: 2.5x for smallest objects
+
+Expected Weight Distribution:
+| Object Size | Area | Weight | Training Impact |
+|-------------|------|--------|-----------------|
+| 16×16 moto  | 256  | 1.94   | 94% more attention |
+| 20×20 bike  | 400  | 1.68   | 68% more attention |
+| 24×24 ped   | 576  | 1.51   | 51% more attention |
+| 40×40 car   | 1600 | 1.0    | Standard attention |
+| 80×80 truck | 6400 | 1.0    | Standard attention |
+
+===============================
+ENVIRONMENT SETUP
+===============================
+
+Working Directory: /home/oeoiewt/eTraM/rvt_eTram
+Screen Session: 3scale_sizeaware_100k (to be created)
+WandB Project: etram_3scale_sizeaware
+Expected WandB Run ID: TBD
+
+Python Environment:
+- Conda environment: rvt
+- Python version: 3.9
+- PyTorch: Available with CUDA support
+
+Dataset Configuration:
+- Name: etram_cls8_sample
+- Classes: 8 (Car, Truck, Motorcycle, Bicycle, Pedestrian, Bus, Static, Other)
+- Target classes for improvement: 2 (Motorcycle), 3 (Bicycle), 4 (Pedestrian)
+- Location: /home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample
+
+===============================
+CONFIGURATION FILES USED
+===============================
+
+Primary Config:
+- config/experiment/gen4/3scale_sizeaware.yaml
+
+Model Config (loaded via defaults):
+- config/model/maxvit_yolox/size_aware.yaml
+
+Key Config Values:
+- model.fpn.in_stages: [2, 3, 4]        # 3-scale FPN override
+- model.head.size_aware_loss: true
+- model.head.size_aware_weight: 2.5
+- model.head.small_threshold: 1024
+- model.head.medium_threshold: 9216
+- model.head.weight_type: "exponential"
+- model.head.num_classes: 8
+
+===============================
+EXPECTED TRAINING BEHAVIOR
+===============================
+
+Training Timeline:
+- Start Time: When executed
+- Expected Duration: ~6-7 hours (100k steps)
+- Expected Speed: ~4-5 it/s (similar to previous experiments)
+- Expected Completion: ~6-7 hours after start
+
+Initial Expectations:
+- Initial loss: May be higher than uniform loss due to size weighting
+- Convergence: Should be stable (3-scale proven architecture)
+- Memory usage: Similar to 3-scale baseline (no P1 features)
+- GPU utilization: Standard (proven settings)
+
+Progress Monitoring:
+- Check every 2-3 hours for stability
+- Monitor loss convergence patterns
+- Watch for size-aware loss effects
+
+===============================
+PERFORMANCE EXPECTATIONS
+===============================
+
+Conservative Targets (minimum success):
+- Overall mAP: 34.5-35.0% (vs 34.02% baseline)
+- Small objects: 18-19% (vs 17.28% baseline)
+- Training stability: Maintained
+
+Realistic Targets (expected success):
+- Overall mAP: 36-37% (vs 34.02% baseline)
+- Small objects: 20-22% (vs 17.28% baseline)
+- Clear improvement over all previous experiments
+
+Optimistic Targets (exceptional success):
+- Overall mAP: 38-40% (vs 34.02% baseline)
+- Small objects: 25-30% (vs 17.28% baseline)
+- State-of-the-art performance on eTraM dataset
+
+===============================
+MONITORING COMMANDS
+===============================
+
+Create and Monitor Training:
+```bash
+# Start training in screen
+screen -dmS 3scale_sizeaware_100k
+screen -S 3scale_sizeaware_100k -p 0 -X stuff "cd /home/oeoiewt/eTraM/rvt_eTram\n"
+screen -S 3scale_sizeaware_100k -p 0 -X stuff "[TRAINING_COMMAND]; echo 'Training completed! Press Enter to continue...'; read\n"
+
+# Check training status
+screen -r 3scale_sizeaware_100k -X hardcopy /tmp/training_status.txt && tail -20 /tmp/training_status.txt
+
+# Reconnect to session
+screen -r 3scale_sizeaware_100k
+
+# List sessions
+screen -list
+```
+
+Emergency Commands:
+```bash
+# Kill training if needed
+screen -S 3scale_sizeaware_100k -X quit
+
+# Check GPU usage
+nvidia-smi
+
+# Monitor disk space
+df -h
+```
+
+===============================
+VALIDATION COMMAND (POST-TRAINING)
+===============================
+
+When training completes, run validation:
+
+```bash
+screen -dmS validation_3scale_sizeaware
+screen -S validation_3scale_sizeaware -p 0 -X stuff "cd /home/oeoiewt/eTraM/rvt_eTram\n"
+screen -S validation_3scale_sizeaware -p 0 -X stuff "python validation.py dataset=gen4 dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample checkpoint=experiments/3scale_sizeaware_100k/checkpoints/final_model.ckpt +experiment/gen4='3scale_sizeaware.yaml' hardware.gpus=0 batch_size.eval=2 hardware.num_workers.eval=1; echo 'Validation completed! Press Enter to continue...'; read\n"
+```
+
+Note: Using batch_size.eval=2 and num_workers.eval=1 to avoid dataloader issues.
+
+===============================
+EXPECTED OUTPUTS
+===============================
+
+Training Outputs:
+- Model checkpoint: experiments/3scale_sizeaware_100k/checkpoints/final_model.ckpt
+- WandB logs: Online dashboard with loss curves and metrics
+- Confusion matrices: confM/ folder (moved to experiment folder post-training)
+- Training logs: Screen session output
+
+Validation Outputs:
+- Detailed metrics: Overall mAP, AP50, AP75, AR metrics
+- Size-based breakdown: Small, medium, large object performance
+- Per-class metrics: Individual class mAP values
+- Comparison data: Ready for baseline comparison
+
+===============================
+COMPARISON BASELINES
+===============================
+
+Available for Comparison:
+1. 3-scale baseline: 34.02% mAP, 17.28% small objects
+2. 4-scale + size-aware: 32.23% mAP, 12.75% small objects
+3. 4-scale failed: 30.93% mAP, 14.83% small objects
+
+Expected Ranking (post-experiment):
+1. 3-scale + size-aware: TBD (this experiment)
+2. 3-scale baseline: 34.02% mAP
+3. 4-scale + size-aware: 32.23% mAP
+4. 4-scale failed: 30.93% mAP
+
+===============================
+SUCCESS CRITERIA REFERENCE
+===============================
+
+Training Success:
+- Completes 100k steps without errors
+- Stable loss convergence observed
+- No memory or GPU issues
+- WandB logging successful
+
+Validation Success:
+- Validation runs without errors
+- All metrics collected successfully
+- Results comparable to baseline format
+
+Performance Success:
+- Small objects mAP > 18% (minimum)
+- Overall mAP > 34.5% (minimum)
+- Clear improvement over 4-scale experiments
+- Preferably outperform 3-scale baseline
+
+Research Success:
+- Size-aware loss effect clearly measurable
+- Results reproducible and well-documented
+- Clear insights for future research directions
+
+===============================
+EXPERIMENT ADVANTAGES
+===============================
+
+Technical Advantages:
+- Zero implementation risk (100% proven components)
+- Stable 3-scale architecture (no P1 noise)
+- Tested size-aware loss implementation
+- Established training pipeline
+
+Research Advantages:
+- Clean variable isolation (pure size-aware effect)
+- Strong baseline comparison available
+- Clear success metrics defined
+- Comprehensive documentation
+
+Practical Advantages:
+- Fast execution (no development time)
+- High success probability
+- Immediate results interpretation
+- Actionable outcomes
+
+===============================
+RISK MITIGATION
+===============================
+
+Technical Risks (Low):
+- Monitor training stability in first hour
+- Check memory/GPU usage periodically
+- Verify WandB logging functionality
+
+Performance Risks (Medium):
+- Compare intermediate results with baseline
+- Analyze training curves for insights
+- Prepare contingency analysis if targets not met
+
+Research Risks (Low):
+- Document any unexpected behaviors
+- Maintain detailed comparison framework
+- Ensure reproducibility through version control
+
+===============================
+POST-EXPERIMENT ACTIONS
+===============================
+
+Immediate (upon completion):
+1. Copy checkpoint to experiment folder with simple name
+2. Move confusion matrices to experiment folder
+3. Run validation with detailed metrics
+4. Save validation output to text files
+
+Analysis (within 1 hour):
+1. Generate comprehensive JSON results
+2. Compare with all baseline experiments
+3. Analyze per-class and size-based improvements
+4. Document key findings and insights
+
+Documentation (within 2 hours):
+1. Update experiment results files
+2. Commit all results to Git
+3. Update README if exceptional results achieved
+4. Prepare summary for future experiments
+
+===============================
+NOTES AND REMINDERS
+===============================
+
+Critical Reminders:
+- This experiment uses 3-scale FPN (in_stages: [2,3,4])
+- Size-aware loss is automatically enabled via config
+- All components are proven and tested (zero implementation risk)
+- Expected to achieve best performance to date
+
+Success Factors:
+- Stable architecture eliminates P1 noise issues
+- Size-aware loss provides targeted small object improvement
+- Proven training pipeline ensures reliable execution
+- Strong baseline comparison enables clear evaluation
+
+Future Implications:
+- Success validates size-aware loss methodology
+- Results will guide future research directions
+- May establish new performance benchmark
+- Demonstrates importance of training strategy optimization
+
+Last Updated: 2025-07-10 (pre-execution)

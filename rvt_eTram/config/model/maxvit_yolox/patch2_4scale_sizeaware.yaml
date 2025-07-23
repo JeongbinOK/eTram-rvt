@@ -3,6 +3,7 @@ defaults:
   - override /model: rnndet
 
 model:
+  name: rnndet
   backbone:
     name: MaxViTRNN
     compile:
@@ -17,7 +18,7 @@ model:
     num_blocks: [1, 1, 1, 1]
     T_max_chrono_init: [4, 8, 16, 32]
     stem:
-      patch_size: 4
+      patch_size: 2  # KEY CHANGE: 4 → 2 for enhanced spatial resolution
     stage:
       downsample:
         type: patch
@@ -47,8 +48,8 @@ model:
       args:
         mode: reduce-overhead
     depth: 0.67 # round(depth * 3) == num bottleneck blocks
-    # stage 1 is the first and len(num_layers) is the last
-    in_stages: [1, 2, 3, 4]  # 4-scale FPN with P1 features for small objects
+    # KEY CHANGE: 4-scale FPN with P1 features for very small objects
+    in_stages: [1, 2, 3, 4]  # P1, P2, P3, P4 features (stride 2,4,8,16)
     depthwise: False
     act: "silu"
   head:
@@ -59,6 +60,12 @@ model:
         mode: reduce-overhead
     depthwise: False
     act: "silu"
+    # Size-aware loss configuration (maintained from previous experiments)
+    size_aware_loss: true
+    size_aware_weight: 2.0
+    small_threshold: 1024      # 32x32 pixels (small objects)
+    medium_threshold: 9216     # 96x96 pixels (medium objects) 
+    weight_type: "exponential"  # options: "exponential", "step", "linear"
   postprocess:
     confidence_threshold: 0.1
     nms_threshold: 0.45

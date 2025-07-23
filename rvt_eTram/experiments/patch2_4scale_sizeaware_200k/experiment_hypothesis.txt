@@ -1,0 +1,172 @@
+# Patch Size 2 + 4-scale FPN + 200k Steps Experiment Hypothesis
+
+## Experiment ID: patch2_4scale_sizeaware_200k
+Date: 2025-07-15
+Researcher: Claude Code Assistant
+
+## Background and Motivation
+
+### Previous Experiments Results
+- **3-scale baseline**: 34.02% mAP, 17.28% small objects mAP
+- **patch_size=2 + 3-scale**: 15.64% AP, 5.18% final loss (underperforming)
+- **4-scale experiments**: Mixed results, P1 features potential not fully explored
+
+### Key Observations
+1. **Under-training Evidence**: patch_size=2 experiment achieved 5.18% final loss vs 3%+ in other experiments
+2. **Memory Constraints**: batch_size reduction from 6→2 due to patch_size=2 memory requirements
+3. **Insufficient Convergence**: 100k steps may be inadequate for complex patch_size=2 architecture
+
+## Primary Hypothesis
+
+**"The combination of patch_size=2 + 4-scale FPN + 200k training steps will achieve superior small object detection performance by providing both higher spatial resolution and sufficient convergence time to overcome batch size limitations."**
+
+## Theoretical Foundation
+
+### 1. Patch Size Impact on Spatial Resolution
+**Hypothesis**: Reducing patch_size from 4 to 2 doubles the spatial resolution at all FPN levels
+
+**Stride Analysis**:
+- **Original (patch_size=4)**: Strides [4, 8, 16, 32]
+- **Proposed (patch_size=2)**: Strides [2, 4, 8, 16]
+
+**Expected Benefits**:
+- **2x higher resolution**: Better spatial localization for small objects
+- **Finer feature representation**: More detailed boundary detection
+- **Reduced quantization error**: More precise bounding box regression
+
+### 2. 4-scale FPN with P1 Features
+**Hypothesis**: P1 features (stride=2) will provide crucial high-resolution information for very small objects
+
+**P1 Feature Characteristics**:
+- **Stride 2**: H/2 × W/2 resolution (320×180 for 640×360 input)
+- **Target objects**: 8×8 to 16×16 pixel objects
+- **Receptive field**: Optimal for very small object context
+
+**Expected Detection Improvements**:
+- **Very small objects**: 8×8 ~ 16×16 pixels (distant pedestrians, bicycles)
+- **Small objects**: 16×16 ~ 32×32 pixels (closer motorcycles, pedestrians)
+- **Spatial precision**: Better localization accuracy
+
+### 3. Extended Training (200k Steps)
+**Hypothesis**: 200k steps will provide sufficient convergence time to overcome small batch size effects
+
+**Convergence Analysis**:
+- **Small batch size impact**: More noisy gradients, slower convergence
+- **Complex architecture**: patch_size=2 + 4-scale requires more training
+- **Target loss**: Achieve ~3% final loss (vs current 5.18%)
+
+## Expected Performance Improvements
+
+### Quantitative Targets
+- **Overall mAP**: 25-30% (vs current 15.64%)
+- **Small objects mAP**: 18-22% (vs baseline 17.28%)
+- **Very small objects**: New category enabled by P1 features
+- **Final training loss**: ~3% (vs current 5.18%)
+
+### Qualitative Improvements
+- **Spatial precision**: More accurate bounding box localization
+- **Small object recall**: Better detection of distant objects
+- **Boundary definition**: Clearer object boundaries
+- **False positive reduction**: Better discrimination of small objects vs noise
+
+## Technical Implementation Strategy
+
+### Architecture Configuration
+```
+Input (640×360) → patch_size=2 → Initial features (320×180)
+    ↓
+4-scale FPN:
+- P1 (stride 2): 320×180 - Very small objects
+- P2 (stride 4): 160×90  - Small objects  
+- P3 (stride 8): 80×45   - Medium objects
+- P4 (stride 16): 40×23  - Large objects
+    ↓
+Size-aware Loss (weight=2.0, threshold=1024)
+    ↓
+200k training steps with batch_size=2
+```
+
+### Training Strategy
+- **Base architecture**: Proven RVT + YOLOX combination
+- **FPN scales**: 4-scale with P1 features enabled
+- **Training duration**: 200k steps (2x previous experiments)
+- **Batch optimization**: batch_size=2 with potential gradient accumulation
+- **Size-aware loss**: Exponential weighting for small objects
+
+## Risk Analysis and Mitigation
+
+### Potential Failure Modes
+1. **Memory constraints**: 4-scale may exceed GPU memory limits
+2. **Training instability**: Small batch size may prevent convergence
+3. **Overfitting**: Complex architecture on limited dataset
+4. **Slow convergence**: 200k steps may still be insufficient
+
+### Mitigation Strategies
+1. **Memory optimization**: Gradient accumulation, mixed precision
+2. **Stability monitoring**: Early stopping if training diverges
+3. **Regularization**: Appropriate weight decay and dropout
+4. **Convergence tracking**: Close monitoring of loss curves
+
+## Success Criteria
+
+### Primary Success Metrics
+- **Small object mAP > 18%**: Exceeding current best baseline (17.28%)
+- **Overall mAP > 25%**: Significant improvement over current (15.64%)
+- **Training convergence**: Final loss < 3.5%
+
+### Secondary Success Metrics
+- **Training stability**: No divergence or instability
+- **Memory feasibility**: Successful completion without OOM errors
+- **Spatial precision**: Improved localization accuracy
+
+## Experimental Controls
+
+### Fixed Variables
+- **Dataset**: etram_cls8_sample (consistent with all experiments)
+- **Training strategy**: Stream sampling, same optimization settings
+- **Evaluation metrics**: Standard COCO metrics for comparison
+- **Hardware**: Same GPU and system configuration
+
+### Variable Changes
+- **Patch size**: 4 → 2 (primary change)
+- **FPN scales**: 3 → 4 (P1 features enabled)
+- **Training steps**: 100k → 200k (extended training)
+- **Batch size**: Optimized for memory constraints
+
+## Research Value
+
+### If Successful
+- **Validates patch_size reduction**: Demonstrates spatial resolution benefits
+- **Proves P1 feature utility**: Shows value of highest resolution features
+- **Establishes training requirements**: Confirms extended training necessity
+- **Provides new baseline**: Better performing architecture for future work
+
+### If Unsuccessful
+- **Identifies fundamental limitations**: Confirms resolution/architecture constraints
+- **Guides future research**: Informs alternative approaches
+- **Validates alternative strategies**: Supports data-driven threshold tuning
+- **Contributes negative results**: Valuable for avoiding unproductive directions
+
+## Next Steps Based on Results
+
+### Success Scenario (mAP > 25%)
+1. **Optimize hyperparameters**: Fine-tune for further improvements
+2. **Ablation studies**: Identify most contributory components
+3. **Scale to full resolution**: Test on 1280×720 input
+4. **Compare with data-driven approaches**: Validate against threshold tuning
+
+### Partial Success (mAP 20-25%)
+1. **Analyze component contributions**: Determine patch_size vs FPN vs training effects
+2. **Optimize training strategy**: Investigate batch size, learning rate adjustments
+3. **Consider hybrid approaches**: Combine with other enhancement methods
+
+### Failure Scenario (mAP < 20%)
+1. **Immediate pivot**: Switch to data-driven threshold tuning
+2. **Architecture simplification**: Return to proven 3-scale approaches
+3. **Focus on data quality**: Investigate dataset limitations
+
+## Conclusion
+
+This experiment represents a systematic test of the hypothesis that spatial resolution increase through patch_size reduction, combined with comprehensive FPN utilization and extended training, can overcome the challenges observed in previous experiments. The approach is grounded in spatial analysis theory and addresses the specific under-training issues identified in the patch_size=2 baseline.
+
+The experiment will provide definitive answers about the viability of architectural modifications for small object detection improvement, guiding future research directions toward either resolution-based or data-driven enhancement strategies.

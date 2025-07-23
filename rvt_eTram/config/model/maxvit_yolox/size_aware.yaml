@@ -59,6 +59,12 @@ model:
         mode: reduce-overhead
     depthwise: False
     act: "silu"
+    # Size-aware loss configuration for small object detection
+    size_aware_loss: true
+    size_aware_weight: 2.0
+    small_threshold: 1024      # 32x32 pixels (small objects)
+    medium_threshold: 9216     # 96x96 pixels (medium objects)
+    weight_type: "exponential"  # options: "exponential", "step", "linear"
   postprocess:
     confidence_threshold: 0.1
     nms_threshold: 0.45

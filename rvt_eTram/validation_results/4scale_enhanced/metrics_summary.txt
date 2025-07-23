@@ -1,0 +1,63 @@
+4-Scale FPN Enhanced Results Summary
+====================================
+
+Experiment: 4-scale FPN with P1 features (stride 4)
+Date: 2025-07-10 05:00:00
+Model: 4-scale FPN (strides: 4, 8, 16, 32)
+Dataset: etram_cls8_sample
+Checkpoint: final_model.ckpt
+
+Overall Performance:
+-------------------
+- mAP (IoU=0.50:0.95): 30.93%
+- AP50 (IoU=0.50):     62.34%  
+- AP75 (IoU=0.75):     27.30%
+- Average Recall:      41.57%
+
+Size-based Performance:
+----------------------
+🔴 Small objects:  14.83% mAP (classes 2,3,4: Motorcycle, Bicycle, Pedestrian)
+   - Performance vs baseline: 17.28% → 14.83% (-2.45%)
+   - Unexpected decrease in small object detection
+
+🟡 Medium objects: 30.97% mAP (classes 0,1,5,6,7: Car, Truck, Bus, Static, Other)
+   - Performance vs baseline: 34.03% → 30.97% (-3.06%)
+
+🟢 Large objects:  52.68% mAP (very large instances)
+   - Performance vs baseline: 56.94% → 52.68% (-4.26%)
+
+Comparison with 3-scale Baseline:
+--------------------------------
+BASELINE (3-scale):     ENHANCED (4-scale):     CHANGE:
+- Overall mAP: 34.02%   - Overall mAP: 30.93%   -3.09% ❌
+- AP50: 67.03%          - AP50: 62.34%          -4.69% ❌
+- AP75: 30.79%          - AP75: 27.30%          -3.49% ❌
+- Small objects: 17.28% - Small objects: 14.83% -2.45% ❌
+
+⚠️ UNEXPECTED RESULT: Performance decreased instead of improved
+
+Key Findings:
+------------
+1. 4-scale FPN with P1 features did NOT improve performance
+2. All metrics decreased compared to 3-scale baseline
+3. Small object detection actually got worse (-2.45%)
+4. This suggests potential issues with:
+   - Model complexity without proper training adjustments
+   - P1 features may be too noisy for this dataset
+   - Need for different training strategies (longer training, different LR)
+   - Possible overfitting due to increased parameters
+
+Validation Details:
+------------------
+- Total iterations: 724
+- Validation duration: 2:01 minutes
+- Evaluation speed: 5.97 it/s
+- Model parameters: Increased due to additional P1 pathway
+
+Next Steps & Analysis:
+--------------------
+1. Investigate why P1 features hurt performance
+2. Consider training adjustments (learning rate, longer training)
+3. Analyze if P1 features are too noisy for small objects
+4. Test size-aware loss functions to better utilize P1 features
+5. Review FPN implementation for potential issues

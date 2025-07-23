@@ -1,0 +1,44 @@
+patch2_4scale_sizeaware_200k vs Baseline Comparison Analysis
+============================================================
+
+Baseline Performance (3-scale FPN):
+- Overall AP: 34.02%
+- AP50: 67.03%
+- AP75: 30.79%
+- Small objects AP: 17.28%
+- Medium objects AP: 34.03%
+- Large objects AP: 56.94%
+
+Current Experiment (patch2_4scale_sizeaware_200k):
+- Overall AP: 31.24%
+- AP50: 64.72%
+- AP75: 25.99%
+- Small objects AP: 14.92%
+- Medium objects AP: 32.19%
+- Large objects AP: 47.52%
+
+Performance Changes:
+- Overall AP: -2.78% (31.24% vs 34.02%)
+- AP50: -2.31% (64.72% vs 67.03%)
+- AP75: -4.80% (25.99% vs 30.79%)
+- Small objects AP: -2.36% (14.92% vs 17.28%)
+- Medium objects AP: -1.84% (32.19% vs 34.03%)
+- Large objects AP: -9.42% (47.52% vs 56.94%)
+
+Key Findings:
+1. **Overall Performance Decline**: The patch_size=2 + 4-scale + size-aware loss combination shows a decline across all metrics
+2. **Small Object Detection**: Contrary to expectations, small object AP decreased by 2.36%
+3. **Large Object Impact**: Most significant decline in large object detection (-9.42%)
+4. **Training Convergence**: Final loss of 4.44 vs target 3% suggests under-training despite 200k steps
+
+Possible Explanations:
+1. **Memory Constraints**: Reduced batch size (6→2) may have affected training stability
+2. **Patch Size Impact**: patch_size=2 may require different optimization strategies
+3. **Architecture Mismatch**: Current loss function may not be optimized for higher resolution features
+4. **Training Duration**: 200k steps may be insufficient for convergence with patch_size=2
+
+Recommendations for Future Experiments:
+1. Extend training to 300k+ steps
+2. Investigate gradient accumulation strategies
+3. Test different learning rate schedules
+4. Evaluate batch normalization settings for smaller batch sizes

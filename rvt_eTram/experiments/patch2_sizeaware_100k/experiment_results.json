@@ -1,0 +1,147 @@
+{
+  "experiment_id": "patch2_sizeaware_100k",
+  "experiment_name": "Patch Size 2 + 3-scale FPN + Size-aware Loss",
+  "date": "2025-07-15",
+  "status": "completed",
+  "description": "Testing patch_size=2 for enhanced small object detection with 3-scale FPN and size-aware loss",
+  
+  "configuration": {
+    "model": {
+      "backbone": "MaxViTRNN",
+      "patch_size": 2,
+      "fpn_scales": [2, 3, 4],
+      "head": "YoloX with size-aware loss"
+    },
+    "training": {
+      "max_steps": 100000,
+      "batch_size_train": 2,
+      "batch_size_eval": 2,
+      "learning_rate": "adaptive",
+      "optimizer": "AdamW",
+      "dataset": "etram_cls8_sample",
+      "num_classes": 8
+    },
+    "size_aware_loss": {
+      "enabled": true,
+      "weight": 2.0,
+      "small_threshold": 1024,
+      "medium_threshold": 9216,
+      "weight_type": "exponential"
+    }
+  },
+  
+  "training_performance": {
+    "duration": "5h 9m (3:42:50 + 1:27:04)",
+    "final_training_loss": 5.18,
+    "training_speed": "5.43 it/s",
+    "convergence": "stable",
+    "epochs_completed": 1.39,
+    "steps_completed": 100000,
+    "memory_optimization": "Required batch_size reduction from 6 to 2 due to increased memory usage from patch_size=2"
+  },
+  
+  "validation_performance": {
+    "validation_ap": 0.15641,
+    "validation_frequency": "Every ~35k steps",
+    "best_step": 100000,
+    "final_checkpoint": "experiments/patch2_sizeaware_100k/checkpoints/final_model.ckpt",
+    "validation_issues": {
+      "checkpoint_loading_error": "Size mismatch due to patch_size=2 vs default patch_size=4",
+      "detailed_metrics": "unavailable_due_to_loading_error"
+    }
+  },
+  
+  "key_observations": {
+    "memory_impact": {
+      "finding": "patch_size=2 significantly increased memory usage",
+      "consequence": "Required batch_size reduction from 6 to 2",
+      "implication": "May affect training stability and convergence speed"
+    },
+    "training_stability": {
+      "finding": "Training completed successfully despite memory constraints",
+      "loss_trend": "Stable convergence with final loss of 5.18",
+      "speed": "Maintained reasonable training speed of 5.43 it/s"
+    },
+    "validation_performance": {
+      "finding": "Final validation AP of 15.64%",
+      "comparison_needed": "Requires comparison with baseline (expected ~34% mAP)",
+      "concern": "Significantly lower than expected performance"
+    }
+  },
+  
+  "technical_issues": {
+    "checkpoint_compatibility": {
+      "issue": "Trained model checkpoint incompatible with standard validation configs",
+      "cause": "patch_size=2 creates different model architecture dimensions",
+      "solution_needed": "Custom validation config matching training architecture"
+    },
+    "memory_constraints": {
+      "issue": "CUDA OOM errors with standard batch sizes",
+      "resolution": "Reduced batch_size from 6 to 2",
+      "impact": "May affect training dynamics and final performance"
+    }
+  },
+  
+  "preliminary_analysis": {
+    "performance_concern": {
+      "observation": "15.64% AP significantly lower than baseline (~34% mAP)",
+      "potential_causes": [
+        "Memory constraint leading to small batch size",
+        "patch_size=2 creating too fine-grained features",
+        "Model architecture incompatibility",
+        "Training instability due to batch size reduction"
+      ]
+    },
+    "next_steps": [
+      "Create proper validation config for patch_size=2",
+      "Compare with baseline performance metrics",
+      "Investigate memory optimization strategies",
+      "Consider alternative approaches for small object detection"
+    ]
+  },
+  
+  "comparison_framework": {
+    "baseline_target": {
+      "overall_map": "34.02% (3-scale baseline)",
+      "small_objects_map": "17.28% (target for improvement)",
+      "medium_objects_map": "34.03%",
+      "large_objects_map": "56.94%"
+    },
+    "current_result": {
+      "overall_ap": "15.64% (validation during training)",
+      "detailed_breakdown": "unavailable_due_to_checkpoint_loading_issues"
+    },
+    "performance_gap": {
+      "overall": "-18.38% vs baseline",
+      "status": "Significantly underperforming",
+      "requires_investigation": true
+    }
+  },
+  
+  "experiment_conclusion": {
+    "success_level": "partially_successful",
+    "training_success": true,
+    "validation_success": false,
+    "performance_success": false,
+    "key_learnings": [
+      "patch_size=2 increases memory requirements significantly",
+      "Small batch sizes may negatively impact performance",
+      "Architecture changes require careful validation setup",
+      "Memory optimization is crucial for patch_size modifications"
+    ],
+    "recommendations": [
+      "Investigate memory optimization techniques",
+      "Consider gradual patch_size reduction (e.g., 4→3→2)",
+      "Explore alternative small object detection approaches",
+      "Focus on data-driven threshold tuning as next priority"
+    ]
+  },
+  
+  "file_locations": {
+    "model_checkpoint": "experiments/patch2_sizeaware_100k/checkpoints/final_model.ckpt",
+    "model_config": "experiments/patch2_sizeaware_100k/model_config.yaml",
+    "confusion_matrices": "experiments/patch2_sizeaware_100k/confusion_matrices/",
+    "training_logs": "experiments/patch2_sizeaware_100k/training_logs/",
+    "experiment_results": "experiments/patch2_sizeaware_100k/experiment_results.json"
+  }
+}

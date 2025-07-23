@@ -2,7 +2,7 @@ defaults:
   - gen4
 
 name: gen4_extended_sample
-path: /home/oeoiewt/eTraM/rvt_eTram/data/gen4_cls8_extended_sample
+path: /home/oeoiewt/eTraM/data/gen4_cls8_extended_sample
 
 # Extended sample configuration
 extended_sample: true
