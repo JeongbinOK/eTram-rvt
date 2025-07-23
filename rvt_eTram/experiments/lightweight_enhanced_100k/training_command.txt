@@ -1,0 +1,19 @@
+# Lightweight Enhanced ConvLSTM Training Command
+# Date: Wed Jul 23 05:21:54 AM UTC 2025
+# Phase 1 Implementation with 14.7% parameter overhead
+
+python train.py \
+  model=rnndet \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  +experiment/gen4="lightweight_enhanced_100k.yaml" \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  +model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced_convlstm \
+  wandb.group_name=lightweight_enhanced_100k
