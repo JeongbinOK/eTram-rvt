@@ -1,0 +1,118 @@
+# 3-scale Size-aware + Attention Experiment Hypothesis
+
+## Experiment ID: 3scale_sizeaware_attention_100k
+Date: 2025-07-12
+Researcher: Claude Code Assistant
+
+## Background
+Previous experiments have shown that:
+- 3-scale FPN + Size-aware Loss achieved the best overall performance (34.08% mAP)
+- However, small object detection performance decreased (17.28% → 13.53% mAP)
+- 4-scale FPN approaches failed due to noise in P1 features
+
+## Primary Hypothesis
+**"Attention mechanisms can enhance small object detection performance when combined with the stable 3-scale FPN architecture and size-aware loss weighting."**
+
+## Theoretical Foundation
+
+### 1. Multi-Scale Spatial Attention
+- **Hypothesis**: Different dilation rates (1, 2, 4) will capture multi-scale spatial information
+- **Expected Effect**: Improved spatial localization for small objects (Classes 2, 3, 4)
+- **Mechanism**: Attention maps will emphasize small object locations while suppressing background noise
+
+### 2. Event Temporal Attention
+- **Hypothesis**: Temporal motion patterns in event streams can be leveraged for small object detection
+- **Expected Effect**: Enhanced detection of moving small objects (Motorcycle, Bicycle)
+- **Mechanism**: Motion difference detection + temporal consistency enforcement
+
+### 3. Scale-Aware Channel Attention
+- **Hypothesis**: Different FPN scales require different channel emphasis
+- **Expected Effect**: Optimized feature representation per scale
+- **Mechanism**: Stride-adaptive channel weighting (stride ≤ 8: high-frequency, stride > 8: semantic)
+
+## Expected Performance Improvements
+
+### Quantitative Expectations
+- **Overall mAP**: 34.08% → 36-38% (+2-4% improvement)
+- **Small objects mAP**: 13.53% → 18-22% (+4-8% improvement, targeting 30-60% relative gain)
+- **Medium/Large objects**: Maintain or slightly improve current performance
+
+### Qualitative Expectations
+- **Enhanced spatial precision**: Better bounding box localization for small objects
+- **Reduced false positives**: Background noise suppression through attention
+- **Improved temporal consistency**: Better tracking of moving small objects
+
+## Technical Implementation Strategy
+
+### Architecture Combination
+```
+3-scale FPN (stable baseline)
+    ↓
+Size-aware Loss (exponential weighting, weight=2.0)
+    ↓
+Small Object Attention Modules:
+- Multi-Scale Spatial Attention (P2, P3 features)
+- Event Temporal Attention (all scales)
+- Scale-Aware Channel Attention (all scales)
+```
+
+### Training Strategy
+- **Base Architecture**: Proven 3-scale FPN (P2, P3, P4)
+- **Resolution**: 640×360 (standard preprocessing)
+- **Training Steps**: 100,000 (consistent with previous experiments)
+- **Learning Rate**: 0.001 (optimized for attention modules)
+
+## Risk Analysis
+
+### Potential Failure Modes
+1. **Overfitting**: Additional attention parameters may overfit on small dataset
+2. **Training Instability**: Complex attention mechanisms may require longer convergence
+3. **Computational Overhead**: Attention modules may slow training without proportional benefit
+
+### Mitigation Strategies
+1. **Regularization**: Appropriate weight decay and dropout in attention modules
+2. **Gradual Complexity**: Start with spatial attention, add temporal if beneficial
+3. **Monitoring**: Careful validation tracking to detect overfitting early
+
+## Success Criteria
+
+### Primary Success
+- **Small object mAP > 16%**: Exceeding current best baseline (17.28%)
+- **Overall mAP > 35%**: Improving upon size-aware loss performance
+
+### Secondary Success
+- **Training Stability**: No significant training instabilities or convergence issues
+- **Attention Effectiveness**: Visualization showing meaningful attention patterns
+- **Computational Efficiency**: Training time within acceptable bounds (< 8 hours)
+
+## Research Value
+
+### If Successful
+- Validates attention mechanisms for event-based small object detection
+- Provides a new baseline architecture for future improvements
+- Demonstrates effective combination of loss weighting and architectural enhancements
+
+### If Unsuccessful
+- Confirms fundamental limitations of current resolution (640×360)
+- Provides insights for future attention mechanism design
+- Guides transition to higher resolution experiments (1280×720)
+
+## Next Steps Based on Results
+
+### Case 1: Success (>16% small object mAP)
+1. Analyze which attention components contributed most
+2. Optimize hyperparameters for further improvement
+3. Consider scaling to full resolution (1280×720)
+
+### Case 2: Partial Success (14-16% small object mAP)
+1. Investigate attention mechanism effectiveness
+2. Consider simplified attention architectures
+3. Analyze training curves for optimization insights
+
+### Case 3: Failure (<14% small object mAP)
+1. Confirm fundamental limitations of 640×360 resolution
+2. Pivot to full resolution experiments immediately
+3. Consider alternative approaches (data augmentation, different losses)
+
+## Conclusion
+This experiment represents a systematic attempt to enhance small object detection through attention mechanisms while maintaining the stability of proven architectural components. The hypothesis is grounded in both theoretical understanding and practical constraints observed in previous experiments.

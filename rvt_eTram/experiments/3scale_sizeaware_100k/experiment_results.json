@@ -50,7 +50,7 @@
         "classes_included": [0, 1, 5, 6, 7],
         "class_names": ["Car", "Truck", "Bus", "Static", "Other"],
         "AR_100": 0.4420,
-        "baseline_comparison": +0.0096,
+        "baseline_comparison": "+0.0096",
         "improvement_vs_baseline": "+0.96%",
         "note": "Slight improvement maintained"
       },

@@ -1,0 +1,24 @@
+  File "/home/oeoiewt/miniconda3/envs/rvt/lib/python3.9/site-packages/torch/util
+s/data/datapipes/datapipe.py", line 364, in __iter__
+    self._datapipe_iter = iter(self._datapipe)
+  File "/home/oeoiewt/miniconda3/envs/rvt/lib/python3.9/site-packages/torch/util
+s/data/datapipes/_hook_iterator.py", line 230, in wrap_iter
+    iter_ret = func(*args, **kwargs)
+  File "/home/oeoiewt/eTraM/rvt_eTram/data/utils/stream_sharded_datapipe.py", li
+ne 87, in __iter__
+    zipped_stream = self.get_zipped_stream_from_worker_datapipes(datapipe_list=l
+ocal_datapipes,
+  File "/home/oeoiewt/eTraM/rvt_eTram/data/utils/stream_sharded_datapipe.py", li
+ne 56, in get_zipped_stream_from_worker_datapipes
+    assert num_datapipes >= batch_size, "Each worker must at least get 'batch_si
+ze' number of datapipes. " \
+AssertionError: Each worker must at least get 'batch_size' number of datapipes.
+Otherwise, we would have to support dynamic batch sizes. As a workaround, decrea
+se the number of workers.
+
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+== Timing statistics ==
+Validation: 0it [00:00, ?it/s]
+Validation completed\! Press Enter to continue...
+

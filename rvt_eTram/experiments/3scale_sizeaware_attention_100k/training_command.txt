@@ -1,0 +1,134 @@
+# Training Command for 3-scale Size-aware + Attention Experiment
+
+## Experiment ID: 3scale_sizeaware_attention_100k
+## Date: 2025-07-12
+## WandB ID: 8u3zxjb2
+
+## Final Working Command
+```bash
+python train.py model=maxvit_yolox/size_aware_attention \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  ++model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=3scale_sizeaware_attention_100k
+```
+
+## Command Evolution (Debugging Process)
+
+### Attempt 1: Experiment Config Approach
+```bash
+python train.py model=rnndet \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  +experiment/gen4='3scale_sizeaware_attention.yaml' \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  +model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=3scale_sizeaware_attention_100k
+```
+**Error**: `Could not append to config. An item is already at 'model.head.num_classes'`
+**Issue**: Conflict between experiment config and command line override
+
+### Attempt 2: Without num_classes override
+```bash
+python train.py model=rnndet \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  +experiment/gen4='3scale_sizeaware_attention.yaml' \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=3scale_sizeaware_attention_100k
+```
+**Error**: `Missing mandatory value: model.backbone.name`
+**Issue**: Configuration hierarchy problem with experiment config
+
+### Attempt 3: Direct model config (SUCCESSFUL)
+```bash
+python train.py model=maxvit_yolox/size_aware_attention \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  ++model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=3scale_sizeaware_attention_100k
+```
+**Success**: ✅ Training completed successfully
+
+## Configuration Issues Resolved
+
+### Issue 1: Missing model.name
+**Problem**: Model configuration missing required `name` field
+**Solution**: Added `name: rnndet` to size_aware_attention.yaml
+
+### Issue 2: Config override conflicts  
+**Problem**: Experiment config num_classes conflicted with command line
+**Solution**: Used `++model.head.num_classes=8` (force override) instead of `+`
+
+### Issue 3: Hydra config hierarchy
+**Problem**: Complex experiment config caused import issues
+**Solution**: Used direct model config approach instead of experiment config
+
+## Training Environment
+
+### System Configuration
+- **Conda Environment**: rvt
+- **Python Version**: 3.9
+- **PyTorch Version**: As specified in environment.yaml
+- **GPU**: CPU training (hardware.gpus=0)
+- **Working Directory**: /home/oeoiewt/eTraM/rvt_eTram
+
+### Screen Session Management
+```bash
+# Create screen session
+screen -dmS 3scale_sizeaware_attention_100k
+
+# Activate conda and navigate
+screen -S 3scale_sizeaware_attention_100k -p 0 -X stuff "source ~/miniconda3/etc/profile.d/conda.sh && conda activate rvt\n"
+screen -S 3scale_sizeaware_attention_100k -p 0 -X stuff "cd /home/oeoiewt/eTraM/rvt_eTram\n"
+
+# Execute training command
+screen -S 3scale_sizeaware_attention_100k -p 0 -X stuff "[FINAL COMMAND]\n"
+```
+
+## Training Results Summary
+- **Training Duration**: ~6 hours (4:17:22 + 1:40:37)
+- **Total Steps**: 100,000 (target achieved)
+- **Training Speed**: 4.70-4.83 it/s
+- **Final Loss**: 3.42
+- **Validation AP**: 0.247 (24.7%)
+- **WandB Project**: etram_enhanced
+- **WandB Group**: 3scale_sizeaware_attention_100k
+- **WandB Run ID**: 8u3zxjb2
+
+## Lessons Learned
+1. **Direct model configs work better** than complex experiment configs for new architectures
+2. **Force override (++)** required when config conflicts exist
+3. **Missing model.name** is a common configuration issue
+4. **Screen session management** essential for long training runs
+5. **Conda activation** must be explicit in screen sessions

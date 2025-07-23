@@ -3,6 +3,7 @@ defaults:
   - override /model: rnndet
 
 model:
+  name: rnndet
   backbone:
     name: MaxViTRNN
     compile:
@@ -17,7 +18,7 @@ model:
     num_blocks: [1, 1, 1, 1]
     T_max_chrono_init: [4, 8, 16, 32]
     stem:
-      patch_size: 3  # KEY CHANGE: 4 → 3 for enhanced spatial resolution with memory efficiency
+      patch_size: 4
     stage:
       downsample:
         type: patch
@@ -25,7 +26,7 @@ model:
         norm_affine: True
       attention:
         use_torch_mha: False
-        partition_size: [8, 3]  # Adjusted for patch_size=3 (128x213 feature map)
+        partition_size: ???
         dim_head: 32
         attention_bias: True
         mlp_activation: gelu
@@ -48,10 +49,13 @@ model:
         mode: reduce-overhead
     depth: 0.67 # round(depth * 3) == num bottleneck blocks
     # stage 1 is the first and len(num_layers) is the last
-    in_stages: [1, 2, 3, 4]  # 4-scale FPN with P1 features for small objects
-    # NOTE: With patch_size=3, effective strides are [3, 6, 12, 24]
+    in_stages: [2, 3, 4]  # 3-scale FPN (stable baseline architecture)
     depthwise: False
     act: "silu"
+    # Small Object Attention Configuration
+    enable_small_object_attention: true
+    attention_spatial: true
+    attention_temporal: true
   head:
     name: YoloX
     compile:
@@ -60,12 +64,12 @@ model:
         mode: reduce-overhead
     depthwise: False
     act: "silu"
-    # SIZE-AWARE LOSS CONFIGURATION
-    size_aware_loss: True
+    # Size-aware loss configuration for small object detection
+    size_aware_loss: true
     size_aware_weight: 2.0
-    small_threshold: 1024  # 32x32 pixels
-    medium_threshold: 9216  # 96x96 pixels
-    weight_type: "exponential"  # exponential weighting for smaller objects
+    small_threshold: 1024      # 32x32 pixels (small objects)
+    medium_threshold: 9216     # 96x96 pixels (medium objects)
+    weight_type: "exponential"  # options: "exponential", "step", "linear"
   postprocess:
     confidence_threshold: 0.1
     nms_threshold: 0.45

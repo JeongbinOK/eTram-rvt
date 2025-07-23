@@ -1,0 +1,58 @@
+# @package _global_
+defaults:
+  - override /model: maxvit_yolox/size_aware_attention
+  - override /dataset: gen4
+
+# Experiment: 3-scale FPN + Size-aware Loss + Small Object Attention
+# Combines the best performing architecture (3-scale) with size-aware loss
+# and adds specialized attention mechanisms for small object detection enhancement
+
+dataset:
+  path: /home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample
+
+model:
+  head:
+    num_classes: 8  # etram_cls8_sample dataset
+
+training:
+  max_steps: 100000
+  
+hardware:
+  gpus: 0
+  num_workers:
+    train: 4
+    eval: 3
+
+batch_size:
+  train: 6
+  eval: 2
+
+# Optimizer settings optimized for attention modules
+optimizer:
+  lr: 0.001
+  weight_decay: 0.0005
+  
+# Learning rate scheduler
+lr_scheduler:
+  warmup_epochs: 3
+  warmup_lr: 0.0001
+  
+# Experiment metadata
+experiment_name: "3scale_sizeaware_attention_100k"
+experiment_description: |
+  This experiment combines:
+  1. Stable 3-scale FPN architecture (P2, P3, P4)
+  2. Size-aware loss with exponential weighting (weight=2.0, threshold=1024)
+  3. Small Object Attention modules:
+     - Multi-scale spatial attention for enhanced spatial localization
+     - Event-based temporal attention for motion pattern detection
+     - Scale-aware channel attention for optimal feature representation
+  
+  Expected improvements:
+  - Small object mAP: 13.53% → 18-22% (+4-8% improvement)
+  - Overall mAP: 34.08% → 36-38% (+2-4% improvement)
+  - Enhanced small object detection for classes 2,3,4 (Motorcycle, Bicycle, Pedestrian)
+
+validation:
+  eval_interval: 5000  # Evaluate every 5k steps
+  save_interval: 10000  # Save checkpoint every 10k steps
