@@ -33,7 +33,7 @@ lightning_logs/
 
 # Dataset files - DO NOT UPLOAD TO GIT
 rvt_eTram/data/
-rvt_eTram/confM/
+
 
 # General data files
 *.h5
