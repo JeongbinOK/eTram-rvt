@@ -1,0 +1,79 @@
+LIGHTWEIGHT ENHANCED CONVLSTM EXPERIMENT SUMMARY
+=================================================
+
+Experiment ID: lightweight_enhanced_100k
+Date Completed: 2025-07-24
+Training Duration: ~6 hours (100,000 steps)
+WandB ID: w84mdkns
+
+ARCHITECTURE DETAILS:
+- Base: 3-scale FPN with MaxViT backbone
+- Enhancement: LightweightEnhancedConvLSTM at P2 stage only
+- Parameter Overhead: 14.7% (minimal compared to other failed experiments)
+- Key Features:
+  * Temporal attention for small objects (enhancement_ratio=0.05)
+  * Event-density adaptive processing (small_object_threshold=0.3)
+  * Sparse event region identification and enhancement
+
+PERFORMANCE RESULTS:
+==================
+Overall mAP: 20.93% (vs 34.02% baseline = -13.09% degradation)
+AP50: 47.9%
+AP75: 14.6%
+Small Objects mAP: 5.4% (vs 17.28% baseline = -11.88% degradation)
+Medium Objects mAP: 23.6%
+Large Objects mAP: 37.7%
+
+EXPERIMENT RANKING: 8th out of 10 experiments (2nd worst performance)
+
+CRITICAL FINDINGS:
+=================
+1. SEVERE PERFORMANCE DEGRADATION: Despite minimal 14.7% parameter increase, 
+   overall performance dropped by 13.09% - confirming complexity paradox
+
+2. SMALL OBJECT DETECTION FAILURE: The primary target (small objects) showed 
+   worst degradation: 17.28% → 5.4% (-68.7% relative decrease)
+
+3. TEMPORAL ATTENTION FAILURE: Attention mechanisms designed for small objects 
+   appear to interfere with feature extraction in event-based context
+
+4. EVENT-DENSITY PROCESSING INEFFECTIVE: Adaptive processing based on event density 
+   did not provide expected benefits for sparse regions
+
+FAILURE ANALYSIS:
+================
+Primary Causes:
+- Overfitting due to increased model complexity on small dataset
+- Inappropriate attention design for temporal event sequences
+- Enhancement parameters not optimized for 640×360 resolution constraints
+- Interference between temporal modeling and spatial feature extraction
+
+Technical Issues:
+- Enhanced ConvLSTM created gradient flow problems
+- Temporal attention weights may have caused feature suppression
+- Event-density estimation created additional computational overhead without benefits
+
+LESSONS LEARNED:
+===============
+1. Even "lightweight" enhancements (14.7% parameters) can cause severe degradation
+2. Event-based data requires fundamentally different enhancement strategies than traditional vision
+3. Temporal attention mechanisms need careful architectural integration
+4. Resolution constraints (640×360) limit effectiveness of any feature enhancement
+5. Complexity paradox is REAL and consistent across all enhancement attempts
+
+RECOMMENDATIONS:
+===============
+IMMEDIATE: Stop all architectural enhancement attempts for current resolution
+SHORT-TERM: Prioritize resolution increase experiments (640×360 → 1280×720)
+LONG-TERM: Focus on data-centric improvements rather than model architecture changes
+
+FILES GENERATED:
+===============
+✓ checkpoints/final_model.ckpt
+✓ confusion_matrices/confusion_matrix_latest.png
+✓ confusion_matrices/confusion_matrix_e001_s0071612.png
+✓ experiment_results.json
+✓ training_summary.txt
+
+EXPERIMENT STATUS: COMPLETED - FAILED
+NEXT STEPS: Update comprehensive analysis and proceed to resolution experiments
