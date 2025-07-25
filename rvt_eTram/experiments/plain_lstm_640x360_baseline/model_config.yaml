@@ -1,0 +1,69 @@
+# @package _global_
+defaults:
+  - override /model: rnndet
+
+model:
+  name: rnndet  # Model type specification
+  backbone:
+    name: MaxViTRNN
+    compile:
+      enable: False
+      args:
+        mode: reduce-overhead
+    input_channels: 20
+    enable_masking: False
+    partition_split_32: 2
+    embed_dim: 64
+    dim_multiplier: [1, 2, 4, 8]
+    num_blocks: [1, 1, 1, 1]
+    T_max_chrono_init: [4, 8, 16, 32]
+    # Plain LSTM enablement (RVT paper)
+    use_plain_lstm: true        # Enable Plain LSTM instead of ConvLSTM
+    use_enhanced_convlstm: false  # Disable enhanced ConvLSTM
+    stem:
+      patch_size: 4
+    stage:
+      downsample:
+        type: patch
+        overlap: True
+        norm_affine: True
+      attention:
+        use_torch_mha: False
+        partition_size: [6, 10]  # RVT paper configuration
+        dim_head: 32
+        attention_bias: True
+        mlp_activation: gelu
+        mlp_gated: False
+        mlp_bias: True
+        mlp_ratio: 4
+        drop_mlp: 0
+        drop_path: 0
+        ls_init_value: 1e-5
+      lstm:
+        dws_conv: False          # Plain LSTM uses 1x1 convolution only
+        dws_conv_only_hidden: True
+        dws_conv_kernel_size: 3
+        drop_cell_update: 0
+  fpn:
+    name: PAFPN
+    compile:
+      enable: False
+      args:
+        mode: reduce-overhead
+    depth: 0.67
+    # 3-scale FPN for baseline (RVT paper configuration)
+    in_stages: [2, 3, 4]  # P2, P3, P4 stages only
+    depthwise: False
+    act: "silu"
+  head:
+    name: YoloX
+    compile:
+      enable: False
+      args:
+        mode: reduce-overhead
+    depthwise: False
+    act: "silu"
+    num_classes: 8  # eTraM dataset classes
+  postprocess:
+    confidence_threshold: 0.001
+    nms_threshold: 0.65
