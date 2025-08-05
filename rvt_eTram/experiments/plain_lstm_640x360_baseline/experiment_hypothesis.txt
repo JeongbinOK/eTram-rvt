@@ -1,0 +1,239 @@
+# Plain LSTM 640×360 Baseline Experiment Hypothesis
+
+## Experiment ID: plain_lstm_640x360_baseline
+Date: 2025-07-24
+Researcher: Claude Code Assistant
+Phase: Phase 1 - Plain LSTM Implementation (RVT Paper Validation)
+
+## Background
+
+Previous RVT experiments have consistently shown a "complexity paradox":
+- **10 previous experiments failed**: All sophisticated approaches (4-scale FPN, attention mechanisms, size-aware loss) performed worse than simple baselines
+- **3-scale baseline performance**: 34.02% overall mAP, 17.28% small objects mAP
+- **Small object detection challenge**: Consistent underperformance in classes 2,3,4 (Motorcycle, Bicycle, Pedestrian)
+- **Resolution limitation hypothesis**: 640×360 may be fundamentally insufficient for small object detection
+
+## Primary Hypothesis
+
+**"RVT Paper's Plain LSTM (1×1 convolution) will outperform the current DWSConvLSTM2d baseline while providing the foundation for progressive resolution training to achieve significant small object detection improvements."**
+
+## Theoretical Foundation
+
+### 1. RVT Paper Validation (Messikommer et al.)
+
+#### Core Claims from RVT Paper:
+- **Performance**: Plain LSTM achieves **+1.1% mAP improvement** over ConvLSTM variants
+- **Efficiency**: **~50% parameter reduction** through architectural simplification
+- **Simplicity**: 1×1 convolution eliminates unnecessary complexity of depthwise-separable convolutions
+
+#### Mathematical Foundation:
+```
+Plain LSTM Gates:
+- Input Transform:  x_t → 1×1 Conv → [i_t, f_t, g_t, o_t]
+- Hidden Transform: h_{t-1} → 1×1 Conv → [i_t, f_t, g_t, o_t]
+
+vs
+
+DWSConvLSTM Gates:
+- Complex Transform: [x_t, h_{t-1}] → 3×3 DWS Conv → [i_t, f_t, g_t, o_t]
+```
+
+#### Expected Advantages:
+1. **Reduced Parameter Count**: Simpler 1×1 operations vs complex 3×3 depthwise-separable
+2. **Better Gradient Flow**: Direct connections improve backpropagation efficiency  
+3. **Training Stability**: Less complex optimization landscape
+4. **Memory Efficiency**: Lower computational overhead
+
+### 2. Small Object Detection Foundation
+
+#### Current Challenges:
+- **Classes 2,3,4 Underperformance**: Motorcycle (16K instances), Bicycle (1K instances), Pedestrian (8K instances)
+- **Resolution Limitation**: 640×360 provides insufficient detail for small objects
+- **Complexity Paradox**: All enhancement attempts failed, suggesting need for solid foundation
+
+#### Plain LSTM as Foundation:
+- **Stable Base Architecture**: Proven performance improvement from RVT paper
+- **Progressive Training Ready**: Simpler architecture easier to scale to high resolution
+- **Memory Efficient**: Essential for 1280×720 training in Phase 2
+
+### 3. Architecture Simplification Benefits
+
+#### Complexity Reduction:
+```python
+# Current: DWSConvLSTM2d
+class DWSConvLSTM2d:
+    conv1x1 = Conv2d(dim, dim*4, 1)  # Initial transform
+    dws_conv = DepthwiseSeparableConv(...)  # Complex operation
+    
+# Proposed: PlainLSTM2d  
+class PlainLSTM2d:
+    input_transform = Conv2d(dim, dim*4, 1, bias=True)   # Simple
+    hidden_transform = Conv2d(dim, dim*4, 1, bias=False) # Direct
+```
+
+#### Predicted Benefits:
+1. **Training Speed**: Faster iteration cycles (target: >4.5 it/s)
+2. **Convergence Quality**: Smoother loss curves, fewer local minima
+3. **Scalability**: Better performance at higher resolutions in Phase 2
+
+## Expected Performance Improvements
+
+### Quantitative Expectations (640×360 Resolution)
+
+#### Based on RVT Paper Claims:
+- **Overall mAP**: 34.02% → 35.1% (+1.1% improvement, matching paper)
+- **Small Objects mAP**: 17.28% → 18.5% (+1.2% proportional improvement)
+- **Parameter Reduction**: ~50% fewer parameters vs DWSConvLSTM2d
+- **Training Efficiency**: 10-20% faster training speed
+
+#### Conservative Estimates:
+- **Minimum Overall mAP**: 33.5% (must not degrade significantly)
+- **Minimum Small Objects mAP**: 16.5% (acceptable for Phase 1 foundation)
+- **Training Stability**: Smooth convergence within 100K steps
+
+### Qualitative Expectations
+
+#### Training Quality:
+- **Convergence Stability**: No training instabilities or divergence
+- **Loss Curve Smoothness**: More consistent training progression
+- **Memory Efficiency**: Stable training without OOM issues
+
+#### Architecture Readiness:
+- **Backward Compatibility**: Seamless integration with existing codebase
+- **Configuration Flexibility**: Easy enable/disable through Hydra configs
+- **Progressive Training Ready**: Foundation for Phase 2 high-resolution experiments
+
+## Technical Implementation Strategy
+
+### Phase 1 Implementation Approach
+
+#### 1. PlainLSTM2d Core Implementation
+```python
+class PlainLSTM2d(nn.Module):
+    def __init__(self, dim: int, cell_update_dropout: float = 0.0):
+        # RVT paper specification: 1×1 convolutions only
+        self.input_transform = Conv2d(dim, dim*4, 1, bias=True)
+        self.hidden_transform = Conv2d(dim, dim*4, 1, bias=False)
+```
+
+#### 2. Integration Strategy
+- **maxvit_rnn.py**: Add PlainLSTM option with backward compatibility
+- **Configuration**: New `use_plain_lstm` flag in model configs
+- **Testing**: Comprehensive validation before training
+
+#### 3. Training Configuration
+- **Base Architecture**: 3-scale FPN (P2, P3, P4) - proven stable
+- **Resolution**: 640×360 (maintaining baseline conditions)
+- **Training Steps**: 100,000 (consistent with previous experiments)
+- **Batch Configuration**: train=6, eval=2 (memory-optimized)
+
+### Validation Methodology
+
+#### Performance Metrics:
+- **Overall mAP**: Primary success metric (target: >34.0%)
+- **Small Objects mAP**: Critical for Phase 2 foundation (target: >16%)
+- **Classes 2,3,4 Individual**: Motorcycle, Bicycle, Pedestrian performance
+- **Training Efficiency**: Speed, memory usage, convergence quality
+
+#### Comparison Framework:
+- **Baseline**: 3scale_baseline (34.02% overall, 17.28% small objects)
+- **Parameter Count**: Actual measurement vs theoretical prediction
+- **Training Curves**: Loss progression, validation frequency analysis
+
+## Risk Analysis
+
+### Potential Failure Modes
+
+#### 1. Performance Degradation
+- **Risk**: Plain LSTM performs worse than expected
+- **Indicators**: Overall mAP < 32%, small objects mAP < 15%
+- **Mitigation**: Verify implementation against RVT paper specification
+
+#### 2. Training Instability
+- **Risk**: Simplified architecture causes convergence issues
+- **Indicators**: Oscillating losses, gradient explosion/vanishing
+- **Mitigation**: Careful hyperparameter tuning, gradient clipping
+
+#### 3. Implementation Bugs
+- **Risk**: Integration errors or configuration conflicts
+- **Indicators**: Runtime errors, shape mismatches, config loading failures
+- **Mitigation**: Comprehensive unit testing, backward compatibility verification
+
+### Success Criteria
+
+#### Primary Success (Phase 1 Foundation Ready)
+- **Overall mAP ≥ 33.0%**: Maintains baseline performance level
+- **Small Objects mAP ≥ 16.0%**: Acceptable foundation for Phase 2
+- **Training Stability**: Smooth convergence without instabilities
+- **Implementation Quality**: Clean code, full backward compatibility
+
+#### Secondary Success (RVT Paper Validation)
+- **Overall mAP ≥ 35.0%**: Matches or exceeds RVT paper claims
+- **Parameter Reduction**: Measurable parameter count decrease
+- **Training Efficiency**: Improved speed and memory usage
+- **Architecture Benefits**: Clear evidence of simplification advantages
+
+#### Failure Criteria (Experiment Abort)
+- **Overall mAP < 30.0%**: Significant performance degradation
+- **Training Instability**: Repeated convergence failures
+- **Implementation Issues**: Cannot achieve stable integration
+
+## Research Value and Implications
+
+### If Successful
+
+#### Immediate Benefits:
+- **Validated Foundation**: Solid base architecture for progressive training
+- **RVT Paper Confirmation**: Empirical validation of theoretical claims
+- **Simplified Codebase**: Easier maintenance and extension
+- **Phase 2 Readiness**: Memory-efficient architecture for high-resolution training
+
+#### Strategic Implications:
+- **Complexity Paradigm**: Confirms "simple is better" for this dataset
+- **Progressive Training Viability**: Enables confident transition to Phase 2
+- **Small Object Detection Path**: Clear roadmap to target performance (25%+ mAP)
+
+### If Unsuccessful
+
+#### Diagnostic Value:
+- **Implementation Gaps**: Identify differences between theory and practice
+- **Architecture Limitations**: Confirm fundamental constraints
+- **Dataset-Specific Issues**: Understand eTraM dataset characteristics
+
+#### Alternative Strategies:
+- **Configuration Tuning**: Systematic hyperparameter optimization
+- **Hybrid Approaches**: Combine Plain LSTM with minimal enhancements
+- **Direct Phase 2**: Skip to high-resolution experiments immediately
+
+## Next Steps Based on Results
+
+### Case 1: Excellent Success (>35% overall mAP)
+1. **Immediate Phase 2**: Begin progressive training implementation
+2. **Performance Analysis**: Identify specific improvement sources
+3. **Optimization**: Fine-tune for maximum Phase 2 effectiveness
+
+### Case 2: Good Success (33-35% overall mAP)
+1. **Minor Optimization**: Quick hyperparameter adjustments
+2. **Proceed to Phase 2**: Continue with progressive training plan
+3. **Monitoring**: Careful tracking of high-resolution performance
+
+### Case 3: Partial Success (30-33% overall mAP)
+1. **Root Cause Analysis**: Detailed comparison with RVT paper conditions
+2. **Implementation Review**: Verify architectural correctness
+3. **Modified Phase 2**: Adjusted expectations for progressive training
+
+### Case 4: Failure (<30% overall mAP)
+1. **Immediate Investigation**: Debug implementation issues
+2. **Alternative Architecture**: Consider other simplification approaches
+3. **Phase 2 Pivot**: Direct high-resolution experiments without Plain LSTM
+
+## Conclusion
+
+This experiment represents a critical foundation-laying phase for enhanced small object detection. By implementing and validating the RVT paper's Plain LSTM approach, we establish both:
+
+1. **A proven base architecture** with theoretical and empirical support
+2. **A simplified, scalable foundation** for progressive resolution training
+
+The hypothesis is grounded in solid theoretical work (RVT paper) while addressing the practical constraints observed in previous experiments. Success here enables confident progression to Phase 2's ambitious small object detection goals (25%+ mAP at 1280×720).
+
+The "simplicity first" approach directly addresses the complexity paradox observed in previous experiments, providing the stable foundation necessary for the challenging progressive training experiments ahead.

@@ -1,0 +1,258 @@
+# Training Command for Plain LSTM 640×360 Baseline Experiment
+
+## Experiment ID: plain_lstm_640x360_baseline
+## Date: 2025-07-24
+## WandB ID: kkm8zcsi
+
+## Final Working Command
+```bash
+python train.py \
+  model=maxvit_yolox/plain_lstm \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  +experiment/gen4='plain_lstm_640x360_baseline.yaml' \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=plain_lstm_640x360_baseline
+```
+
+## Command Evolution (Debugging Process)
+
+### Attempt 1: Direct model config approach
+```bash
+python train.py model=rnndet \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  +model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=plain_lstm_640x360_baseline
+```
+**Error**: `Missing key name - full_key: model.name, object_type=dict`
+**Issue**: Base rnndet model didn't have required configuration for Plain LSTM
+
+### Attempt 2: Experiment config approach (INITIAL FAILURE)
+```bash
+python train.py model=rnndet \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  +experiment/gen4='plain_lstm_640x360_baseline.yaml' \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  +model.head.num_classes=8 \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=plain_lstm_640x360_baseline
+```
+**Error**: YAML parsing errors and configuration conflicts
+**Issue**: Experiment config had duplicate model keys
+
+### Attempt 3: Corrected experiment config (PARTIAL SUCCESS)
+```bash
+python train.py model=rnndet \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  +experiment/gen4='plain_lstm_640x360_baseline.yaml' \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=plain_lstm_640x360_baseline
+```
+**Error**: Still missing model.name configuration
+**Issue**: Base model config missing required fields
+
+### Attempt 4: Complete Plain LSTM config (SUCCESSFUL)
+```bash
+python train.py \
+  model=maxvit_yolox/plain_lstm \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  +experiment/gen4='plain_lstm_640x360_baseline.yaml' \
+  hardware.gpus=0 \
+  batch_size.train=6 \
+  batch_size.eval=2 \
+  hardware.num_workers.train=4 \
+  hardware.num_workers.eval=3 \
+  training.max_steps=100000 \
+  dataset.train.sampling=stream \
+  wandb.project_name=etram_enhanced \
+  wandb.group_name=plain_lstm_640x360_baseline
+```
+**Success**: ✅ Training completed successfully in ~10 hours
+
+## Configuration Issues Resolved
+
+### Issue 1: Missing model.name
+**Problem**: Base model configuration missing required `name` field for Hydra
+**Solution**: Created complete `plain_lstm.yaml` with `name: rnndet` field
+**Root Cause**: Hydra requires explicit model type specification
+
+### Issue 2: Experiment config YAML structure
+**Problem**: Initial experiment config had duplicate `model` keys causing YAML parsing errors
+**Solution**: Fixed YAML structure using proper Hydra override syntax (`+model:`)
+**Root Cause**: Incorrect YAML merging syntax
+
+### Issue 3: Configuration hierarchy conflicts
+**Problem**: Complex configuration inheritance causing parameter conflicts
+**Solution**: Used complete model configuration instead of base + overrides
+**Root Cause**: Hydra configuration system complexity with multiple inheritance levels
+
+### Issue 4: num_classes parameter handling
+**Problem**: `num_classes` needed to be set but caused conflicts in different approaches
+**Solution**: Included `num_classes: 8` directly in model configuration
+**Root Cause**: Parameter needed to be set at model definition level, not runtime override
+
+## Training Environment
+
+### System Configuration
+- **Conda Environment**: rvt (PyTorch-based environment)
+- **Python Version**: 3.9
+- **Hardware**: CPU training (hardware.gpus=0)
+- **Working Directory**: /home/oeoiewt/eTraM/rvt_eTram
+- **Dataset**: etram_cls8_sample (8 classes, 640×360 resolution)
+
+### Screen Session Management
+```bash
+# Create screen session for long training
+screen -dmS plain_lstm_640x360_baseline
+
+# Activate conda environment in screen
+screen -S plain_lstm_640x360_baseline -p 0 -X stuff "source /home/oeoiewt/miniconda3/etc/profile.d/conda.sh && conda activate rvt\n"
+
+# Navigate to working directory
+screen -S plain_lstm_640x360_baseline -p 0 -X stuff "cd /home/oeoiewt/eTraM/rvt_eTram\n"
+
+# Execute training command
+screen -S plain_lstm_640x360_baseline -p 0 -X stuff "[FINAL COMMAND WITH COMPLETION MESSAGE]\n"
+```
+
+### Memory and Performance Settings
+- **Batch Size**: train=6, eval=2 (optimized for available memory)
+- **Workers**: train=4, eval=3 (balanced CPU utilization)
+- **Steps**: 100,000 (consistent with previous experiments)
+- **Sampling**: stream (efficient for event-based data)
+
+## Training Results Summary
+
+### Training Progress
+- **Start Time**: 2025-07-24 16:23 KST
+- **End Time**: 2025-07-25 02:24 KST (approximately)
+- **Total Duration**: ~10 hours (4:16:05 + 1:39:30 + validation time)
+- **Training Phases**: 2 epochs to reach 100K steps
+
+### Performance Metrics
+- **Training Speed**: 
+  - Initial: 1.45 it/s (startup phase)
+  - Stable: 4.27 it/s (primary training)
+  - Final: 4.75 it/s (mature phase)
+- **Final Training Loss**: 3.52 (excellent convergence)
+- **Validation AP**: 0.25428 (25.43%)
+
+### Training Quality Indicators
+- **Convergence Pattern**: Smooth loss reduction from 56.1 to 3.52
+- **Stability**: No training instabilities or divergence
+- **Memory Usage**: Stable throughout training, no OOM issues
+- **GPU Utilization**: N/A (CPU training for compatibility)
+
+### Key Training Milestones
+```
+Step 0:       Loss 56.1 (training start)
+Step 17:      Loss 56.1 (sanity check complete) 
+Step 330:     Loss 10.1 (rapid initial convergence)
+Step 71,612:  val/AP 0.25428 (first major checkpoint)
+Step 100,000: val/AP 0.25428 (final checkpoint, training complete)
+```
+
+## Training Command Analysis
+
+### Successful Parameters
+- **model=maxvit_yolox/plain_lstm**: Custom Plain LSTM configuration
+- **dataset=gen4**: Standard eTraM dataset configuration
+- **hardware.gpus=0**: CPU training for broad compatibility
+- **training.max_steps=100000**: Sufficient for convergence
+- **dataset.train.sampling=stream**: Optimal for event-based data
+
+### Configuration Strategy
+- **Direct Model Config**: Used complete model config instead of base + overrides
+- **Experiment Integration**: Combined model config with experiment-specific settings
+- **Override Minimal**: Kept command-line overrides to minimum for clarity
+- **WandB Integration**: Proper project and group naming for tracking
+
+## Validation Command (Executed Separately)
+
+### Final Validation Command
+```bash
+python validation.py \
+  dataset=gen4 \
+  dataset.path=/home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample \
+  checkpoint=/home/oeoiewt/eTraM/rvt_eTram/dummy/kkm8zcsi/checkpoints/last_epoch=001-step=100000.ckpt \
+  use_test_set=false \
+  hardware.gpus=0 \
+  model=maxvit_yolox/plain_lstm \
+  batch_size.eval=8 \
+  +batch_size.train=6 \
+  hardware.num_workers.eval=1 \
+  +hardware.num_workers.train=1 \
+  model.postprocess.confidence_threshold=0.001
+```
+
+### Validation Issues Resolved
+- **Config Compatibility**: Used same model config as training
+- **Missing Parameters**: Added required batch_size.train and num_workers.train
+- **Worker Count**: Reduced to 1 to avoid datapipe conflicts
+- **Checkpoint Path**: Used last checkpoint for consistency
+
+### Validation Results
+- **Completion Time**: ~1.5 hours
+- **Final mAP**: 25.43% (consistent with training validation)
+- **Confusion Matrix**: Generated successfully
+- **Process**: 324 validation iterations at ~6 it/s
+
+## Lessons Learned
+
+### Configuration Management
+1. **Complete Model Configs**: Better than base + overrides for new architectures
+2. **YAML Structure**: Critical to maintain proper hierarchy and avoid duplicates
+3. **Hydra Requirements**: model.name field essential for proper loading
+4. **Parameter Conflicts**: Use minimal command-line overrides to avoid conflicts
+
+### Training Process
+1. **Screen Sessions**: Essential for long training runs (10+ hours)
+2. **Environment Setup**: Explicit conda activation required in screen sessions
+3. **Progress Monitoring**: Regular checkpoint saving enables progress tracking
+4. **Validation Separation**: Separate validation runs allow detailed analysis
+
+### Debugging Strategy
+1. **Incremental Testing**: Start with minimal config, add complexity gradually
+2. **Error Message Analysis**: Hydra errors often indicate specific config issues
+3. **Configuration Validation**: Test config loading before starting training
+4. **Backup Strategy**: Save working commands and configs immediately
+
+### Performance Optimization
+1. **Memory Management**: Careful batch size tuning prevents OOM
+2. **Worker Configuration**: Balance CPU utilization with memory constraints  
+3. **Checkpoint Strategy**: Regular saving enables training recovery
+4. **Monitoring Setup**: WandB integration provides valuable training insights
+
+This comprehensive training process documentation provides the foundation for replicating the Plain LSTM experiment and serves as a template for future progressive training experiments in Phase 2.

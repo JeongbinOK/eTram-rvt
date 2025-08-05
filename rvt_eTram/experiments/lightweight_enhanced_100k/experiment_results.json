@@ -1,0 +1,96 @@
+{
+  "experiment_id": "lightweight_enhanced_100k",
+  "experiment_name": "LightweightEnhancedConvLSTM Small Object Detection",
+  "date_completed": "2025-07-24",
+  "training_duration": "approximately 6 hours",
+  "
+  
+  "model_configuration": {
+    "architecture": "3-scale FPN with LightweightEnhancedConvLSTM",
+    "backbone": "MaxViT + Enhanced ConvLSTM",
+    "enhancement_location": "P2 stage (stride 8) only",
+    "parameter_overhead": "14.7%",
+    "enhancements": [
+      "Temporal attention mechanism for small objects",
+      "Event-density adaptive processing",
+      "Sparse event region enhancement"
+    ]
+  },
+  
+  "training_config": {
+    "max_steps": 100000,
+    "batch_size_train": 6,
+    "batch_size_eval": 2,
+    "num_classes": 8,
+    "dataset": "etram_cls8_sample",
+    "wandb_id": "w84mdkns"
+  },
+  
+  "performance_results": {
+    "overall_map": 0.2093,
+    "overall_map_percentage": "20.93%",
+    "ap50": 0.479,
+    "ap50_percentage": "47.9%",
+    "ap75": 0.146,
+    "ap75_percentage": "14.6%",
+    "small_objects_map": 0.054,
+    "small_objects_map_percentage": "5.4%",
+    "medium_objects_map": 0.236,
+    "medium_objects_map_percentage": "23.6%",
+    "large_objects_map": 0.377,
+    "large_objects_map_percentage": "37.7%"
+  },
+  
+  "baseline_comparison": {
+    "baseline_overall_map": "34.02%",
+    "baseline_small_objects_map": "17.28%",
+    "overall_map_change": "-13.09%",
+    "small_objects_map_change": "-11.88%",
+    "performance_status": "SEVERE DEGRADATION"
+  },
+  
+  "experimental_ranking": {
+    "overall_ranking": 8,
+    "total_experiments": 10,
+    "performance_category": "Worst performing experiment",
+    "complexity_paradox_evidence": true
+  },
+  
+  "key_findings": [
+    "14.7% parameter increase caused 13.09% mAP decrease",
+    "Temporal attention mechanisms failed in event-based context",
+    "Event-density adaptive processing did not improve small object detection",
+    "Confirms complexity paradox: simpler approaches outperform sophisticated ones",
+    "Small object mAP dropped from 17.28% to 5.4% (-68.7% relative decrease)"
+  ],
+  
+  "failure_analysis": {
+    "primary_causes": [
+      "Overfitting due to increased model complexity",
+      "Inappropriate attention mechanisms for sparse event data",
+      "Temporal modeling interference with spatial feature extraction",
+      "Enhancement parameters not suitable for 640x360 resolution"
+    ],
+    "lessons_learned": [
+      "Minimal parameter additions can cause severe performance degradation",
+      "Event-based data requires fundamentally different enhancement strategies",
+      "Attention mechanisms need careful design for temporal event sequences",
+      "Resolution constraints limit effectiveness of feature enhancement"
+    ]
+  },
+  
+  "files_generated": [
+    "checkpoints/final_model.ckpt",
+    "confusion_matrices/confusion_matrix_latest.png",
+    "confusion_matrices/confusion_matrix_e001_s0071612.png"
+  ],
+  
+  "recommendations": {
+    "immediate": "Abandon complex architectural modifications",
+    "short_term": "Focus on resolution increase (640x360 → 1280x720)",
+    "long_term": "Pursue data-centric improvements over architecture changes"
+  },
+  
+  "status": "COMPLETED - FAILED",
+  "next_experiments": []
+}

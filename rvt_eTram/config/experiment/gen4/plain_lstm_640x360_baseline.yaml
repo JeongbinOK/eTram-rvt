@@ -1,0 +1,60 @@
+# Plain LSTM Baseline Experiment Configuration (640x360)
+# 
+# Objective: Reproduce RVT paper results with Plain 1x1 LSTM
+# Expected improvement: +1.1% mAP over ConvLSTM (論文 기준)
+# Target performance: 35.1% overall mAP, 18.5% small objects mAP
+
+# Experiment metadata
+experiment_name: "plain_lstm_640x360_baseline"
+description: "RVT paper's Plain LSTM implementation - baseline experiment at 640x360 resolution"
+expected_improvement: "+1.1% mAP over DWSConvLSTM2d baseline"
+target_metrics:
+  overall_map: 35.1  # 34.02% baseline + 1.1% improvement
+  small_objects_map: 18.5  # Expected proportional improvement
+  parameter_reduction: 0.5  # 50% fewer parameters than ConvLSTM
+
+# Model configuration
+model: maxvit_yolox/plain_lstm  # Use our new Plain LSTM config
+
+# Training configuration (standard setup)
+training:
+  max_steps: 100000
+  
+# Hardware configuration (same as baseline)
+hardware:
+  gpus: 0
+  num_workers:
+    train: 4
+    eval: 3
+
+# Batch size configuration (same as baseline)
+batch_size:
+  train: 6
+  eval: 2
+
+# Dataset configuration (etram_cls8_sample)
+dataset:
+  train:
+    sampling: stream
+  path: /home/oeoiewt/eTraM/rvt_eTram/data/etram_cls8_sample
+
+# Additional model configuration (merged)
++model:
+  head:
+    num_classes: 8
+
+# Weights & Biases configuration
+wandb:
+  project_name: etram_plain_lstm
+  group_name: plain_lstm_experiments
+  
+# Validation configuration
+validation:
+  confidence_threshold: 0.001
+  
+# Success criteria
+success_criteria:
+  overall_map_min: 35.0  # Must exceed current baseline
+  small_objects_map_min: 18.0  # Must improve small object detection
+  parameter_count_max: 25000000  # Must be more efficient than ConvLSTM
+  training_stable: true  # Training must converge smoothly
